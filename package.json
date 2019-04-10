@@ -1,5 +1,5 @@
 {
-  "name": "speed-dating-experiment-2",
+  "name": "speed-dating-experiment",
   "private": true,
   "scripts": {
     "start": "meteor run"
