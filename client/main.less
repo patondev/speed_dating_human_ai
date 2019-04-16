@@ -189,25 +189,31 @@ button {
 }
 
 .exit-survey {
+  em {
+    color: blue;
+  }
+  .bold {
+    font-weight: bold;
+  }
+
   .form-line {
     display: flex;
 
-    & > div {
+    .form-group {
       margin-right: 30px;
 
       textarea {
         min-height: 90px;
-        width: 100%;
       }
     }
 
     &.thirds {
-      & > div {
+      .pt-form-group {
         flex-grow: 0;
         flex-shrink: 0;
         flex-basis: 30%;
 
-        label {
+        .pt-label {
           min-height: 36px;
         }
       }

@@ -39,8 +39,9 @@ Empirica.round(Round);
 // If you don't return anything, or do not define this function, a default
 // exit screen will be shown.
 Empirica.exitSteps((game, player) => {
-  //TODO: check the player.exitStatus and decide what to show (i.e., if (player.exitStatus !== "finish") { return [Sorry, Thanks]}
-  return [ExitSurvey, Thanks];
+  return player.exitStatus !== "finished"
+    ? [Sorry, Thanks]
+    : [ExitSurvey, Thanks];
 });
 
 // Start the app render tree.
