@@ -33,7 +33,7 @@ Empirica.onRoundEnd((game, round, players) => {
   players.forEach(player => {
     const value = player.round.get("score") || 0;
     const prevScore = player.get("score") || 0;
-    const newScore = (prevScore * round.index + value)/(round.index + 1);
+    const newScore = (prevScore * round.index + value) / (round.index + 1);
     player.set("score", newScore);
   });
 });

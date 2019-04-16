@@ -33,8 +33,8 @@ export default class TaskStimulus extends React.Component {
                 <td>{round.data._id}</td>
                 <th>Interests Correlation</th>
                 <td>{pairData.InterestsCorr}</td>
-                <td></td>
-                <td></td>
+                <td />
+                <td />
               </tr>
               <tr className="table-heading">
                 <th colSpan="6">Basic Information</th>
@@ -45,7 +45,9 @@ export default class TaskStimulus extends React.Component {
                 <th>Man's Race</th>
                 <td>{pairData.Race_Partner}</td>
                 <th>Same Race</th>
-                <td>{pairData.Race === pairData.Race_Partner ? "Yes" : "No"}</td>
+                <td>
+                  {pairData.Race === pairData.Race_Partner ? "Yes" : "No"}
+                </td>
               </tr>
               <tr>
                 <th>Woman's Age</th>
@@ -63,18 +65,21 @@ export default class TaskStimulus extends React.Component {
               {this.renderFeatureRow(pairData, "Intelligent")}
               {this.renderFeatureRow(pairData, "Fun")}
               {this.renderFeatureRow(pairData, "Ambitious")}
-              {this.renderFeatureRow(pairData, "SharedInterests", "Shared Interests")}
+              {this.renderFeatureRow(
+                pairData,
+                "SharedInterests",
+                "Shared Interests"
+              )}
             </tbody>
           </table>
         </div>
 
         <p>
           <strong>Interest Correlation</strong>: Correlation between
-            participant’s and partner’s ratings of interests surveyed
-            prior to the speed dating.
+          participant’s and partner’s ratings of interests surveyed prior to the
+          speed dating.
         </p>
       </div>
-
     );
   }
 }

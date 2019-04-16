@@ -13,7 +13,8 @@ import data from "./experiment_data/2-exp1_data_20190319.json";
 // rounds and stages (with get/set methods), that will be able to use later in
 // the game.
 
-var questionText = "What do you think is the probability that the following participant will match her partner?";
+var questionText =
+  "What do you think is the probability that the following participant will match her partner?";
 
 Empirica.gameInit((game, treatment, players) => {
   players.forEach((player, i) => {
@@ -21,7 +22,7 @@ Empirica.gameInit((game, treatment, players) => {
     player.set("score", 0);
   });
 
-  shuffledData = _.shuffle(data);
+  const shuffledData = _.shuffle(data);
 
   const roundCount = game.treatment.roundCount || 10;
   const playerCount = game.treatment.playerCount || 1;
@@ -34,7 +35,7 @@ Empirica.gameInit((game, treatment, players) => {
     const randomPair = shuffledData[i];
 
     const round = game.addRound({
-      data: {...randomPair}
+      data: { ...randomPair }
     });
 
     round.addStage({

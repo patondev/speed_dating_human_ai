@@ -8,10 +8,13 @@ Empirica.bot("bob", {
 
   // Called during each stage at tick interval (~1s at the moment)
   onStageTick(bot, game, round, stage, secondsRemaining) {
-    if (stage.name === "social" && stage.get("interpretationType") === "Interactive") {
+    if (
+      stage.name === "social" &&
+      stage.get("interpretationType") === "Interactive"
+    ) {
       const answer = round.data.model_prediction_prob;
       const humanPlayers = game.players.filter(p => !p.bot);
-      var humanSum = 0;
+      let humanSum = 0;
       humanPlayers.forEach(player => {
         humanSum += player.round.get("value");
       });
@@ -27,4 +30,4 @@ Empirica.bot("bob", {
 
   // // NOT SUPPORTED Called at the end of the stage (after it finished, before onStageEnd/onRoundEnd is called)
   // onStageEnd(bot, game, round, stage, players) {}
-})
+});

@@ -7,3 +7,6 @@ staging.json
 development.json
 dev.json
 local.json
+**/.idea
+**.idea
+.DS_Store

@@ -18,7 +18,7 @@ Empirica.consent(Consent);
 // different instruction steps depending on the assigned treatment.
 Empirica.introSteps((game, treatment) => {
   const steps = [InstructionStepOne];
-  if (treatment.playerCount > 1) {
+  if (game.treatment.playerCount > 1) {
     steps.push(InstructionStepTwo);
   }
   steps.push(Quiz);
@@ -39,6 +39,7 @@ Empirica.round(Round);
 // If you don't return anything, or do not define this function, a default
 // exit screen will be shown.
 Empirica.exitSteps((game, player) => {
+  //TODO: check the player.exitStatus and decide what to show (i.e., if (player.exitStatus !== "finish") { return [Sorry, Thanks]}
   return [ExitSurvey, Thanks];
 });
 

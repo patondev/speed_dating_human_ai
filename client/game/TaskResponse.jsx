@@ -1,8 +1,6 @@
 import React from "react";
 import Slider from "meteor/empirica:slider";
-import {
-  HTMLTable
-} from "@blueprintjs/core";
+import { HTMLTable } from "@blueprintjs/core";
 
 export default class TaskResponse extends React.Component {
   handleChange = num => {
@@ -68,16 +66,14 @@ export default class TaskResponse extends React.Component {
               <td align="center">{player.round.get("value")}</td>
               <td>{round.get("model_prediction")}</td>
               <td>
-                <strong>
-                  {player.round.get("score").toFixed(2)}
-                </strong>
+                <strong>{player.round.get("score").toFixed(2)}</strong>
               </td>
             </tr>
           </tbody>
         </HTMLTable>
       </div>
     );
-  };
+  }
 
   render() {
     const { player, stage } = this.props;
@@ -92,7 +88,9 @@ export default class TaskResponse extends React.Component {
         <form onSubmit={this.handleSubmit}>
           {this.renderSlider()}
           {stage.name === "outcome" ? this.renderFeedback() : null}
-          <button type="submit">{stage.name === "outcome" ? "Next" : "Submit"}</button>
+          <button type="submit">
+            {stage.name === "outcome" ? "Next" : "Submit"}
+          </button>
         </form>
       </div>
     );

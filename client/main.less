@@ -58,7 +58,7 @@
 
   .task {
     width: 75rem;
-    align-content: right;
+    align-content: flex-end;
     padding: 4rem 4rem 0 4rem;
 
     .task-response {
@@ -92,7 +92,8 @@
         border: 1px solid black;
       }
 
-      th, td {
+      th,
+      td {
         border-right: 1px solid black;
         border-left: 1px solid black;
         padding: 0.5rem 1rem;
@@ -223,4 +224,23 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.timer {
+  .seconds {
+    color: green;
+    font-size: 2.7rem;
+    font-weight: bold;
+  }
+
+  &.lessThan10 {
+    .seconds {
+      color: orange;
+    }
+  }
+  &.lessThan5 {
+    .seconds {
+      color: red;
+    }
+  }
 }
