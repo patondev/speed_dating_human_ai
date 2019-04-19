@@ -36,6 +36,7 @@ export default class TaskResponse extends React.Component {
     const isOutcome = stage.name === "outcome";
     return (
       <Slider
+        className="task-response-slider"
         min={0}
         max={1}
         stepSize={0.01}
