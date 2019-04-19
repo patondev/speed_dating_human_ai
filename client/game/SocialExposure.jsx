@@ -12,6 +12,7 @@ export default class SocialExposure extends React.Component {
             min={0}
             max={1}
             stepSize={0.01}
+            labelStepSize={0.25}
             value={value}
             disabled
             hideHandleOnEmpty
@@ -42,9 +43,12 @@ export default class SocialExposure extends React.Component {
           <strong>There are {otherPlayers.length} other players:</strong>
         </p>
         {otherPlayers.map(p => this.renderSocialInteraction(p))}
-        <div className="explanation">
-          {imgPath ? <img src={imgPath} alt={imgPath} /> : null}
-        </div>
+        {imgPath ?
+          <div className="explanation">
+            <p><strong>Feature Importance for Match Prediction: </strong></p>
+            <img src={imgPath} alt={imgPath} />
+          </div>
+        : null}
       </div>
     );
   }
