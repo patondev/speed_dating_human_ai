@@ -7,6 +7,9 @@ export default class TaskFeedback extends React.Component {
 
     const otherPlayers = _.reject(game.players, p => p._id === player._id);
     const other = otherPlayers.length !== 0 ? otherPlayers[0] : null;
+    const otherPlayerFeedback = game.treatment.otherPlayerFeedback !== undefined
+      ? game.treatment.otherPlayerFeedback
+      : true;
 
     return (
       <div className="task-feedback">
@@ -28,7 +31,7 @@ export default class TaskFeedback extends React.Component {
                 <strong>{(1 - player.round.get("score")).toFixed(2)}</strong>
               </td>
             </tr>
-            {other ? (
+            {other && otherPlayerFeedback ? (
               <tr>
                 <th>Other</th>
                 <td align="center">{other.round.get("value").toFixed(2)}</td>

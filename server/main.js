@@ -30,7 +30,6 @@ Empirica.gameInit((game, treatment, players) => {
   const feedback = game.treatment.giveFeedback || false;
   const stageDuration = game.treatment.stageLength || 120;
   const socialStageDuration = game.treatment.socialStageLength || 120;
-  const otherPlayerFeedback = game.treatment.otherPlayerFeedback || true;
 
   for (let i = 0; i < roundCount; i++) {
     const randomPair = shuffledData[i];
