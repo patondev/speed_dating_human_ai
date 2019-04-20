@@ -10,7 +10,7 @@ Empirica.bot("bob", {
   onStageTick(bot, game, round, stage, secondsRemaining) {
     if (
       stage.name === "social" &&
-      stage.get("interpretationType") === "Interactive"
+      game.treatment.interactiveBot
     ) {
       const answer = round.data.model_prediction_prob;
       const humanPlayers = game.players.filter(p => !p.bot);
