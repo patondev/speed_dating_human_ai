@@ -1,6 +1,17 @@
 import React from "react";
 import Slider from "meteor/empirica:slider";
-import { HTMLTable } from "@blueprintjs/core";
+import {
+  HTMLTable,
+  Intent,
+  Checkbox,
+  Toaster,
+  Position
+} from "@blueprintjs/core";
+
+const WarningToaster = Toaster.create({
+  className: "warning-toaster",
+  position: Position.TOP
+});
 
 export default class TaskResponse extends React.Component {
   handleChange = num => {
@@ -13,11 +24,18 @@ export default class TaskResponse extends React.Component {
     event.preventDefault();
     const { player, round } = this.props;
     const value = player.round.get("value");
-    const outcome = round.get("model_prediction") === "Yes" ? 1.0 : 0;
-    const score = Math.pow(value - outcome, 2);
-    player.round.set("score", score);
-    player.stage.set("score", score);
-    this.props.player.stage.submit();
+
+    if (!value) {
+      WarningToaster.show({
+        message: "Please enter a response."
+      });
+    } else {
+      const outcome = round.get("model_prediction") === "Yes" ? 1.0 : 0;
+      const score = Math.pow(value - outcome, 2);
+      player.round.set("score", score);
+      player.stage.set("score", score);
+      this.props.player.stage.submit();
+    }
   };
 
   renderSubmitted() {
