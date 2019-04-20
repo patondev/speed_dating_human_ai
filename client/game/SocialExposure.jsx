@@ -36,16 +36,28 @@ export default class SocialExposure extends React.Component {
     if (otherPlayers.length === 0) {
       return null;
     }
+    const bots = game.players.filter(p => p.bot);
+    const revealBots = game.treatment.revealBots || false;
 
     return (
       <div className="social-exposure">
         <p>
-          <strong>There are {otherPlayers.length} other players:</strong>
+          <strong>
+            There {otherPlayers.length > 1
+              ? "are "
+              : "is "}
+            {otherPlayers.length} other {bots.length > 0 && revealBots
+              ? "bot"
+              : "player"}
+            {otherPlayers.length > 1
+              ? "s:"
+              : ":"}
+          </strong>
         </p>
         {otherPlayers.map(p => this.renderSocialInteraction(p))}
         {imgPath ?
           <div className="explanation">
-            <p><strong>Feature Importance for Match Prediction: </strong></p>
+            <p><strong>Feature importance for match prediction: </strong></p>
             <img src={imgPath} alt={imgPath} />
           </div>
         : null}
