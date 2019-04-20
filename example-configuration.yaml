@@ -1,67 +1,52 @@
 treatments:
-  - name: human x 2 (none)
+  - name: human multiplayer
     factorIds:
       - fXPTZpBnxsxuotxh6
-      - FccqQDekPjChDLavW
       - uimy8Qk7rRFkgdcx5
-      - stSByaLq2axRCzySD
-      - sCsrr2mz5qdeCGS4T
-      - CJQ74eCpLbH4m8yMK
+      - no4NocAjd3Ny7cpxX
+      - Q7bKTC87PQNjfNfmn
+      - pKR6aPvBL5wyDBjbZ
+      - FccqQDekPjChDLavW
       - MPo9Ke8af28eSNtTK
-  - name: human + bot (global)
+      - yYtHsMrA8ntgwADuf
+      - 5pFwrqKJpGdcDa3GX
+      - nsfCCXxG2MefRgwYb
+  - name: interactive bot (global)
     factorIds:
       - fXPTZpBnxsxuotxh6
       - GbiyWT2nipp7BNvak
-      - stSByaLq2axRCzySD
-      - sCsrr2mz5qdeCGS4T
-      - CJQ74eCpLbH4m8yMK
+      - no4NocAjd3Ny7cpxX
+      - Q7bKTC87PQNjfNfmn
+      - pKR6aPvBL5wyDBjbZ
       - 2zkyc3vkB5t4umaR7
       - MPo9Ke8af28eSNtTK
-  - name: human + bot (local)
+      - LFMK5aK9nwBgcNNF4
+      - 5pFwrqKJpGdcDa3GX
+      - 5PkcNm4zJLZQG8Pw6
+  - name: noninteractive bot (local)
     factorIds:
       - fXPTZpBnxsxuotxh6
       - bfkBvo32jL2b55Ywo
-      - stSByaLq2axRCzySD
-      - sCsrr2mz5qdeCGS4T
-      - CJQ74eCpLbH4m8yMK
+      - no4NocAjd3Ny7cpxX
+      - Q7bKTC87PQNjfNfmn
+      - pKR6aPvBL5wyDBjbZ
       - 2zkyc3vkB5t4umaR7
       - MPo9Ke8af28eSNtTK
-  - name: human + bot (interactive)
-    factorIds:
-      - fXPTZpBnxsxuotxh6
-      - mszqCDRNwD78yCezK
-      - stSByaLq2axRCzySD
-      - sCsrr2mz5qdeCGS4T
-      - CJQ74eCpLbH4m8yMK
-      - 2zkyc3vkB5t4umaR7
-      - MPo9Ke8af28eSNtTK
-  - name: human no feedback
-    factorIds:
-      - x8NsYrN2aEXJ9ns8k
-      - uimy8Qk7rRFkgdcx5
-      - stSByaLq2axRCzySD
-      - sCsrr2mz5qdeCGS4T
-      - CJQ74eCpLbH4m8yMK
-      - FccqQDekPjChDLavW
-      - 4xEeuoadBeeujy4nH
-  - name: human mult stages
-    factorIds:
-      - x8NsYrN2aEXJ9ns8k
-      - uimy8Qk7rRFkgdcx5
-      - sCsrr2mz5qdeCGS4T
-      - CJQ74eCpLbH4m8yMK
-      - FccqQDekPjChDLavW
-      - MPo9Ke8af28eSNtTK
-    archivedAt: 2019-04-10T20:10:13.677Z
-  - name: human mult stages
+      - yYtHsMrA8ntgwADuf
+      - WGcHLj9z74xXm4wPP
+      - nsfCCXxG2MefRgwYb
+  - name: solo no feedback
     factorIds:
       - x8NsYrN2aEXJ9ns8k
       - uimy8Qk7rRFkgdcx5
       - no4NocAjd3Ny7cpxX
-      - sCsrr2mz5qdeCGS4T
-      - CJQ74eCpLbH4m8yMK
+      - Q7bKTC87PQNjfNfmn
+      - pKR6aPvBL5wyDBjbZ
       - FccqQDekPjChDLavW
-      - MPo9Ke8af28eSNtTK
+      - 4xEeuoadBeeujy4nH
+      - LFMK5aK9nwBgcNNF4
+      - 5pFwrqKJpGdcDa3GX
+      - nsfCCXxG2MefRgwYb
 factorTypes:
   - _id: dQGvpt4f73WYXEkxZ
     name: playerCount
@@ -105,6 +90,21 @@ factorTypes:
   - _id: zmLFe9T5uH7cAGo4n
     name: giveFeedback
     description: Show score to users.
+    required: false
+    type: Boolean
+  - _id: Mmk6EszYubTmuPbNc
+    name: otherPlayerFeedback
+    description: Show feedback on other player's score
+    required: false
+    type: Boolean
+  - _id: bQ28KcJTHzCT8WmPJ
+    name: revealBots
+    description: Show that other player is a bot
+    required: false
+    type: Boolean
+  - _id: TTskujkQiE8PDtojt
+    name: interactiveBot
+    description: Make the bot respond interactively to player changes
     required: false
     type: Boolean
 factors:
@@ -172,14 +172,34 @@ factors:
     name: one
     value: 1
     factorTypeId: 4q2RSFfsrB3oFRTu6
-  - _id: mszqCDRNwD78yCezK
-    name: interactive
-    value: Interactive
-    factorTypeId: Nooz2W7GnyGFZWgTB
   - _id: FccqQDekPjChDLavW
     name: zero
     value: 0
     factorTypeId: 4q2RSFfsrB3oFRTu6
+  - _id: yYtHsMrA8ntgwADuf
+    name: 'true'
+    value: true
+    factorTypeId: Mmk6EszYubTmuPbNc
+  - _id: LFMK5aK9nwBgcNNF4
+    name: 'false'
+    value: false
+    factorTypeId: Mmk6EszYubTmuPbNc
+  - _id: WGcHLj9z74xXm4wPP
+    name: 'true'
+    value: true
+    factorTypeId: bQ28KcJTHzCT8WmPJ
+  - _id: 5pFwrqKJpGdcDa3GX
+    name: 'false'
+    value: false
+    factorTypeId: bQ28KcJTHzCT8WmPJ
+  - _id: 5PkcNm4zJLZQG8Pw6
+    name: 'true'
+    value: true
+    factorTypeId: TTskujkQiE8PDtojt
+  - _id: nsfCCXxG2MefRgwYb
+    name: 'false'
+    value: false
+    factorTypeId: TTskujkQiE8PDtojt
 lobbyConfigs:
   - name: long
     timeoutType: lobby
