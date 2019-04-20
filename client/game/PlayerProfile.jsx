@@ -14,22 +14,28 @@ export default class PlayerProfile extends React.Component {
   }
 
   renderScore() {
-    const { player } = this.props;
+    const { player, stage } = this.props;
+
+    const prevScore = player.get("score") || 0;
+    const score = stage.get("type") === "feedback"
+      ? prevScore + (1 - player.round.get("score"))
+      : prevScore;
+
     return (
       <div className="profile-score">
         <h4>Total score</h4>
-        <span>{(player.get("score") || 0).toFixed(2)}</span>
+        <span>{score.toFixed(2)}</span>
       </div>
     );
   }
 
   render() {
-    const { stage } = this.props;
+    const { game, stage } = this.props;
 
     return (
       <aside className="player-profile">
         {this.renderProfile()}
-        {stage.get("feedback") ? this.renderScore() : null}
+        {game.treatment.giveFeedback ? this.renderScore() : null}
         <Timer stage={stage} />
       </aside>
     );

@@ -19,6 +19,11 @@ Empirica.onRoundStart((game, round, players) => {
 Empirica.onStageStart((game, round, stage, players) => {
   const bots = game.players.filter(p => p.bot);
   bots.forEach(bot => {
+    const value = bot.round.get("value");
+    const outcome = round.get("model_prediction") === "Yes" ? 1.0 : 0;
+    const score = Math.pow(value - outcome, 2);
+    bot.round.set("score", score);
+    bot.stage.set("score", score);
     bot.stage.submit();
   });
 });
@@ -33,7 +38,9 @@ Empirica.onRoundEnd((game, round, players) => {
   players.forEach(player => {
     const value = player.round.get("score") || 0;
     const prevScore = player.get("score") || 0;
-    const newScore = (prevScore * round.index + value) / (round.index + 1);
+
+    // accumulate score as 1 - brier
+    const newScore = prevScore + (1 - value);
     player.set("score", newScore);
   });
 });

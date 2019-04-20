@@ -30,6 +30,7 @@ Empirica.gameInit((game, treatment, players) => {
   const feedback = game.treatment.giveFeedback || false;
   const stageDuration = game.treatment.stageLength || 120;
   const socialStageDuration = game.treatment.socialStageLength || 120;
+  const otherPlayerFeedback = game.treatment.otherPlayerFeedback || true;
 
   for (let i = 0; i < roundCount; i++) {
     const randomPair = shuffledData[i];
@@ -44,8 +45,7 @@ Empirica.gameInit((game, treatment, players) => {
       durationInSeconds: stageDuration,
       data: {
         type: "solo",
-        questionText: questionText,
-        feedback: feedback
+        questionText: questionText
       }
     });
 
@@ -57,8 +57,7 @@ Empirica.gameInit((game, treatment, players) => {
         data: {
           type: "social",
           questionText: questionText,
-          interpretationType: interpretationType,
-          feedback: feedback
+          interpretationType: interpretationType
         }
       });
     }
@@ -69,7 +68,7 @@ Empirica.gameInit((game, treatment, players) => {
         displayName: "Round Outcome",
         durationInSeconds: stageDuration,
         data: {
-          feedback: feedback
+          type: "feedback"
         }
       });
     }

@@ -16,6 +16,7 @@ export default class TaskResponse extends React.Component {
     const outcome = round.get("model_prediction") === "Yes" ? 1.0 : 0;
     const score = Math.pow(value - outcome, 2);
     player.round.set("score", score);
+    player.stage.set("score", score);
     this.props.player.stage.submit();
   };
 
@@ -49,33 +50,6 @@ export default class TaskResponse extends React.Component {
     );
   }
 
-  renderFeedback() {
-    const { game, player, round } = this.props;
-
-    return (
-      <div>
-        <HTMLTable>
-          <thead>
-            <tr>
-              <th>Your guess</th>
-              <th>Actual answer</th>
-              <th>Score</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td align="center">{player.round.get("value")}</td>
-              <td>{round.get("model_prediction")}</td>
-              <td>
-                <strong>{player.round.get("score").toFixed(2)}</strong>
-              </td>
-            </tr>
-          </tbody>
-        </HTMLTable>
-      </div>
-    );
-  }
-
   render() {
     const { player, stage } = this.props;
 
@@ -88,7 +62,6 @@ export default class TaskResponse extends React.Component {
       <div className="task-response">
         <form onSubmit={this.handleSubmit}>
           {this.renderSlider()}
-          {stage.name === "outcome" ? this.renderFeedback() : null}
           <button type="submit">
             {stage.name === "outcome" ? "Next" : "Submit"}
           </button>
