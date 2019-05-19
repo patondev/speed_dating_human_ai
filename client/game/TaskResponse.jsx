@@ -78,6 +78,7 @@ export default class TaskResponse extends React.Component {
 
     return (
       <div className="task-response">
+        <p><strong>Make your prediction:</strong></p>
         <form onSubmit={this.handleSubmit}>
           {this.renderSlider()}
           <button type="submit">

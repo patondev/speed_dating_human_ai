@@ -6,12 +6,10 @@ export default class TaskStimulus extends React.Component {
     const displayName = display ? display : feature;
     return (
       <tr>
-        <th>{"Woman's " + displayName}</th>
+        <th className="color-female">{displayName}</th>
         <td>{pairData[feature]}</td>
-        <th>{"Man's " + displayName}</th>
+        <th className="color-male">{displayName}</th>
         <td>{pairData[partnerFeature]}</td>
-        <th>{displayName + " Difference"}</th>
-        <td>{pairData[feature] - pairData[partnerFeature]}</td>
       </tr>
     );
   }
@@ -33,33 +31,13 @@ export default class TaskStimulus extends React.Component {
                 <td>{round.data._id}</td>
                 <th>Interests Correlation</th>
                 <td>{pairData.InterestsCorr}</td>
-                <td />
-                <td />
-              </tr>
-              <tr className="table-heading">
-                <th colSpan="6">Basic Information</th>
               </tr>
               <tr>
-                <th>Woman's Race</th>
-                <td>{pairData.Race}</td>
-                <th>Man's Race</th>
-                <td>{pairData.Race_Partner}</td>
-                <th>Same Race</th>
-                <td>
-                  {pairData.Race === pairData.Race_Partner ? "Yes" : "No"}
-                </td>
+                <th className="color-female" colSpan="2">Woman</th>
+                <th className="color-male" colSpan="2">Man</th>
               </tr>
-              <tr>
-                <th>Woman's Age</th>
-                <td>{pairData.Age}</td>
-                <th>Man's Race</th>
-                <td>{pairData.Age_Partner}</td>
-                <th>Age Difference</th>
-                <td>{pairData.Age - pairData.Age_Partner}</td>
-              </tr>
-              <tr className="table-heading">
-                <th colSpan="6">Evaluation Scores from the Opponent</th>
-              </tr>
+              {this.renderFeatureRow(pairData, "Race")}
+              {this.renderFeatureRow(pairData, "Age")}
               {this.renderFeatureRow(pairData, "Attractive")}
               {this.renderFeatureRow(pairData, "Sincere")}
               {this.renderFeatureRow(pairData, "Intelligent")}
@@ -73,12 +51,6 @@ export default class TaskStimulus extends React.Component {
             </tbody>
           </table>
         </div>
-
-        <p>
-          <strong>Interest Correlation</strong>: Correlation between
-          participant’s and partner’s ratings of interests surveyed prior to the
-          speed dating.
-        </p>
       </div>
     );
   }

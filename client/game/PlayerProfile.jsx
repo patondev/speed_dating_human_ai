@@ -29,13 +29,26 @@ export default class PlayerProfile extends React.Component {
     );
   }
 
+  renderTracker() {
+    const { player, game } = this.props;
+    var roundIndex = game.roundIds.indexOf(player.round._id);
+    var roundCount = game.roundIds.length;
+
+    return (
+      <div className="profile-rounds">
+        <h4>Case</h4>
+        <span>{(roundIndex + 1).toString() + " / " + roundCount.toString()}</span>
+      </div>
+    );
+  }
+
   render() {
     const { game, stage } = this.props;
 
     return (
       <aside className="player-profile">
         {this.renderProfile()}
-        {game.treatment.giveFeedback ? this.renderScore() : null}
+        {this.renderTracker()}
         <Timer stage={stage} />
       </aside>
     );

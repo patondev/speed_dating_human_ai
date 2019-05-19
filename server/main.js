@@ -14,7 +14,7 @@ import data from "./experiment_data/2-exp1_data_20190319.json";
 // the game.
 
 var questionText =
-  "What do you think is the probability that the following participant will match her partner?";
+  "Please review the profile below and predict whether the participant indicated that she would like to see her date again.";
 
 Empirica.gameInit((game, treatment, players) => {
   players.forEach((player, i) => {
