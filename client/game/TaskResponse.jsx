@@ -64,6 +64,21 @@ export default class TaskResponse extends React.Component {
         value={value}
         disabled={isOutcome}
         hideHandleOnEmpty
+        labelRenderer={
+          (number) => {
+            if (number == 0) {
+              return "0.00 \n\n Extremely \n unlikely";
+            } else if (number == 0.25) {
+              return "0.25 \n\n Somewhat \n unlikely";
+            } else if (number == 0.5) {
+              return "0.50 \n\n Neither likely \n nor unlikely";
+            } else if (number == 0.75) {
+              return "0.75 \n\n Somewhat \n likely";
+            } else {
+              return "1.00 \n Extremely \n likely";
+            }
+          }
+        }
       />
     );
   }

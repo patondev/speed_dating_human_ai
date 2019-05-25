@@ -48,6 +48,7 @@ export default class PlayerProfile extends React.Component {
     return (
       <aside className="player-profile">
         {this.renderProfile()}
+        {game.treatment.giveFeedback ? this.renderScore() : null}
         {this.renderTracker()}
         <Timer stage={stage} />
       </aside>
