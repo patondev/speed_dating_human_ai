@@ -197,6 +197,7 @@ export default class ExitSurvey extends React.Component {
 
           <div className="form-line">
             <RadioGroup
+              inline={true}
               name="botUnderstand"
               label="Was the A.I. prediction system easy to understand?"
               onChange={this.handleChange}
@@ -242,6 +243,7 @@ export default class ExitSurvey extends React.Component {
 
           <div className="form-line">
             <RadioGroup
+              inline={true}
               name="botTrust"
               label="Having experienced the A.I. system, do you trust the A.I. prediction systems?"
               onChange={this.handleChange}
@@ -287,6 +289,7 @@ export default class ExitSurvey extends React.Component {
 
           <div className="form-line">
             <RadioGroup
+              inline={true}
               name="botAdopt"
               label="Having experienced the A.I. system, how likely would you be to adopt A.I. prediction systems?"
               onChange={this.handleChange}
@@ -332,6 +335,7 @@ export default class ExitSurvey extends React.Component {
 
           <div className="form-line">
             <RadioGroup
+              inline={true}
               name="botUseful"
               label="Having experienced the A.I. system, how much would A.I. systems be useful to improve the quality of your decision making?"
               onChange={this.handleChange}

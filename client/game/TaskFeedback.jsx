@@ -11,6 +11,8 @@ export default class TaskFeedback extends React.Component {
       ? game.treatment.otherPlayerFeedback
       : true;
 
+    const revealBots = game.treatment.revealBots || false;
+
     return (
       <div className="task-feedback">
         <HTMLTable>
@@ -18,7 +20,7 @@ export default class TaskFeedback extends React.Component {
             <tr>
               <th></th>
               <th>Guess</th>
-              <th>Answer</th>
+              <th>Outcome</th>
               <th>Score</th>
             </tr>
           </thead>
@@ -26,16 +28,16 @@ export default class TaskFeedback extends React.Component {
             <tr>
               <th>You</th>
               <td align="center">{player.round.get("value")}</td>
-              <td>{round.get("model_prediction")}</td>
+              <td>{round.get("model_prediction") === 'Yes' ? 'Match' : 'No match'}</td>
               <td>
                 <strong>{(1 - player.round.get("score")).toFixed(2)}</strong>
               </td>
             </tr>
             {other && otherPlayerFeedback ? (
               <tr>
-                <th>Other</th>
+                <th>{revealBots ? "A.I." : "Other Player"}</th>
                 <td align="center">{other.round.get("value").toFixed(2)}</td>
-                <td>{round.get("model_prediction")}</td>
+                <td>{round.get("model_prediction") === 'Yes' ? 'Match' : 'No match'}</td>
                 <td>
                   <strong>{(1 - other.round.get("score")).toFixed(2)}</strong>
                 </td>
