@@ -30,7 +30,7 @@ export default class TaskResponse extends React.Component {
         message: "Please enter a response."
       });
     } else {
-      if (stage.name !== 'practice') {
+      if (!stage.get("practice")) {
         const outcome = round.get("model_prediction") === "Yes" ? 1.0 : 0;
         const score = Math.pow(value - outcome, 2);
         player.round.set("value", value);
@@ -103,7 +103,7 @@ export default class TaskResponse extends React.Component {
       <div className="task-response">
         <p><strong>Make your prediction:</strong></p>
 
-        {stage.name === "practice" ? (
+        {stage.get("practice") ? (
           <p>
             <strong style={{ color: "blue" }}>
               This is a practice round and your response will not count.

@@ -73,11 +73,12 @@ Empirica.gameInit((game, treatment, players) => {
 
     if (i == 0) {
       round.addStage({
-        name: "practice",
+        name: "practice-initial",
         displayName: "Practice Initial Response",
         durationInSeconds: stageDuration,
         data: {
           type: "solo",
+          practice: true,
           questionText: questionText
         }
       });
@@ -89,6 +90,7 @@ Empirica.gameInit((game, treatment, players) => {
       durationInSeconds: stageDuration,
       data: {
         type: "solo",
+        practice: false,
         questionText: questionText
       }
     });
@@ -96,11 +98,12 @@ Empirica.gameInit((game, treatment, players) => {
     if (playerCount > 1) {
       if (i == 0) {
         round.addStage({
-          name: "practice",
+          name: "practice-social",
           displayName: "Practice Interactive Response",
           durationInSeconds: socialStageDuration,
           data: {
             type: "social",
+            practice: true,
             questionText: questionText,
             interpretationType: interpretationType
           }
@@ -113,6 +116,7 @@ Empirica.gameInit((game, treatment, players) => {
         durationInSeconds: socialStageDuration,
         data: {
           type: "social",
+          practice: false,
           questionText: questionText,
           interpretationType: interpretationType
         }
@@ -125,7 +129,8 @@ Empirica.gameInit((game, treatment, players) => {
         displayName: "Round Outcome",
         durationInSeconds: stageDuration,
         data: {
-          type: "feedback"
+          type: "feedback",
+          practice: false,
         }
       });
     }
