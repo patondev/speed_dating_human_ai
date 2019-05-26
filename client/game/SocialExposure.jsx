@@ -29,6 +29,8 @@ export default class SocialExposure extends React.Component {
       stage.get("interpretationType") === "Global"
         ? round.get("model_global_explination")
         : stage.get("interpretationType") === "Local"
+          ? stage.name === "practice"
+          : round.data.practiceData.model_local_explination
           ? round.get("model_local_explination")
           : null;
 

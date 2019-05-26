@@ -16,6 +16,36 @@ import data from "./experiment_data/2-exp1_data_20190319.json";
 var questionText =
   "Please review the profile below and predict whether the participant indicated that she would like to see her date again.";
 
+var practiceData = {
+  "_id": 237,
+  "correct_answer": "No",
+  "model_prediction": "Yes",
+  "model_prediction_prob": 0.89,
+  "features": {
+    "InterestsCorr": 0.37,
+    "Gender": "Woman",
+    "Race": "European/Caucasian-American",
+    "Age": 23.0,
+    "Attractive": 7.0,
+    "Sincere": 8.0,
+    "Intelligent": 9.0,
+    "Fun": 6.0,
+    "Ambitious": 7.0,
+    "SharedInterests": 6.0,
+    "Gender_Partner": "Man",
+    "Race_Partner": "Asian/Pacific Islander/Asian-American",
+    "Age_Partner": 31.0,
+    "Attractive_Partner": 4.0,
+    "Sincere_Partner": 6.0,
+    "Intelligent_Partner": 8.0,
+    "Fun_Partner": 7.0,
+    "Ambitious_Partner": 4.0,
+    "SharedInterests_Partner": 3.0
+  },
+  "model_global_explination": "/task/tasks/global.png",
+  "model_local_explination": "/task/tasks/237.png"
+};
+
 Empirica.gameInit((game, treatment, players) => {
   players.forEach((player, i) => {
     player.set("avatar", `/avatars/jdenticon/${player._id}`);
@@ -35,8 +65,23 @@ Empirica.gameInit((game, treatment, players) => {
     const randomPair = shuffledData[i];
 
     const round = game.addRound({
-      data: { ...randomPair }
+      data: {
+        ...randomPair,
+        practiceData: practiceData,
+      }
     });
+
+    if (i == 0) {
+      round.addStage({
+        name: "practice",
+        displayName: "Practice Initial Response",
+        durationInSeconds: stageDuration,
+        data: {
+          type: "solo",
+          questionText: questionText
+        }
+      });
+    }
 
     round.addStage({
       name: "initial",
@@ -49,6 +94,19 @@ Empirica.gameInit((game, treatment, players) => {
     });
 
     if (playerCount > 1) {
+      if (i == 0) {
+        round.addStage({
+          name: "practice",
+          displayName: "Practice Interactive Response",
+          durationInSeconds: socialStageDuration,
+          data: {
+            type: "social",
+            questionText: questionText,
+            interpretationType: interpretationType
+          }
+        });
+      }
+
       round.addStage({
         name: "social",
         displayName: "Interactive Response",

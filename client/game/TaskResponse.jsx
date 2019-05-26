@@ -17,23 +17,26 @@ export default class TaskResponse extends React.Component {
   handleChange = num => {
     const { player } = this.props;
     const value = Math.round(num * 100) / 100;
-    player.round.set("value", value);
+    player.stage.set("value", value);
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    const { player, round } = this.props;
-    const value = player.round.get("value");
+    const { player, round, stage } = this.props;
+    const value = player.stage.get("value");
 
-    if (!value) {
+    if (!value && stage.name === "solo") {
       WarningToaster.show({
         message: "Please enter a response."
       });
     } else {
-      const outcome = round.get("model_prediction") === "Yes" ? 1.0 : 0;
-      const score = Math.pow(value - outcome, 2);
-      player.round.set("score", score);
-      player.stage.set("score", score);
+      if (stage.name !== 'practice') {
+        const outcome = round.get("model_prediction") === "Yes" ? 1.0 : 0;
+        const score = Math.pow(value - outcome, 2);
+        player.round.set("value", value);
+        player.round.set("score", score);
+        player.stage.set("score", score);
+      }
       this.props.player.stage.submit();
     }
   };
@@ -51,7 +54,10 @@ export default class TaskResponse extends React.Component {
 
   renderSlider() {
     const { player, stage } = this.props;
-    const value = player.round.get("value");
+    var value = player.stage.get("value");
+    if (!value && stage.name === "social") {
+      value = player.round.get("value");
+    }
     const isOutcome = stage.name === "outcome";
     return (
       <Slider
@@ -74,8 +80,10 @@ export default class TaskResponse extends React.Component {
               return "0.50 \n\n Neither likely \n nor unlikely";
             } else if (number == 0.75) {
               return "0.75 \n\n Somewhat \n likely";
-            } else {
+            } else if (number == 1) {
               return "1.00 \n Extremely \n likely";
+            } else {
+              return number.toString();
             }
           }
         }
@@ -94,6 +102,17 @@ export default class TaskResponse extends React.Component {
     return (
       <div className="task-response">
         <p><strong>Make your prediction:</strong></p>
+
+        {stage.name === "practice" ? (
+          <p>
+            <strong style={{ color: "blue" }}>
+              This is a practice round and your response will not count.
+            </strong>
+          </p>
+        ) : (
+          ""
+        )}
+
         <form onSubmit={this.handleSubmit}>
           {this.renderSlider()}
           <button type="submit">
