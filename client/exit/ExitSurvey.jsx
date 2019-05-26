@@ -355,7 +355,7 @@ export default class ExitSurvey extends React.Component {
                 selected={botUseful}
                 name="botUseful"
                 value="moderately-useful"
-                label="moderately useful"
+                label="Moderately useful"
                 onChange={this.handleChange}
               />
               <Radio
