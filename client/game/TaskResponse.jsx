@@ -30,10 +30,10 @@ export default class TaskResponse extends React.Component {
         message: "Please enter a response."
       });
     } else {
+      player.round.set("value", value);
       if (!stage.get("practice")) {
         const outcome = round.get("model_prediction") === "Yes" ? 1.0 : 0;
         const score = Math.pow(value - outcome, 2);
-        player.round.set("value", value);
         player.round.set("score", score);
         player.stage.set("score", score);
       }

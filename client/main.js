@@ -6,6 +6,8 @@ import Round from "./game/Round";
 import Consent from "./intro/Consent";
 import InstructionStepOne from "./intro/InstructionStepOne";
 import InstructionStepTwo from "./intro/InstructionStepTwo";
+import InstructionStepThree from "./intro/InstructionStepThree";
+import InstructionStepFour from "./intro/InstructionStepFour";
 import Quiz from "./intro/Quiz";
 import ExitSurvey from "./exit/ExitSurvey";
 import Thanks from "./exit/Thanks";
@@ -17,9 +19,12 @@ Empirica.consent(Consent);
 // At this point they have been assigned a treatment. You can return
 // different instruction steps depending on the assigned treatment.
 Empirica.introSteps((game, treatment) => {
-  const steps = [InstructionStepOne];
+  const steps = [InstructionStepOne, InstructionStepTwo];
   if (game.treatment.playerCount > 1) {
-    steps.push(InstructionStepTwo);
+    steps.push(InstructionStepThree);
+  }
+  if (game.treatment.giveFeedback) {
+    steps.push(InstructionStepFour);
   }
   steps.push(Quiz);
   return steps;

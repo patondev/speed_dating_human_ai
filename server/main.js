@@ -61,17 +61,16 @@ Empirica.gameInit((game, treatment, players) => {
   const stageDuration = game.treatment.stageLength || 120;
   const socialStageDuration = game.treatment.socialStageLength || 120;
 
-  for (let i = 0; i < roundCount; i++) {
-    const randomPair = shuffledData[i];
+  for (let i = -1; i < roundCount; i++) {
+    if (i == -1) {
+      const pair = practiceData;
 
-    const round = game.addRound({
-      data: {
-        ...randomPair,
-        practiceData: practiceData,
-      }
-    });
+      const round = game.addRound({
+        data: {
+          ...pair,
+        }
+      });
 
-    if (i == 0) {
       round.addStage({
         name: "practice-initial",
         displayName: "Practice Initial Response",
@@ -82,21 +81,8 @@ Empirica.gameInit((game, treatment, players) => {
           questionText: questionText
         }
       });
-    }
 
-    round.addStage({
-      name: "initial",
-      displayName: "Initial Response",
-      durationInSeconds: stageDuration,
-      data: {
-        type: "solo",
-        practice: false,
-        questionText: questionText
-      }
-    });
-
-    if (playerCount > 1) {
-      if (i == 0) {
+      if (playerCount > 1) {
         round.addStage({
           name: "practice-social",
           displayName: "Practice Interactive Response",
@@ -110,29 +96,62 @@ Empirica.gameInit((game, treatment, players) => {
         });
       }
 
-      round.addStage({
-        name: "social",
-        displayName: "Interactive Response",
-        durationInSeconds: socialStageDuration,
+      if (feedback) {
+        round.addStage({
+          name: "practice-outcome",
+          displayName: "Round Outcome",
+          durationInSeconds: stageDuration,
+          data: {
+            type: "feedback",
+            practice: false,
+          }
+        });
+      }
+    } else {
+      const randomPair = shuffledData[i];
+
+      const round = game.addRound({
         data: {
-          type: "social",
-          practice: false,
-          questionText: questionText,
-          interpretationType: interpretationType
+          ...randomPair,
         }
       });
-    }
 
-    if (feedback) {
       round.addStage({
-        name: "outcome",
-        displayName: "Round Outcome",
+        name: "initial",
+        displayName: "Initial Response",
         durationInSeconds: stageDuration,
         data: {
-          type: "feedback",
+          type: "solo",
           practice: false,
+          questionText: questionText
         }
       });
+
+      if (playerCount > 1) {
+        round.addStage({
+          name: "social",
+          displayName: "Interactive Response",
+          durationInSeconds: socialStageDuration,
+          data: {
+            type: "social",
+            practice: false,
+            questionText: questionText,
+            interpretationType: interpretationType
+          }
+        });
+      }
+
+      if (feedback) {
+        round.addStage({
+          name: "outcome",
+          displayName: "Round Outcome",
+          durationInSeconds: stageDuration,
+          data: {
+            type: "feedback",
+            practice: false,
+          }
+        });
+      }
     }
   }
 });

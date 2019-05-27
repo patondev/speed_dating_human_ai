@@ -29,9 +29,7 @@ export default class SocialExposure extends React.Component {
       stage.get("interpretationType") === "Global"
         ? round.get("model_global_explination")
         : stage.get("interpretationType") === "Local"
-          ? stage.get("practice")
-            ? round.data.practiceData.model_local_explination
-            : round.get("model_local_explination")
+          ? round.get("model_local_explination")
           : null;
 
     console.log("img: " + imgPath);
@@ -68,7 +66,7 @@ export default class SocialExposure extends React.Component {
               The {revealBots ? "A.I." : "other player"} predicts a match
               probability of '<b>{!stage.get("practice")
                 ? Math.round(otherPlayers[0].round.get("value")*100)
-                : Math.round(round.data.practiceData.model_prediction_prob * 100)
+                : Math.round(round.data.model_prediction_prob * 100)
               }</b>%'
             </p>
         }
