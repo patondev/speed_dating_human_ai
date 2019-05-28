@@ -25,15 +25,9 @@ export default class TaskResponse extends React.Component {
     const { player, round, stage } = this.props;
     const prediction = player.stage.get("prediction");
 
-    if (!prediction && stage.name === "solo") {
-      WarningToaster.show({
-        message: "Please enter a response."
-      });
-    } else {
-      player.round.set("prediction", prediction);
-      player.stage.set("prediction", prediction);
-      this.props.player.stage.submit();
-    }
+    player.round.set("prediction", prediction);
+    player.stage.set("prediction", prediction);
+    this.props.player.stage.submit();
   };
 
   renderSubmitted() {
@@ -50,9 +44,7 @@ export default class TaskResponse extends React.Component {
   renderSlider() {
     const { player, stage } = this.props;
     let prediction = player.stage.get("prediction");
-    if (!prediction && stage.name === "social") {
-      prediction = player.round.get("prediction");
-    }
+
     const isOutcome =
       stage.name === "outcome" || stage.name === "practice-outcome";
     return (

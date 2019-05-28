@@ -9,7 +9,7 @@ export default class InstructionStepOne extends React.Component {
     return (
       <Centered>
         <div className="instructions">
-          <h1 className={"bp3-heading"}> Instructions - Feedback Round</h1>
+          <h1 className={"bp3-heading"}> Instructions - Feedback</h1>
 
           <p>
             Now we give feedback on how your guess compares to the actual

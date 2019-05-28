@@ -13,6 +13,7 @@ Empirica.onGameStart(game => {
 // It receives the same options as onGameStart, and the round that is starting.
 Empirica.onRoundStart((game, round) => {
   game.players.forEach(player => {
+    player.round.set("score", 0);
     if (player.bot) {
       player.round.set("prediction", round.get("model_prediction_prob"));
     } else {
@@ -23,17 +24,21 @@ Empirica.onRoundStart((game, round) => {
 
 // onStageStart is triggered before each stage starts.
 // It receives the same options as onRoundStart, and the stage that is starting.
-Empirica.onStageStart((game, round, stage, players) => {
+Empirica.onStageStart((game, round, stage) => {
   const bots = game.players.filter(p => p.bot);
   bots.forEach(bot => {
     bot.stage.set("prediction", bot.round.get("prediction"));
     bot.stage.submit();
   });
 
+  game.players.forEach(player => {
+    player.stage.set("prediction", player.round.get("prediction"));
+  });
+
   if (stage.name === "outcome" || stage.name === "practice-outcome") {
     const outcome = round.get("correct_answer") === "Yes" ? 1 : 0;
 
-    players.forEach(player => {
+    game.players.forEach(player => {
       const prediction = player.round.get("prediction");
       if (prediction !== null && prediction !== undefined) {
         const score = 1 - Math.pow(prediction - outcome, 2); //1 - brier score
@@ -66,7 +71,7 @@ Empirica.onRoundEnd((game, round, players) => {
   players.forEach(player => {
     player.set(
       "cumulativeScore",
-      player.get("cumulativeScore") + (player.round.get("score"))
+      player.get("cumulativeScore") + player.round.get("score")
     );
   });
 });

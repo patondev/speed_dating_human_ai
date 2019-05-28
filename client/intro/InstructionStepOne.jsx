@@ -72,8 +72,12 @@ export default class InstructionStepOne extends React.Component {
 
           <p>
             At the end of the experiment, you will get points based on the
-            accuracy of your final predictions (i.e., after you have received
-            the AI recommendation).
+            accuracy of your final prediction{" "}
+            {game.treatment.playerCount > 1
+              ? "i.e., after you have received the AI recommendation"
+              : "."}{" "}
+            Note that the biggest portion of your pay is dependent on your
+            performance (i.e., accuracy) in this task.
           </p>
 
           <p>
