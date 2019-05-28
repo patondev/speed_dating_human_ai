@@ -39,29 +39,6 @@
         font-size: 3rem;
       }
     }
-
-    .timer {
-      margin-top: 2rem;
-      text-align: center;
-
-      .seconds {
-        font-size: 3rem;
-        // Helvetica has tabular numbers (fixed width), which looks better
-        // for a timer, doesn't jump all over the place.
-        font-family: Helvetica, Arial, sans-serif;
-        color: green;
-      }
-      &.lessThan10 {
-        .seconds {
-          color: orange;
-        }
-      }
-      &.lessThan5 {
-        .seconds {
-          color: red;
-        }
-      }
-    }
   }
 
   .task {
@@ -107,7 +84,8 @@
     .task-table {
       margin: 3rem 0 3rem;
 
-      table, tr {
+      table,
+      tr {
         border-collapse: collapse;
         border: 1px solid black;
       }
@@ -195,7 +173,56 @@ button {
   }
 }
 
-.instructions,
+.instructions {
+  button {
+    width: 15rem;
+    padding-right: 2rem;
+    margin-right: 100px;
+  }
+  .button-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .call-out {
+    width: 60%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    margin-bottom: 1em;
+  }
+  image {
+    height: 10rem;
+    width: 5rem;
+    object-fit: contain;
+  }
+  .sample-img {
+    height: 50rem;
+    display: block;
+    margin: 0 auto;
+  }
+  .interpretation-image {
+    height: 40rem;
+    display: block;
+    margin: 0 auto;
+  }
+  .small-sample-img {
+    height: 20rem;
+    display: block;
+    margin: 0rem auto;
+  }
+}
+
+.instructions-text {
+  p {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    margin-bottom: 1em;
+  }
+}
+
 .quiz,
 .exit-survey {
   button {
@@ -222,15 +249,6 @@ button {
     padding: 0.3rem 0.5rem;
     border-radius: 0.3rem;
     border: 1px solid lightgray;
-  }
-
-  .sample-img {
-    height: 500px;
-    margin: 0 auto 0;
-  }
-
-  .small-sample-img {
-    height: 200px;
   }
 }
 
@@ -283,13 +301,17 @@ button {
   justify-content: center;
 }
 
+//importing the Orbitron font which makes it look like a digital clock
+@import url(https://fonts.googleapis.com/css?family=Orbitron);
 .timer {
-  .seconds {
-    color: green;
-    font-size: 2.7rem;
-    font-weight: bold;
-  }
+  margin-top: 2rem;
+  text-align: center;
 
+  .seconds {
+    font-size: 3rem;
+    font-family: Orbitron, sans-serif;
+    color: green;
+  }
   &.lessThan10 {
     .seconds {
       color: orange;
@@ -299,5 +321,19 @@ button {
     .seconds {
       color: red;
     }
+  }
+}
+
+.round-nav {
+  padding: 1rem 0;
+
+  .bp3-breadcrumb.bp3-breadcrumb-current {
+    padding: 0.2rem 2rem;
+    // padding: 0rem 2rem;
+    border-radius: 3px;
+    // background-color: rgba(167, 182, 194, 0.3);
+    background-color: #106ba3;
+    color: white;
+    -webkit-font-smoothing: antialiased;
   }
 }

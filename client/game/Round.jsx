@@ -12,7 +12,12 @@ export default class Round extends React.Component {
     return (
       <div className="round">
         <div className="content">
-          <PlayerProfile player={player} stage={stage} game={game} />
+          <PlayerProfile
+            player={player}
+            stage={stage}
+            game={game}
+            round={round}
+          />
           <Task game={game} round={round} stage={stage} player={player} />
           {stage.get("type") === "social" ? (
             <SocialExposure
@@ -23,11 +28,7 @@ export default class Round extends React.Component {
             />
           ) : null}
           {stage.get("type") === "feedback" ? (
-            <TaskFeedback
-              game={game}
-              player={player}
-              round={round}
-            />
+            <TaskFeedback game={game} player={player} round={round} />
           ) : null}
         </div>
       </div>

@@ -14,30 +14,29 @@ export default class PlayerProfile extends React.Component {
   }
 
   renderScore() {
-    const { player, stage } = this.props;
-
-    const prevScore = player.get("score") || 0;
-    const score = stage.get("type") === "feedback"
-      ? prevScore + (1 - player.round.get("score"))
-      : prevScore;
+    const { player } = this.props;
 
     return (
       <div className="profile-score">
         <h4>Total score</h4>
-        <span>{score.toFixed(2)}</span>
+        <span>{(player.get("cumulativeScore") || 0).toFixed(2)}</span>
       </div>
     );
   }
 
   renderTracker() {
-    const { player, game } = this.props;
-    var roundIndex = game.roundIds.indexOf(player.round._id);
-    var roundCount = game.roundIds.length;
+    const { player, game, round } = this.props;
+    let roundIndex = game.roundIds.indexOf(player.round._id);
+    let roundCount = game.roundIds.length;
 
     return (
       <div className="profile-rounds">
         <h4>Case</h4>
-        <span>{(roundIndex + 1).toString() + " / " + roundCount.toString()}</span>
+        <span>
+          {round.get("practice")
+            ? "Practice"
+            : roundIndex.toString() + " / " + (roundCount - 1).toString()}
+        </span>
       </div>
     );
   }

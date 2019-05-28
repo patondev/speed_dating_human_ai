@@ -22,7 +22,11 @@ export default class TaskStimulus extends React.Component {
 
     return (
       <div className="task-stimulus">
-        {!stage.get("practice") ? <h3 className="bp3-heading">{stage.get("questionText")}</h3> : ""}
+        {!stage.get("practice") ? (
+          <h3 className="bp3-heading">{stage.get("questionText")}</h3>
+        ) : (
+          ""
+        )}
 
         <div className="task-table">
           <table>
@@ -34,8 +38,12 @@ export default class TaskStimulus extends React.Component {
                 <td>{pairData.InterestsCorr}</td>
               </tr>
               <tr>
-                <th className="color-female" colSpan="2">Woman</th>
-                <th className="color-male" colSpan="2">Man</th>
+                <th className="color-female" colSpan="2">
+                  Woman
+                </th>
+                <th className="color-male" colSpan="2">
+                  Man
+                </th>
               </tr>
               {this.renderFeatureRow(pairData, "Race")}
               {this.renderFeatureRow(pairData, "Age")}

@@ -3,7 +3,7 @@ import Slider from "meteor/empirica:slider";
 
 export default class AIExposure extends React.Component {
   renderAIInteraction(modelData) {
-    const value = modelData.model_prediction_prob;
+    const prediction = modelData.model_prediction_prob;
     return (
       <div className="alter" key="ai">
         <div className="range">
@@ -11,7 +11,7 @@ export default class AIExposure extends React.Component {
             min={0}
             max={1}
             stepSize={0.01}
-            value={value}
+            value={prediction}
             disabled
             hideHandleOnEmpty
           />

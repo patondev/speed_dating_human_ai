@@ -40,7 +40,7 @@ export default class ExitSurvey extends React.Component {
           </strong>{" "}
           in addition of the{" "}
           <strong>
-            <em>${game.treatment.basePay} base reward</em>
+            <em>$1 base reward</em>
           </strong>{" "}
           for completing the HIT.
         </p>

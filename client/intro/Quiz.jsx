@@ -13,7 +13,7 @@ export default class Quiz extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    if (this.state.sum !== "4" || this.state.horse !== "white") {
+    if (this.state.sum !== "10" || this.state.horse !== "white") {
       alert("Incorrect! Read the instructions, and please try again.");
     } else {
       this.props.onNext();
@@ -29,7 +29,9 @@ export default class Quiz extends React.Component {
           <h1> Quiz </h1>
           <form onSubmit={this.handleSubmit}>
             <p>
-              <label htmlFor="sum">What is 2+2?</label>
+              <label htmlFor="sum">
+                How many different dates you will have to predict in this HIT?
+              </label>
               <input
                 type="text"
                 dir="auto"

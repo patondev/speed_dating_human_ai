@@ -16,27 +16,22 @@ const WarningToaster = Toaster.create({
 export default class TaskResponse extends React.Component {
   handleChange = num => {
     const { player } = this.props;
-    const value = Math.round(num * 100) / 100;
-    player.stage.set("value", value);
+    const prediction = Math.round(num * 100) / 100;
+    player.stage.set("prediction", prediction);
   };
 
   handleSubmit = event => {
     event.preventDefault();
     const { player, round, stage } = this.props;
-    const value = player.stage.get("value");
+    const prediction = player.stage.get("prediction");
 
-    if (!value && stage.name === "solo") {
+    if (!prediction && stage.name === "solo") {
       WarningToaster.show({
         message: "Please enter a response."
       });
     } else {
-      player.round.set("value", value);
-      if (!stage.get("practice")) {
-        const outcome = round.get("model_prediction") === "Yes" ? 1.0 : 0;
-        const score = Math.pow(value - outcome, 2);
-        player.round.set("score", score);
-        player.stage.set("score", score);
-      }
+      player.round.set("prediction", prediction);
+      player.stage.set("prediction", prediction);
       this.props.player.stage.submit();
     }
   };
@@ -54,11 +49,12 @@ export default class TaskResponse extends React.Component {
 
   renderSlider() {
     const { player, stage } = this.props;
-    var value = player.stage.get("value");
-    if (!value && stage.name === "social") {
-      value = player.round.get("value");
+    let prediction = player.stage.get("prediction");
+    if (!prediction && stage.name === "social") {
+      prediction = player.round.get("prediction");
     }
-    const isOutcome = stage.name === "outcome";
+    const isOutcome =
+      stage.name === "outcome" || stage.name === "practice-outcome";
     return (
       <Slider
         className="task-response-slider"
@@ -67,26 +63,24 @@ export default class TaskResponse extends React.Component {
         stepSize={0.01}
         labelStepSize={0.25}
         onChange={this.handleChange}
-        value={value}
+        value={isOutcome ? player.round.get("prediction") : prediction}
         disabled={isOutcome}
         hideHandleOnEmpty
-        labelRenderer={
-          (number) => {
-            if (number == 0) {
-              return "0.00 \n\n Extremely \n unlikely";
-            } else if (number == 0.25) {
-              return "0.25 \n\n Somewhat \n unlikely";
-            } else if (number == 0.5) {
-              return "0.50 \n\n Neither likely \n nor unlikely";
-            } else if (number == 0.75) {
-              return "0.75 \n\n Somewhat \n likely";
-            } else if (number == 1) {
-              return "1.00 \n Extremely \n likely";
-            } else {
-              return number.toString();
-            }
+        labelRenderer={number => {
+          if (number === 0) {
+            return "0.00 \n\n Extremely \n unlikely";
+          } else if (number === 0.25) {
+            return "0.25 \n\n Somewhat \n unlikely";
+          } else if (number === 0.5) {
+            return "0.50 \n\n Neither likely \n nor unlikely";
+          } else if (number === 0.75) {
+            return "0.75 \n\n Somewhat \n likely";
+          } else if (number === 1) {
+            return "1.00 \n Extremely \n likely";
+          } else {
+            return number.toString();
           }
-        }
+        }}
       />
     );
   }
@@ -101,7 +95,9 @@ export default class TaskResponse extends React.Component {
 
     return (
       <div className="task-response">
-        <p><strong>Make your prediction:</strong></p>
+        <p>
+          <strong>Make your prediction:</strong>
+        </p>
 
         {stage.get("practice") ? (
           <p>

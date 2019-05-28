@@ -7,9 +7,10 @@ export default class TaskFeedback extends React.Component {
 
     const otherPlayers = _.reject(game.players, p => p._id === player._id);
     const other = otherPlayers.length !== 0 ? otherPlayers[0] : null;
-    const otherPlayerFeedback = game.treatment.otherPlayerFeedback !== undefined
-      ? game.treatment.otherPlayerFeedback
-      : true;
+    const otherPlayerFeedback =
+      game.treatment.otherPlayerFeedback !== undefined
+        ? game.treatment.otherPlayerFeedback
+        : true;
 
     const revealBots = game.treatment.revealBots || false;
 
@@ -18,7 +19,7 @@ export default class TaskFeedback extends React.Component {
         <HTMLTable>
           <thead>
             <tr>
-              <th></th>
+              <th />
               <th>Guess</th>
               <th>Outcome</th>
               <th>Score</th>
@@ -27,19 +28,33 @@ export default class TaskFeedback extends React.Component {
           <tbody>
             <tr>
               <th>You</th>
-              <td align="center">{player.round.get("value")}</td>
-              <td>{round.get("model_prediction") === 'Yes' ? 'Match' : 'No match'}</td>
+              <td align="center">
+                {player.round.get("prediction") === null
+                  ? "not given"
+                  : player.round.get("prediction")}
+              </td>
               <td>
-                <strong>{(1 - player.round.get("score")).toFixed(2)}</strong>
+                {round.get("correct_answer") === "Yes" ? "Match" : "No match"}
+              </td>
+              <td>
+                <strong>
+                  {(player.round.get("score") || 0).toFixed(2)}
+                </strong>
               </td>
             </tr>
             {other && otherPlayerFeedback ? (
               <tr>
                 <th>{revealBots ? "A.I." : "Other Player"}</th>
-                <td align="center">{other.round.get("value").toFixed(2)}</td>
-                <td>{round.get("model_prediction") === 'Yes' ? 'Match' : 'No match'}</td>
+                <td align="center">
+                  {other.round.get("prediction").toFixed(2)}
+                </td>
                 <td>
-                  <strong>{(1 - other.round.get("score")).toFixed(2)}</strong>
+                  {round.get("correct_answer") === "Yes" ? "Match" : "No match"}
+                </td>
+                <td>
+                  <strong>
+                    {(other.round.get("score") || 0).toFixed(2)}
+                  </strong>
                 </td>
               </tr>
             ) : null}
