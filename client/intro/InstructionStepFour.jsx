@@ -27,10 +27,16 @@ export default class InstructionStepOne extends React.Component {
           </p>
 
           <p>
-            <strong>
-              The score is 1 - the difference between the actual outcome (1 for
-              match, 0 for no match) and the prediction, squared.
-            </strong>
+            <strong>The score is:</strong>
+          </p>
+
+          <p align="center">
+            <span style={{ color: "blue" }}>
+              <i>
+                1 - [the difference between the actual outcome (1 for match, 0
+                for no match) and the prediction, squared]
+              </i>
+            </span>
           </p>
 
           <p>

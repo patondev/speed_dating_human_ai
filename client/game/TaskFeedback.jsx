@@ -13,16 +13,17 @@ export default class TaskFeedback extends React.Component {
         : true;
 
     const revealBots = game.treatment.revealBots || false;
-    console.log("my prediction is", player.round.get("prediction"));
 
+    const correct_answer = round.get("correct_answer") === "Yes" ? 1 : 0;
     return (
       <div className="task-feedback">
         <HTMLTable>
           <thead>
             <tr>
               <th />
-              <th>Guess</th>
+              <th>Prediction</th>
               <th>Outcome</th>
+              <th>Penalty</th>
               <th>Score</th>
             </tr>
           </thead>
@@ -35,7 +36,17 @@ export default class TaskFeedback extends React.Component {
                   : "not given"}
               </td>
               <td>
-                {round.get("correct_answer") === "Yes" ? "Match" : "No match"}
+                {round.get("correct_answer") === "Yes"
+                  ? "Match (1)"
+                  : "No match (0)"}
+              </td>
+              <td>
+                {player.round.get("prediction") !== null
+                  ? Math.pow(
+                      correct_answer - player.round.get("prediction"),
+                      2
+                    ).toFixed(2)
+                  : 1}
               </td>
               <td>
                 <strong>{player.round.get("score").toFixed(2)}</strong>
@@ -48,7 +59,17 @@ export default class TaskFeedback extends React.Component {
                   {other.round.get("prediction").toFixed(2)}
                 </td>
                 <td>
-                  {round.get("correct_answer") === "Yes" ? "Match" : "No match"}
+                  {round.get("correct_answer") === "Yes"
+                    ? "Match (1)"
+                    : "No match (0)"}
+                </td>
+                <td>
+                  {player.round.get("prediction") !== null
+                    ? Math.pow(
+                        correct_answer - other.round.get("prediction"),
+                        2
+                      ).toFixed(2)
+                    : 1}
                 </td>
                 <td>
                   <strong>{other.round.get("score").toFixed(2)}</strong>

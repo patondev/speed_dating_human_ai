@@ -84,8 +84,9 @@ export default class InstructionStepOne extends React.Component {
             <span style={{ color: "red" }}>
               <strong>
                 For this score, the further the distance between the true answer
-                and your prediction goes, the greater the penalty. And, the
-                lower the score, the better your prediction is
+                and your prediction goes, the greater the penalty. Therefore,
+                the better your prediction you make, the higher the score you
+                earn.
               </strong>
               .
             </span>
