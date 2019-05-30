@@ -13,7 +13,14 @@ import {
 
 export default class ExitSurvey extends React.Component {
   static stepName = "ExitSurvey";
-  state = { age: "", gender: "", strategy: "", fair: "", feedback: "", comments: "" };
+  state = {
+    age: "",
+    gender: "",
+    strategy: "",
+    fair: "",
+    feedback: "",
+    comments: ""
+  };
 
   handleChange = event => {
     const el = event.currentTarget;
@@ -49,7 +56,19 @@ export default class ExitSurvey extends React.Component {
   };
 
   exitForm = () => {
-    const { age, gender, strategy, fair, feedback, education, botUnderstand, botTrust, botAdopt, botUseful, comments } = this.state;
+    const {
+      age,
+      gender,
+      strategy,
+      fair,
+      feedback,
+      education,
+      botUnderstand,
+      botTrust,
+      botAdopt,
+      botUseful,
+      comments
+    } = this.state;
 
     return (
       <div>
@@ -77,7 +96,7 @@ export default class ExitSurvey extends React.Component {
                 name="age"
                 value={age}
                 onChange={this.handleChange}
-                // required
+                required
               />
             </FormGroup>
 
@@ -95,7 +114,7 @@ export default class ExitSurvey extends React.Component {
                 name="gender"
                 value={gender}
                 onChange={this.handleChange}
-                // required
+                required
               />
             </FormGroup>
           </div>
@@ -107,6 +126,7 @@ export default class ExitSurvey extends React.Component {
               label="Highest Education Qualification?"
               onChange={this.handleChange}
               selectedValue={education}
+              required
             >
               <Radio
                 selected={education}
@@ -146,6 +166,7 @@ export default class ExitSurvey extends React.Component {
               label={"How would you describe your strategy in the game?"}
               labelFor={"strategy"}
               //className={"form-group"}
+              required
             >
               <TextArea
                 id="strategy"
@@ -182,6 +203,7 @@ export default class ExitSurvey extends React.Component {
               label={"Feedback, including problems you encountered."}
               labelFor={"fair"}
               //className={"form-group"}
+              required
             >
               <TextArea
                 id="feedback"
@@ -197,6 +219,7 @@ export default class ExitSurvey extends React.Component {
 
           <div className="form-line">
             <RadioGroup
+              required
               inline={true}
               name="botUnderstand"
               label="Was the A.I. prediction system easy to understand?"
@@ -248,6 +271,7 @@ export default class ExitSurvey extends React.Component {
               label="Having experienced the A.I. system, do you trust the A.I. prediction systems?"
               onChange={this.handleChange}
               selectedValue={botTrust}
+              required
             >
               <Radio
                 selected={botTrust}
@@ -294,6 +318,7 @@ export default class ExitSurvey extends React.Component {
               label="Having experienced the A.I. system, how likely would you be to adopt A.I. prediction systems?"
               onChange={this.handleChange}
               selectedValue={botAdopt}
+              required
             >
               <Radio
                 selected={botAdopt}
@@ -340,6 +365,7 @@ export default class ExitSurvey extends React.Component {
               label="Having experienced the A.I. system, how much would A.I. systems be useful to improve the quality of your decision making?"
               onChange={this.handleChange}
               selectedValue={botUseful}
+              required
             >
               <Radio
                 selected={botUseful}
@@ -383,7 +409,9 @@ export default class ExitSurvey extends React.Component {
             <FormGroup
               className={"form-group"}
               inline={false}
-              label={"Please leave any additional comments about the A.I. system in the space provided below."}
+              label={
+                "Please leave any additional comments about the A.I. system in the space provided below."
+              }
               labelFor={"comments"}
               //className={"form-group"}
             >
@@ -412,7 +440,6 @@ export default class ExitSurvey extends React.Component {
     return (
       <Centered>
         <div className="exit-survey">
-          {console.log(this.props)}
           {this.exitMessage(player, game)}
           <hr />
           {this.exitForm()}
