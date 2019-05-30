@@ -23,6 +23,7 @@ export default class TaskFeedback extends React.Component {
               <th />
               <th>Prediction</th>
               <th>Outcome</th>
+              <th>Error</th>
               <th>Penalty</th>
               <th>Score</th>
             </tr>
@@ -39,6 +40,13 @@ export default class TaskFeedback extends React.Component {
                 {round.get("correct_answer") === "Yes"
                   ? "Match (1)"
                   : "No match (0)"}
+              </td>
+              <td>
+                {player.round.get("prediction") !== null
+                  ? Math.abs(
+                      correct_answer - player.round.get("prediction")
+                    ).toFixed(2)
+                  : 1}
               </td>
               <td>
                 {player.round.get("prediction") !== null
@@ -62,6 +70,13 @@ export default class TaskFeedback extends React.Component {
                   {round.get("correct_answer") === "Yes"
                     ? "Match (1)"
                     : "No match (0)"}
+                </td>
+                <td>
+                  {player.round.get("prediction") !== null
+                    ? Math.abs(
+                        correct_answer - other.round.get("prediction")
+                      ).toFixed(2)
+                    : 1}
                 </td>
                 <td>
                   {player.round.get("prediction") !== null

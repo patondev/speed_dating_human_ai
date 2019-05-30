@@ -1,10 +1,27 @@
 import React from "react";
 import Slider from "meteor/empirica:slider";
 import { Toaster, Position } from "@blueprintjs/core";
+import { StageTimeWrapper } from "meteor/empirica:core";
 
 const WarningToaster = Toaster.create({
   className: "warning-toaster",
   position: Position.TOP
+});
+
+//timed button
+const TimedButton = StageTimeWrapper(props => {
+  const { onClick, activateAt, remainingSeconds, stage } = props;
+
+  const disabled = remainingSeconds > activateAt;
+  return (
+    <button type="button" onClick={onClick} disabled={disabled}>
+      {disabled
+        ? "Wait for " + Math.abs(remainingSeconds - activateAt) + "s at least"
+        : stage.name === "outcome"
+          ? "Next"
+          : "Submit"}
+    </button>
+  );
 });
 
 export default class TaskResponse extends React.Component {
@@ -98,11 +115,14 @@ export default class TaskResponse extends React.Component {
           ""
         )}
 
-        <form onSubmit={this.handleSubmit}>
+        <form>
           {this.renderSlider()}
-          <button type="submit">
-            {stage.name === "outcome" ? "Next" : "Submit"}
-          </button>
+          <TimedButton
+            stage={stage}
+            player={player}
+            activateAt={45}
+            onClick={this.handleSubmit}
+          />
         </form>
       </div>
     );
