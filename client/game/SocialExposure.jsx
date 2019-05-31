@@ -111,7 +111,7 @@ export default class SocialExposure extends React.Component {
                 between participant and her partner.
               </p>
               <p>
-                On the other hand, the algorithm indicates that{" "}
+                The algorithm also indicates that{" "}
                 <b>
                   <i>sincerity</i>
                 </b>{" "}
@@ -129,8 +129,8 @@ export default class SocialExposure extends React.Component {
               <p>
                 You can decide whether or not to modify the predictions made in
                 the previous step. You can choose to modify your predictions at
-                any point. If you want to modify your results, select the value
-                you want, otherwise please reselect the same value.
+                any point. If you want to modify your results, move the slider
+                to the value you want; otherwise please reselect the same value.{" "}
               </p>
             </div>
           ) : stage.get("interpretationType") === "Local" ? (

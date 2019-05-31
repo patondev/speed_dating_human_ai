@@ -30,7 +30,7 @@ export default class Quiz extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <p>
               <label htmlFor="sum">
-                How many different dates you will have to predict in this HIT?
+                How many different dates will you have to predict in this HIT?
               </label>
               <input
                 type="text"

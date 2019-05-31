@@ -23,11 +23,11 @@ export default class InstructionStepOne extends React.Component {
             During the event, women attendees had a four-minute "first date"
             with every other man participant. At the end of their four minutes,
             participants were asked if they would like to see their date again.
-            A total of 2,080 dates were collected, half of which, or 1,040
-            cases, were matched, but the other half, 1,040 cases, failed to
-            match. They were also asked to rate their date on six attributes:
-            Attractiveness, Sincerity, Intelligence, Fun, Ambition, and Shared
-            Interests.
+            Data on 2,080 dates were collected, half of which, or 1,040 dates,
+            resulted in matches, but the other half, 1,040 dates, failed to
+            match. All participants were also asked to rate their date on six
+            attributes: Attractiveness, Sincerity, Intelligence, Fun, Ambition,
+            and Shared Interests.
           </p>
 
           <p>
@@ -52,10 +52,11 @@ export default class InstructionStepOne extends React.Component {
           <p>
             {game.treatment.playerCount > 1 ? " In step 1, y" : "Y"}
             ou will be asked to guess whether or not a couple will want to date
-            again given the demographics of participants and their ratings of
-            each other. To be more specific,{" "}
+            each other again given the demographics of participants and their
+            ratings of each other. To be more specific,{" "}
             <strong>
-              you will predict the probability the success/failure of{" "}
+              you will predict the probability of success (i.e., probability
+              that a couple will want to date each other) for{" "}
               {game.treatment.roundCount} different dates.
             </strong>
           </p>
@@ -83,10 +84,8 @@ export default class InstructionStepOne extends React.Component {
           <p>
             <span style={{ color: "red" }}>
               <strong>
-                For this score, the further the distance between the true answer
-                and your prediction goes, the greater the penalty. Therefore,
-                the better your prediction you make, the higher the score you
-                earn.
+                The more accurate your prediction, the higher your score and
+                therefore greater your payout in this game.
               </strong>
               .
             </span>
@@ -94,7 +93,8 @@ export default class InstructionStepOne extends React.Component {
 
           <p>
             Now let's take part in the game, get high scores, and beat other
-            players and even A.I.
+            players
+            {game.treatment.playerCount > 1 ? "and even A.I." : "."}{" "}
           </p>
 
           <p>
