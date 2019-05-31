@@ -15,8 +15,8 @@ export default class TaskStimulus extends React.Component {
   }
 
   render() {
-    const { round, stage, player, game } = this.props;
-    const pairData = round.data.features;
+    const { round, stage, game } = this.props;
+    const task = round.get("task");
 
     const revealBots = game.treatment.revealBots || false;
 
@@ -33,9 +33,9 @@ export default class TaskStimulus extends React.Component {
             <tbody>
               <tr>
                 <th>Matching ID</th>
-                <td>{round.data._id}</td>
+                <td>{task._id}</td>
                 <th>Interests Correlation</th>
-                <td>{pairData.InterestsCorr}</td>
+                <td>{task.features.InterestsCorr}</td>
               </tr>
               <tr>
                 <th className="color-female" colSpan="2">
@@ -45,15 +45,15 @@ export default class TaskStimulus extends React.Component {
                   Man
                 </th>
               </tr>
-              {this.renderFeatureRow(pairData, "Race")}
-              {this.renderFeatureRow(pairData, "Age")}
-              {this.renderFeatureRow(pairData, "Attractive")}
-              {this.renderFeatureRow(pairData, "Sincere")}
-              {this.renderFeatureRow(pairData, "Intelligent")}
-              {this.renderFeatureRow(pairData, "Fun")}
-              {this.renderFeatureRow(pairData, "Ambitious")}
+              {this.renderFeatureRow(task.features, "Race")}
+              {this.renderFeatureRow(task.features, "Age")}
+              {this.renderFeatureRow(task.features, "Attractive")}
+              {this.renderFeatureRow(task.features, "Sincere")}
+              {this.renderFeatureRow(task.features, "Intelligent")}
+              {this.renderFeatureRow(task.features, "Fun")}
+              {this.renderFeatureRow(task.features, "Ambitious")}
               {this.renderFeatureRow(
-                pairData,
+                task.features,
                 "SharedInterests",
                 "Shared Interests"
               )}

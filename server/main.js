@@ -61,32 +61,23 @@ Empirica.gameInit((game, treatment, players) => {
   const stageDuration = game.treatment.stageLength || 120;
   const socialStageDuration = game.treatment.socialStageLength || 120;
 
-  for (let i = -1; i < roundCount; i++) {
-    if (i === -1) {
-      const pair = practiceData;
+  for (let i = -4; i < roundCount * 2; i++) {
+    // - 4 to add the two practice rounds and * 2 because for each task instance, we will do it once a lone, and then again with AI + feedback
+    if (i < 0) {
+      //the first 4 rounds are practice .. two rounds with initial guess and two rounds with updated guess
 
-      const round = game.addRound({
-        data: {
-          ...pair,
-          practice: true
-        }
-      });
-
-      round.addStage({
-        name: "practice-initial",
-        displayName: "Practice - Initial Response",
-        durationInSeconds: stageDuration,
-        data: {
-          type: "solo",
-          practice: true,
-          questionText: questionText
-        }
-      });
-
-      if (playerCount > 1) {
+      if (i > -3) {
+        const round = game.addRound({
+          data: {
+            task: practiceData,
+            practice: true,
+            case: "revise",
+            effectiveIndex: i + 3
+          }
+        });
         round.addStage({
           name: "practice-social",
-          displayName: "Practice - Interactive Response",
+          displayName: "Practice - Revise Prediction",
           durationInSeconds: socialStageDuration,
           data: {
             type: "social",
@@ -95,43 +86,72 @@ Empirica.gameInit((game, treatment, players) => {
             interpretationType: interpretationType
           }
         });
-      }
 
-      if (feedback) {
+        if (feedback) {
+          round.addStage({
+            name: "practice-outcome",
+            displayName: "Case Outcome",
+            durationInSeconds: stageDuration,
+            data: {
+              type: "feedback",
+              practice: false
+            }
+          });
+        }
+      } else {
+        const round = game.addRound({
+          data: {
+            task: practiceData,
+            practice: true,
+            case: "initial",
+            effectiveIndex: i + 5
+          }
+        });
         round.addStage({
-          name: "practice-outcome",
-          displayName: "Practice - Round Outcome",
+          name: "practice-initial",
+          displayName: "Initial Prediction",
           durationInSeconds: stageDuration,
           data: {
-            type: "feedback",
-            practice: false
+            type: "solo",
+            practice: true,
+            questionText: questionText
           }
         });
       }
     } else {
-      const randomPair = shuffledData[i];
+      // this is the actual game, not practice
 
-      const round = game.addRound({
-        data: {
-          ...randomPair
-        }
-      });
-
-      round.addStage({
-        name: "initial",
-        displayName: "Initial Response",
-        durationInSeconds: stageDuration,
-        data: {
-          type: "solo",
-          practice: false,
-          questionText: questionText
-        }
-      });
-
-      if (playerCount > 1) {
+      if (i < game.treatment.roundCount) {
+        const round = game.addRound({
+          data: {
+            task: shuffledData[i],
+            practice: false,
+            case: "initial", //first time encountering the case
+            effectiveIndex: i + 1
+          }
+        });
+        round.addStage({
+          name: "initial",
+          displayName: "Initial Prediction",
+          durationInSeconds: stageDuration,
+          data: {
+            type: "solo",
+            practice: false,
+            questionText: questionText
+          }
+        });
+      } else {
+        const round = game.addRound({
+          data: {
+            task: shuffledData[i - game.treatment.roundCount],
+            practice: false,
+            case: "revise", //whether revising the task
+            effectiveIndex: i - game.treatment.roundCount + 1
+          }
+        });
         round.addStage({
           name: "social",
-          displayName: "Interactive Response",
+          displayName: "Interactive Prediction",
           durationInSeconds: socialStageDuration,
           data: {
             type: "social",
@@ -140,18 +160,17 @@ Empirica.gameInit((game, treatment, players) => {
             interpretationType: interpretationType
           }
         });
-      }
-
-      if (feedback) {
-        round.addStage({
-          name: "outcome",
-          displayName: "Round Outcome",
-          durationInSeconds: stageDuration,
-          data: {
-            type: "feedback",
-            practice: false
-          }
-        });
+        if (feedback) {
+          round.addStage({
+            name: "outcome",
+            displayName: "Case Outcome",
+            durationInSeconds: stageDuration,
+            data: {
+              type: "feedback",
+              practice: false
+            }
+          });
+        }
       }
     }
   }

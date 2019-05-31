@@ -12,49 +12,70 @@ Empirica.onGameStart(game => {
 // onRoundStart is triggered before each round starts, and before onStageStart.
 // It receives the same options as onGameStart, and the round that is starting.
 Empirica.onRoundStart((game, round) => {
-  game.players.forEach(player => {
-    player.round.set("score", 0);
-    if (player.bot) {
-      player.round.set("prediction", round.get("model_prediction_prob"));
-    } else {
-      player.round.set("prediction", null);
-    }
-  });
+  console.log("onstage start");
+  if (round.get("case") === "initial") {
+    game.players.forEach(player => {
+      player.round.set("score", 0);
+      if (player.bot) {
+        player.round.set("prediction", round.get("task").model_prediction_prob);
+      } else {
+        player.round.set("prediction", null);
+        player.set(`prediction-${round.get("effectiveIndex")}`, null);
+        player.round.set("score", 0);
+      }
+    });
+  }
+
+  if (round.get("case") === "revise") {
+    game.players.forEach(player => {
+      if (player.bot) {
+        player.round.set("prediction", round.get("task").model_prediction_prob);
+      } else {
+        console.log(
+          "previous prediction",
+          player.get(`prediction-${round.get("effectiveIndex")}`)
+        );
+        player.round.set(
+          "prediction",
+          player.get(`prediction-${round.get("effectiveIndex")}`)
+        );
+      }
+    });
+  }
 });
 
 // onStageStart is triggered before each stage starts.
 // It receives the same options as onRoundStart, and the stage that is starting.
 Empirica.onStageStart((game, round, stage) => {
-  const bots = game.players.filter(p => p.bot);
-  bots.forEach(bot => {
-    bot.stage.set("prediction", bot.round.get("prediction"));
-    bot.stage.submit();
-  });
-
+  console.log("onstage start");
   game.players.forEach(player => {
-    player.stage.set("prediction", player.round.get("prediction"));
+    if (player.bot) {
+      player.stage.submit();
+    }
   });
 
-  if (stage.name === "outcome" || stage.name === "practice-outcome") {
-    const outcome = round.get("correct_answer") === "Yes" ? 1 : 0;
+  if (round.get("case") === "revise") {
+    if (stage.name === "outcome" || stage.name === "practice-outcome") {
+      const outcome = round.get("task").correct_answer === "Yes" ? 1 : 0;
 
-    game.players.forEach(player => {
-      const prediction = player.round.get("prediction");
-      if (prediction !== null && prediction !== undefined) {
-        const score = 1 - Math.pow(prediction - outcome, 2); //1 - brier score
-        console.log(
-          "outcome is ",
-          outcome,
-          "prediction",
-          prediction,
-          "score",
-          score
-        );
-        player.round.set("score", score);
-      } else {
-        player.round.set("score", 0);
-      }
-    });
+      game.players.forEach(player => {
+        const prediction = player.round.get("prediction");
+        if (prediction !== null && prediction !== undefined) {
+          const score = 1 - Math.pow(prediction - outcome, 2); //1 - brier score
+          console.log(
+            "outcome is ",
+            outcome,
+            "prediction",
+            prediction,
+            "score",
+            score
+          );
+          player.round.set("score", score);
+        } else {
+          player.round.set("score", 0);
+        }
+      });
+    }
   }
 });
 
@@ -68,12 +89,24 @@ Empirica.onRoundEnd((game, round, players) => {
   if (round.get("practice")) {
     return;
   }
-  players.forEach(player => {
-    player.set(
-      "cumulativeScore",
-      player.get("cumulativeScore") + player.round.get("score")
-    );
-  });
+
+  if (round.get("case") === "initial") {
+    game.players.forEach(player => {
+      player.set(
+        `prediction-${round.get("effectiveIndex")}`,
+        player.round.get("prediction")
+      );
+    });
+  }
+
+  if (round.get("case") === "revise") {
+    players.forEach(player => {
+      player.set(
+        "cumulativeScore",
+        player.get("cumulativeScore") + player.round.get("score")
+      );
+    });
+  }
 });
 
 // onGameEnd is triggered when the game ends.

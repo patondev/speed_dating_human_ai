@@ -24,15 +24,13 @@ export default class SocialExposure extends React.Component {
 
   render() {
     const { game, player, stage, round } = this.props;
-
+    const task = round.get("task");
     const imgPath =
       stage.get("interpretationType") === "Global"
-        ? round.get("model_global_explination")
+        ? task.model_global_explination
         : stage.get("interpretationType") === "Local"
-          ? round.get("model_local_explination")
+          ? task.model_local_explination
           : null;
-
-    console.log("img: " + imgPath);
 
     const otherPlayers = _.reject(game.players, p => p._id === player._id);
     if (otherPlayers.length === 0) {
@@ -72,7 +70,7 @@ export default class SocialExposure extends React.Component {
             <b>
               {!stage.get("practice")
                 ? Math.round(otherPlayers[0].round.get("prediction") * 100)
-                : Math.round(round.data.model_prediction_prob * 100)}
+                : Math.round(task.model_prediction_prob * 100)}
             </b>
             %'
           </p>

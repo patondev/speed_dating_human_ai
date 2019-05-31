@@ -38,23 +38,22 @@ export default class TaskResponse extends React.Component {
   handleChange = num => {
     const { player } = this.props;
     const prediction = Math.round(num * 100) / 100;
-    player.stage.set("prediction", prediction);
+    player.round.set("prediction", prediction);
   };
 
   handleSubmit = event => {
     event.preventDefault();
     const { player, stage } = this.props;
-    const prediction = player.stage.get("prediction");
+    const prediction = player.round.get("prediction");
 
     if (stage.name === "outcome" || stage.name === "outcome") {
       player.stage.submit();
       return;
     }
-    if (!prediction) {
+    if (prediction === null) {
       WarningToaster.show({ message: "Please make a prediction first." });
     } else {
       player.round.set("prediction", prediction);
-      player.stage.set("prediction", prediction);
       player.stage.submit();
       return;
     }
@@ -73,7 +72,7 @@ export default class TaskResponse extends React.Component {
 
   renderSlider() {
     const { player, stage } = this.props;
-    let prediction = player.stage.get("prediction");
+    let prediction = player.round.get("prediction");
 
     const isOutcome =
       stage.name === "outcome" || stage.name === "practice-outcome";
@@ -136,7 +135,7 @@ export default class TaskResponse extends React.Component {
           <TimedButton
             stage={stage}
             player={player}
-            activateAt={48}
+            activateAt={50}
             onClick={this.handleSubmit}
           />
         </form>

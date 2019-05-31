@@ -25,29 +25,31 @@ export default class PlayerProfile extends React.Component {
   }
 
   renderTracker() {
-    const { player, game, round } = this.props;
-    let roundIndex = game.roundIds.indexOf(player.round._id);
-    let roundCount = game.roundIds.length;
+    const { game, round } = this.props;
 
     return (
       <div className="profile-rounds">
-        <h4>Case</h4>
+        <h4>{round.get("case") === "revise" ? "Revise " : "Predict"} Case</h4>
         <span>
           {round.get("practice")
-            ? "Practice"
-            : roundIndex.toString() + " / " + (roundCount - 1).toString()}
+            ? "Practice " + round.get("effectiveIndex")
+            : round.get("effectiveIndex") +
+              " / " +
+              game.treatment.roundCount.toString()}
         </span>
       </div>
     );
   }
 
   render() {
-    const { game, stage } = this.props;
+    const { game, stage, round } = this.props;
 
     return (
       <aside className="player-profile">
         {this.renderProfile()}
-        {game.treatment.giveFeedback ? this.renderScore() : null}
+        {game.treatment.giveFeedback && round.get("case") === "revise"
+          ? this.renderScore()
+          : null}
         {this.renderTracker()}
         <Timer stage={stage} />
       </aside>

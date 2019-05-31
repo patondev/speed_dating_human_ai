@@ -24,12 +24,13 @@ export default class AIExposure extends React.Component {
     const { round, stage } = this.props;
 
     const imgPath =
-      stage.get("interpretationType") === "Global"
-        ? round.get("model_global_explination")
-        : stage.get("interpretationType") === "Local"
-          ? round.get("model_local_explination")
+      stage.get("task").interpretationType === "Global"
+        ? round.get("task").model_global_explination
+        : stage.get("interpretationType").interpretationType === "Local"
+          ? round.get("task").model_local_explination
           : null;
 
+    console.log("imgPath", imgPath);
     return (
       <div className="social-exposure">
         <p>
