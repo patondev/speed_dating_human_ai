@@ -86,10 +86,6 @@ Empirica.onStageEnd((game, round, stage, players) => {});
 // onRoundEnd is triggered after each round.
 // It receives the same options as onGameEnd, and the round that just ended.
 Empirica.onRoundEnd((game, round, players) => {
-  if (round.get("practice")) {
-    return;
-  }
-
   if (round.get("case") === "initial") {
     game.players.forEach(player => {
       player.set(
@@ -99,7 +95,7 @@ Empirica.onRoundEnd((game, round, players) => {
     });
   }
 
-  if (round.get("case") === "revise") {
+  if (round.get("case") === "revise" && !round.get("practice")) {
     players.forEach(player => {
       player.set(
         "cumulativeScore",
