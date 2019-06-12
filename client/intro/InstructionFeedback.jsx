@@ -2,14 +2,14 @@ import React from "react";
 
 import { Centered } from "meteor/empirica:core";
 
-export default class InstructionStepOne extends React.Component {
+export default class InstructionFeedback extends React.Component {
   render() {
     const { hasPrev, hasNext, onNext, onPrev, game } = this.props;
 
     return (
       <Centered>
         <div className="instructions">
-          <h1 className={"bp3-heading"}> Instructions - Feedback</h1>
+          <h1 className={"bp3-heading"}> Instructions - Feedback *place holder*</h1>
 
           <p>
             Now we give feedback on how your guess compares to the actual

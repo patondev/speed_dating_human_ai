@@ -12,13 +12,15 @@ export default class Breadcrumb extends React.Component {
           <li>
             <Crumb
               text={
-                round.get("practice")
-                  ? round.index < 2
-                    ? `Practice Case ${round.get("effectiveIndex")}`
-                    : `Practice Revise Case ${round.get("effectiveIndex")}`
-                  : round.get("case") === "initial"
-                    ? `Case ${round.get("effectiveIndex")}`
-                    : `Revise Case ${round.get("effectiveIndex")}`
+                round.get("case") !== "instruction"
+                  ? round.get("practice")
+                    ? round.index < 2
+                      ? `Practice Case ${round.get("effectiveIndex")}`
+                      : `Practice Revise Case ${round.get("effectiveIndex")}`
+                    : round.get("case") === "initial"
+                      ? `Case ${round.get("effectiveIndex")}`
+                      : `Revise Case ${round.get("effectiveIndex")}`
+                  : null
               }
             />
           </li>

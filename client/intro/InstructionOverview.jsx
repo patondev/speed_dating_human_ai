@@ -2,14 +2,14 @@ import React from "react";
 
 import { Centered } from "meteor/empirica:core";
 
-export default class InstructionStepOne extends React.Component {
+export default class InstructionOverview extends React.Component {
   render() {
     const { hasPrev, hasNext, onNext, onPrev, game } = this.props;
 
     return (
       <Centered>
         <div className="instructions">
-          <h1 className={"bp3-heading"}> Game overview </h1>
+          <h1 className={"bp3-heading"}> Game overview *place holder*</h1>
           <p>
             <strong>
               What influences love at first sight? (Or, at least, love in the
