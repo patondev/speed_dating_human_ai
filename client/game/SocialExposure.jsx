@@ -44,8 +44,8 @@ export default class SocialExposure extends React.Component {
         <p>
           Your previous prediction was '
           <b>
-            {player.round.get("prediction") !== null
-              ? Math.round(player.round.get("prediction") * 100)
+            {player.round.get("previousPrediction") !== null
+              ? Math.round(player.round.get("previousPrediction") * 100)
               : "not given"}
           </b>
           %'

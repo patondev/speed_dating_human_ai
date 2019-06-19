@@ -39,6 +39,10 @@ Empirica.onRoundStart((game, round) => {
           "prediction",
           player.get(`prediction-${round.get("effectiveIndex")}`)
         );
+        player.round.set(
+          "previousPrediction",
+          player.get(`prediction-${round.get("effectiveIndex")}`)
+        );
       }
     });
   }

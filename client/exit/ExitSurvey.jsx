@@ -19,6 +19,11 @@ export default class ExitSurvey extends React.Component {
     strategy: "",
     fair: "",
     feedback: "",
+    education: "",
+    botUnderstand: "",
+    botTrust: "",
+    botAdopt: "",
+    botUseful: "",
     comments: ""
   };
 
@@ -29,7 +34,19 @@ export default class ExitSurvey extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onSubmit(this.state);
+
+    if (
+      this.state.botUnderstand === "" ||
+      this.state.botTrust === "" ||
+      this.state.botAdopt === "" ||
+      this.state.botUseful === ""
+    ) {
+      alert(
+        "Please answer all the radio button survey questions before you can submit."
+      );
+    } else {
+      this.props.onSubmit(this.state);
+    }
   };
 
   exitMessage = (player, game) => {
@@ -41,11 +58,11 @@ export default class ExitSurvey extends React.Component {
           <em>{player._id}</em>.
         </h3>
         <p>
-          You final{" "}
+          Your final{" "}
           <strong>
             <em>bonus is ${player.get("bonus") || 0}</em>
           </strong>{" "}
-          in addition of the{" "}
+          in addition to the{" "}
           <strong>
             <em>$1 base reward</em>
           </strong>{" "}

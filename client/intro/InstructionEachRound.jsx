@@ -10,14 +10,10 @@ export default class InstructionEachRound extends React.Component {
     return (
       <Centered>
         <div className="instructions">
-          <h1 className={"bp3-heading"}>
-            {" "}
-            Instructions - For each round *place holder*
-          </h1>
-
+          <h1 className={"bp3-heading"}> Instructions - For each round</h1>
           <p>
             You will predict the success/failure of {game.treatment.roundCount}{" "}
-            different dates by using 17 different attributes of the pair.
+            different dates by using 18 different attributes of the pair.
             Specifically, you will predict the probability of a match.
           </p>
 
@@ -45,8 +41,8 @@ export default class InstructionEachRound extends React.Component {
             interests. Please refer to the picture below for an example of the
             information you will see in this experiment.
           </p>
-
-          <img src="/solosample.png" className="sample-img" />
+          {/*TODO: change this to the table task not the interpertation*/}
+          <img src="/task_sample.png" className="sample-img" />
 
           <p>
             <button type="button" onClick={onPrev} disabled={!hasPrev}>

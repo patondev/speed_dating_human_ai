@@ -6,7 +6,6 @@ import Round from "./game/Round";
 import Consent from "./intro/Consent";
 import InstructionOverview from "./intro/InstructionOverview";
 import InstructionEachRound from "./intro/InstructionEachRound";
-import InstructionInteractiveRound from "./intro/InstructionInteractiveRound";
 import InstructionFeedback from "./intro/InstructionFeedback";
 import Quiz from "./intro/Quiz";
 import ExitSurvey from "./exit/ExitSurvey";

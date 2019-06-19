@@ -3,7 +3,7 @@ import Empirica from "meteor/empirica:core";
 import "./callbacks.js";
 import "./bots.js";
 
-import data from "./experiment_data/2-exp1_data_20190319.json";
+import data from "./experiment_data/task_data";
 
 // gameInit is where the structure of a game is defined.
 // Just before every game starts, once all the players needed are ready, this
@@ -14,66 +14,128 @@ import data from "./experiment_data/2-exp1_data_20190319.json";
 // the game.
 
 let questionText =
-  "Please review the profile below and predict whether the participant indicated that she would like to see her date again.";
+  "Please review the profile below and predict whether they would like to date again.";
+
+// {
+//     "Classes": "Introduction",
+//     "_id": 1049,
+//     "correct_answer": "Yes",
+//     "model_prediction": "Yes",
+//     "model_prediction_prob": 0.7641131281852722,
+//     "features": {
+//       "Interests Correlation": 0.08,
+//       "Woman's Race": "European/Caucasian-American",
+//       "Woman's Age": 21.0,
+//       "Woman's Attractive": 8.0,
+//       "Woman's Sincere": 5.0,
+//       "Woman's Intelligent": 5.0,
+//       "Woman's Fun": 7.0,
+//       "Woman's Ambitious": 7.0,
+//       "Woman's SharedInterests": 9.0,
+//       "Man's Race": "European/Caucasian-American",
+//       "Man's Age": 23.0,
+//       "Man's Attractive": 6.0,
+//       "Man's Sincere": 8.0,
+//       "Man's Intelligent": 6.0,
+//       "Man's Fun": 8.0,
+//       "Man's Ambitious": 10.0,
+//       "Man's SharedInterests": 10.0,
+//       "Same Race": "Yes"
+//     },
+//     "model_global_explination": "/task/tasks/global.png",
+//     "model_local_explination": "/task/tasks/1049.png"
+//   },
 
 let practiceData = [
+  // {
+  //   Classes: "Introduction",
+  //   _id: 1049,
+  //   correct_answer: "Yes",
+  //   model_prediction: "Yes",
+  //   model_prediction_prob: 0.7641131281852722,
+  //   features: {
+  //     InterestsCorr: 0.08,
+  //     Gender: "Woman",
+  //     Race: "European/Caucasian-American",
+  //     Age: 21.0,
+  //     Attractive: 8.0,
+  //     Sincere: 5.0,
+  //     Intelligent: 5.0,
+  //     Fun: 7.0,
+  //     Ambitious: 7.0,
+  //     SharedInterests: 9.0,
+  //     Gender_Partner: "Man",
+  //     Race_Partner: "European/Caucasian-American",
+  //     Age_Partner: 23.0,
+  //     Attractive_Partner: 6.0,
+  //     Sincere_Partner: 8.0,
+  //     Intelligent_Partner: 6.0,
+  //     Fun_Partner: 8.0,
+  //     Ambitious_Partner: 10.0,
+  //     SharedInterests_Partner: 10.0
+  //   },
+  //   model_global_explination: "/task/tasks/global.png",
+  //   model_local_explination: "/task/tasks/1049.png"
+  // },
   {
-    _id: 237,
+    Classes: "Pratice",
+    _id: 853,
     correct_answer: "No",
-    model_prediction: "Yes",
-    model_prediction_prob: 0.89,
+    model_prediction: "No",
+    model_prediction_prob: 0.31700220704078674,
     features: {
-      InterestsCorr: 0.37,
+      InterestsCorr: 0.22,
       Gender: "Woman",
-      Race: "European/Caucasian-American",
+      Race: "Black/African American",
+      Age: 26.0,
+      Attractive: 9.0,
+      Sincere: 9.0,
+      Intelligent: 9.0,
+      Fun: 4.0,
+      Ambitious: 10.0,
+      SharedInterests: 3.0,
+      Gender_Partner: "Man",
+      Race_Partner: "Latino/Hispanic American",
+      Age_Partner: 28.0,
+      Attractive_Partner: 4.0,
+      Sincere_Partner: 8.0,
+      Intelligent_Partner: 8.0,
+      Fun_Partner: 8.0,
+      Ambitious_Partner: 7.0,
+      SharedInterests_Partner: 5.0
+    },
+    model_global_explination: "/task/tasks/global.png",
+    model_local_explination: "/task/tasks/853.png"
+  },
+  {
+    Classes: "Practice",
+    _id: 1202,
+    correct_answer: "Yes",
+    model_prediction: "Yes",
+    model_prediction_prob: 0.902144730091095,
+    features: {
+      InterestsCorr: 0.05,
+      Gender: "Woman",
+      Race: "Other",
       Age: 23.0,
       Attractive: 7.0,
       Sincere: 8.0,
-      Intelligent: 9.0,
-      Fun: 6.0,
-      Ambitious: 7.0,
-      SharedInterests: 6.0,
+      Intelligent: 7.0,
+      Fun: 7.0,
+      Ambitious: 5.0,
+      SharedInterests: 7.0,
       Gender_Partner: "Man",
-      Race_Partner: "Asian/Pacific Islander/Asian-American",
-      Age_Partner: 31.0,
-      Attractive_Partner: 4.0,
-      Sincere_Partner: 6.0,
+      Race_Partner: "European/Caucasian-American",
+      Age_Partner: 25.0,
+      Attractive_Partner: 9.0,
+      Sincere_Partner: 8.0,
       Intelligent_Partner: 8.0,
-      Fun_Partner: 7.0,
-      Ambitious_Partner: 4.0,
-      SharedInterests_Partner: 3.0
+      Fun_Partner: 9.0,
+      Ambitious_Partner: 8.0,
+      SharedInterests_Partner: 10.0
     },
     model_global_explination: "/task/tasks/global.png",
-    model_local_explination: "/task/tasks/237.png"
-  },
-  {
-    _id: 238,
-    correct_answer: "No",
-    model_prediction: "Yes",
-    model_prediction_prob: 0.05,
-    features: {
-      InterestsCorr: 0.09,
-      Gender: "Woman",
-      Race: "European/Caucasian-American",
-      Age: 22.0,
-      Attractive: 5.0,
-      Sincere: 4.0,
-      Intelligent: 9.0,
-      Fun: 6.0,
-      Ambitious: 7.0,
-      SharedInterests: 4.0,
-      Gender_Partner: "Man",
-      Race_Partner: "Asian/Pacific Islander/Asian-American",
-      Age_Partner: 31.0,
-      Attractive_Partner: 4.0,
-      Sincere_Partner: 3.0,
-      Intelligent_Partner: 8.0,
-      Fun_Partner: 2.0,
-      Ambitious_Partner: 4.0,
-      SharedInterests_Partner: 3.0
-    },
-    model_global_explination: "/task/tasks/global.png",
-    model_local_explination: "/task/tasks/238.png"
+    model_local_explination: "/task/tasks/1202.png"
   }
 ];
 
