@@ -88,11 +88,11 @@ export default class Round extends React.Component {
                 <strong>Man’s Fun</strong> .
               </p>
               <p>
-                On the other hand, the algorithm indicates that the
-                <strong>Participant’s Sincerity</strong> or{" "}
-                <strong>Man’s Ambition</strong> has little effect on whether a
+                On the other hand, the algorithm indicates that the{" "}
+                <strong>Participant’s Sincerity</strong>{" "} or{" "}
+                {" "}<strong>Man’s Ambition</strong>{" "} has little effect on whether a
                 speed date will be in a match. Whether the participants are of
-                the <strong>Same Race</strong> or <strong>Man’s Race</strong> is
+                the {" "}<strong>Same Race</strong> {" "} or {" "}<strong>Man’s Race</strong>{" "} is
                 determined to be the least important factor.
               </p>
             </div>
@@ -134,7 +134,7 @@ export default class Round extends React.Component {
                 <strong> Man’s Attractiveness</strong>
                 had <strong>negative </strong> effects on the match probability
                 by more than <strong>20%</strong>. The relatively young{" "}
-                <strong>Age of Women</strong>
+                <strong>Age of Women </strong>{" "}
                 was also a factor that lowered the chances of matching.
               </p>
             </div>
