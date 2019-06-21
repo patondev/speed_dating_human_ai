@@ -176,7 +176,7 @@ export default class Round extends React.Component {
   }
 
   render() {
-    const { round, stage, player, game } = this.props;
+    const { round } = this.props;
     console.log("inst", round.get("instruction"));
     return round.get("case") === "instruction"
       ? this.renderInstructions()
