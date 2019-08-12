@@ -8,20 +8,13 @@ Empirica.bot("bob", {
 
   // Called during each stage at tick interval (~1s at the moment)
   onStageTick(bot, game, round, stage, secondsRemaining) {
-    if (
-      stage.name === "social" &&
-      game.treatment.interactiveBot
-    ) {
-      const answer = round.data.model_prediction_prob;
-      const humanPlayers = game.players.filter(p => !p.bot);
-      let humanSum = 0;
-      humanPlayers.forEach(player => {
-        humanSum += player.round.get("value");
-      });
-      // assume there is one bot
-      bot.round.set("value", (answer + humanSum) / game.players.length);
+    if (bot.stage.submitted) {
+      //console.log("bot returned immediately");
+      return;
     }
-    return;
+    //console.log("stage.name", stage.name);
+    bot.stage.submit();
+
   }
 
   // // NOT SUPPORTED A player has changed a value

@@ -24,7 +24,7 @@ export default class TaskFeedback extends React.Component {
             <tr>
               <th />
               <th>Prediction</th>
-              <th>Outcome</th>
+              <th>Real Outcome</th>
               <th>Error</th>
               <th>Penalty</th>
               <th>Score</th>
@@ -51,7 +51,7 @@ export default class TaskFeedback extends React.Component {
                   : 1}
               </td>
               <td>
-                {player.round.get("prediction")
+                {player.round.get("prediction") !== null
                   ? Math.pow(
                       correct_answer - player.round.get("prediction"),
                       2

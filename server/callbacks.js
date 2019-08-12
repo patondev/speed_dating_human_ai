@@ -12,7 +12,7 @@ Empirica.onGameStart(game => {
 // onRoundStart is triggered before each round starts, and before onStageStart.
 // It receives the same options as onGameStart, and the round that is starting.
 Empirica.onRoundStart((game, round) => {
-  console.log("onstage start");
+  console.log("onRoundStart start");
   if (round.get("case") === "initial") {
     game.players.forEach(player => {
       player.round.set("score", 0);
@@ -51,14 +51,9 @@ Empirica.onRoundStart((game, round) => {
 // onStageStart is triggered before each stage starts.
 // It receives the same options as onRoundStart, and the stage that is starting.
 Empirica.onStageStart((game, round, stage) => {
-  console.log("onstage start");
-  game.players.forEach(player => {
-    if (player.bot) {
-      player.stage.submit();
-    }
-  });
+  console.log("onstage start now");
 
-  if (round.get("case") === "revise") {
+  if (round.get("case") === "revise" && game.treatment.giveFeedback) {
     if (stage.name === "outcome" || stage.name === "practice-outcome") {
       const outcome = round.get("task").correct_answer === "Yes" ? 1 : 0;
 
@@ -91,13 +86,48 @@ Empirica.onStageEnd((game, round, stage, players) => {});
 // It receives the same options as onGameEnd, and the round that just ended.
 Empirica.onRoundEnd((game, round, players) => {
   if (round.get("case") === "initial") {
+
     game.players.forEach(player => {
-      player.set(
-        `prediction-${round.get("effectiveIndex")}`,
-        player.round.get("prediction")
-      );
+      const prediction = player.round.get("prediction");
+      if (prediction !== null && prediction !== undefined) {
+        player.set(
+            `prediction-${round.get("effectiveIndex")}`,
+            prediction
+        );
+      } else {
+        game.players.forEach(player => {
+          player.set(
+              `prediction-${round.get("effectiveIndex")}`,
+              null
+          );
+        });
+      }
     });
   }
+
+  if (round.get("case") === "revise" && game.treatment.giveFeedback===false) {
+      const outcome = round.get("task").correct_answer === "Yes" ? 1 : 0;
+
+      game.players.forEach(player => {
+        const prediction = player.round.get("prediction");
+        if (prediction !== null && prediction !== undefined) {
+          const score = 1 - Math.pow(prediction - outcome, 2); //1 - brier score
+          console.log(
+              "outcome is ",
+              outcome,
+              "prediction",
+              prediction,
+              "score",
+              score
+          );
+          player.round.set("score", score);
+        } else {
+          player.round.set("score", 0);
+        }
+      });
+
+  }
+
 
   if (round.get("case") === "revise" && !round.get("practice")) {
     players.forEach(player => {

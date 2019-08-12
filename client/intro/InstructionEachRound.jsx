@@ -28,8 +28,8 @@ export default class InstructionEachRound extends React.Component {
               Attractive, Sincere, Intelligent, Fun, Ambitious, Shared Interests
             </strong>
             : Evaluation scores (0 to 10) from the partner after a short
-            four-minute date. For example, if a woman's fun is six points, it
-            means that the male partner gave her six points on the attribute of
+            four-minute date. For example, if a woman's fun is seven points, it
+            means that the male partner gave her seven points on the attribute of
             “fun”.
           </p>
           <p>

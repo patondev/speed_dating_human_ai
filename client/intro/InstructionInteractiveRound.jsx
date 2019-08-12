@@ -99,7 +99,7 @@ export default class InstructionInteractiveRound extends React.Component {
               </p>
               <p>
                 On the other hand, a relatively low score of{" "}
-                <strong> Man’s Attractiveness</strong>
+                <strong> Man’s Attractiveness </strong>{" "}
                 had <strong>negative </strong> effects on the match probability
                 by more than <strong>20%</strong>. The relatively young{" "}
                 <strong>Age of Women</strong>

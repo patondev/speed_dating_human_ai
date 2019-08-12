@@ -91,7 +91,7 @@ export default class InstructionOverview extends React.Component {
           <p>
             Now let's take part in the game, get high scores, and beat other
             players
-            {game.treatment.playerCount > 1 ? "and even A.I." : "."}{" "}
+            {game.treatment.playerCount > 1 ? " and even A.I." : "."}{" "}
           </p>
 
           <p>

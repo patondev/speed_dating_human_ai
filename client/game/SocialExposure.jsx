@@ -131,31 +131,29 @@ export default class SocialExposure extends React.Component {
                 to the value you want; otherwise please reselect the same value.{" "}
               </p>
             </div>
-          ) : stage.get("interpretationType") === "Local" ? (
+          ) : stage.get("interpretationType") === "Local" ? round.get("effectiveIndex") === 1? (
             <div>
               <p>
                 The chart above explains which factors or attributes of the
                 dating couple were the primary drivers of the algorithm’s
-                prediction of 16%. For example, in the following case, the
+                prediction. For example, in the following case, the
                 predicted matching probability of the algorithm is comparatively
-                low of 16%. According to the algorithm, the attendee got a high
+                low of 32%.
+              </p>
+                <p>
+                According to the algorithm, the woman got a high
                 score for{" "}
                 <b>
-                  <i>Shared Interests</i>
-                </b>{" "}
-                from her partner), so it raised the matching probability as much
-                as 12% compared to average cases. On the other hand, relatively
-                low score of{" "}
-                <b>
                   <i>Attractiveness</i>
-                </b>{" "}
-                and{" "}
-                <b>
-                  <i>Fun</i>
-                </b>{" "}
-                had negative effects on the match probability of this attendee
-                by as much as 22% and 18%.
+                </b>{" "} from her partner, so it raised the matching probability by more than 15%.
+                The man's high score of <b><i>Fun</i></b> also played a positive role in the couple's matching probability.
+
+                On the other hand, a relatively <strong><i>low score of Man's Attractiveness</i></strong>
+                had a negative effect on the matching probability by more than 20%.
+                The <strong><i>low score of Woman’s Fun</i></strong> also lowered the matching probability.
+                The <strong>participants’ low scores of Shared Interests</strong> also played a negative role in the couple's matching probability.
               </p>
+
               <p>
                 You can decide whether or not to modify the predictions made in
                 the previous step. You can choose to modify your predictions at
@@ -164,6 +162,32 @@ export default class SocialExposure extends React.Component {
               </p>
             </div>
           ) : (
+              <div>
+                <p>
+                  The chart above explains which factors or attributes of the
+                  dating couple were the primary drivers of the algorithm’s
+                  prediction. For example, in the following case, the
+                  predicted matching probability of the algorithm is comparatively
+                  high of 90%.
+                </p>
+                <p>
+                  According to the algorithm, the Man received a
+                  <strong><i> high score of more than 8 points from her partner in Attractiveness </i></strong>,
+                   which raised the couple’s matching probability by about 14%.
+                  <srong><i> The man’s high score of Fun </i></srong> also played a positive role in the couple’s matching probability.
+                  The participants’ <strong><i> high scores of Shared Interests </i></strong> were also positive factors.
+                  On the other hand,
+                  the relatively <strong>young Age of Woman lowered the chances of the matching by more than 2.5%</strong>.
+                  Also, the <strong>low score of Woman’s intelligence</strong> had a small negative effect on the matching probability.
+                </p>
+
+            <p>
+              You can decide whether or not to modify the predictions made in
+              the previous step. You can choose to modify your predictions at
+              any point. If you want to modify your results, select the value
+              you want, otherwise please reselect the same value.
+            </p>
+          </div>) : (
             ""
           )
         ) : (
