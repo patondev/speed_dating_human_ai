@@ -102,10 +102,10 @@ let practiceData = [
       Intelligent_Partner: 8.0,
       Fun_Partner: 8.0,
       Ambitious_Partner: 7.0,
-      SharedInterests_Partner: 5.0
+      SharedInterests_Partner: 5.0,
     },
     model_global_explination: "/task/tasks/global.png",
-    model_local_explination: "/task/tasks/853.png"
+    model_local_explination: "/task/tasks/853.png",
   },
   {
     Classes: "Practice",
@@ -132,11 +132,11 @@ let practiceData = [
       Intelligent_Partner: 8.0,
       Fun_Partner: 9.0,
       Ambitious_Partner: 8.0,
-      SharedInterests_Partner: 10.0
+      SharedInterests_Partner: 10.0,
     },
     model_global_explination: "/task/tasks/global.png",
-    model_local_explination: "/task/tasks/1202.png"
-  }
+    model_local_explination: "/task/tasks/1202.png",
+  },
 ];
 
 Empirica.gameInit((game, treatment, players) => {
@@ -165,8 +165,8 @@ Empirica.gameInit((game, treatment, players) => {
           task: practiceData[i + 2],
           practice: true,
           case: "initial",
-          effectiveIndex: i + 3
-        }
+          effectiveIndex: i + 3,
+        },
       });
       round.addStage({
         name: "practice-initial",
@@ -175,8 +175,8 @@ Empirica.gameInit((game, treatment, players) => {
         data: {
           type: "solo",
           practice: true,
-          questionText: questionText
-        }
+          questionText: questionText,
+        },
       });
       continue;
     }
@@ -187,8 +187,8 @@ Empirica.gameInit((game, treatment, players) => {
           task: shuffledData[i],
           practice: false,
           case: "initial",
-          effectiveIndex: i + 1
-        }
+          effectiveIndex: i + 1,
+        },
       });
       round.addStage({
         name: "initial",
@@ -197,8 +197,8 @@ Empirica.gameInit((game, treatment, players) => {
         data: {
           type: "solo",
           practice: false,
-          questionText: questionText
-        }
+          questionText: questionText,
+        },
       });
       continue;
     }
@@ -211,16 +211,16 @@ Empirica.gameInit((game, treatment, players) => {
           data: {
             practice: false,
             case: "instruction",
-            effectiveIndex: null
-          }
+            effectiveIndex: null,
+          },
         });
         round.addStage({
           name: "instruction",
           displayName: "Instructions: Now you will revise",
           durationInSeconds: stageDuration + 100000,
           data: {
-            instruction: true
-          }
+            instruction: true,
+          },
         });
         continue;
       }
@@ -232,8 +232,8 @@ Empirica.gameInit((game, treatment, players) => {
             task: practiceData[i - roundCount - 1],
             practice: true,
             case: "revise",
-            effectiveIndex: i - roundCount
-          }
+            effectiveIndex: i - roundCount,
+          },
         });
         round.addStage({
           name: "practice-social",
@@ -243,8 +243,8 @@ Empirica.gameInit((game, treatment, players) => {
             type: "social",
             practice: true,
             questionText: questionText,
-            interpretationType: interpretationType
-          }
+            interpretationType: interpretationType,
+          },
         });
 
         if (feedback) {
@@ -254,8 +254,8 @@ Empirica.gameInit((game, treatment, players) => {
             durationInSeconds: stageDuration,
             data: {
               type: "feedback",
-              practice: false
-            }
+              practice: false,
+            },
           });
         }
         continue;
@@ -267,8 +267,8 @@ Empirica.gameInit((game, treatment, players) => {
             task: shuffledData[i - (roundCount + 2 + 2)],
             practice: false,
             case: "revise", //whether revising the task
-            effectiveIndex: i - (roundCount + 2 + 1) // the two practice + instruction page
-          }
+            effectiveIndex: i - (roundCount + 2 + 1), // the two practice + instruction page
+          },
         });
         round.addStage({
           name: "social",
@@ -278,8 +278,8 @@ Empirica.gameInit((game, treatment, players) => {
             type: "social",
             practice: false,
             questionText: questionText,
-            interpretationType: interpretationType
-          }
+            interpretationType: interpretationType,
+          },
         });
         if (feedback) {
           round.addStage({
@@ -288,8 +288,8 @@ Empirica.gameInit((game, treatment, players) => {
             durationInSeconds: stageDuration,
             data: {
               type: "feedback",
-              practice: false
-            }
+              practice: false,
+            },
           });
         }
       }

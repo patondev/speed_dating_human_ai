@@ -29,8 +29,8 @@ export default class InstructionEachRound extends React.Component {
             </strong>
             : Evaluation scores (0 to 10) from the partner after a short
             four-minute date. For example, if a woman's fun is seven points, it
-            means that the male partner gave her seven points on the attribute of
-            “fun”.
+            means that the male partner gave her seven points on the attribute
+            of “fun”.
           </p>
           <p>
             <strong>Interests Correlation</strong>: Correlation score (-1 to 1)

@@ -21,7 +21,7 @@ Empirica.breadcrumb(Breadcrumb);
 // Introduction pages to show before they play the game (optional).
 // At this point they have been assigned a treatment. You can return
 // different instruction steps depending on the assigned treatment.
-Empirica.introSteps(game => {
+Empirica.introSteps((game) => {
   const steps = [InstructionOverview, InstructionEachRound];
   // if (game.treatment.playerCount > 1) {
   //   steps.push(InstructionStepThree);

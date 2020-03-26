@@ -51,9 +51,9 @@ export default class InstructionOverview extends React.Component {
 
           <p>
             {game.treatment.playerCount > 1 ? " In step 1, y" : "Y"}
-            ou will be asked to guess whether or not a couple
-            will want to date each other again given the demographics of
-            participants and their ratings of each other. To be more specific,{" "}
+            ou will be asked to guess whether or not a couple will want to date
+            each other again given the demographics of participants and their
+            ratings of each other. To be more specific,{" "}
             <strong>
               you will predict the probability of success (i.e., probability
               that a couple will want to date each other) for{" "}
