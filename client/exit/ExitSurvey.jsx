@@ -8,7 +8,7 @@ import {
   RadioGroup,
   TextArea,
   Intent,
-  Radio
+  Radio,
 } from "@blueprintjs/core";
 
 export default class ExitSurvey extends React.Component {
@@ -24,25 +24,25 @@ export default class ExitSurvey extends React.Component {
     botTrust: "",
     botAdopt: "",
     botUseful: "",
-    comments: ""
+    comments: "",
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const el = event.currentTarget;
-    this.setState({ [el.name]: el.value });
+    this.setState({[el.name]: el.value});
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     if (
-      this.state.botUnderstand === "" ||
-      this.state.botTrust === "" ||
-      this.state.botAdopt === "" ||
-      this.state.botUseful === ""
+        this.state.botUnderstand === "" ||
+        this.state.botTrust === "" ||
+        this.state.botAdopt === "" ||
+        this.state.botUseful === ""
     ) {
       alert(
-        "Please answer all the radio button survey questions before you can submit."
+          "Please answer all the radio button survey questions before you can submit."
       );
     } else {
       this.props.onSubmit(this.state);
@@ -72,7 +72,7 @@ export default class ExitSurvey extends React.Component {
     );
   };
 
-  exitForm = game => {
+  exitForm = (game) => {
     const {
       age,
       gender,
@@ -84,7 +84,7 @@ export default class ExitSurvey extends React.Component {
       botTrust,
       botAdopt,
       botUseful,
-      comments
+      comments,
     } = this.state;
 
     return (
