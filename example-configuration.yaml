@@ -109,11 +109,11 @@ factorTypes:
     type: Boolean
 factors:
   - _id: MPo9Ke8af28eSNtTK
-    name: 'true'
+    name: "true"
     value: true
     factorTypeId: zmLFe9T5uH7cAGo4n
   - _id: 4xEeuoadBeeujy4nH
-    name: 'false'
+    name: "false"
     value: false
     factorTypeId: zmLFe9T5uH7cAGo4n
   - _id: uimy8Qk7rRFkgdcx5
@@ -177,27 +177,27 @@ factors:
     value: 0
     factorTypeId: 4q2RSFfsrB3oFRTu6
   - _id: yYtHsMrA8ntgwADuf
-    name: 'true'
+    name: "true"
     value: true
     factorTypeId: Mmk6EszYubTmuPbNc
   - _id: LFMK5aK9nwBgcNNF4
-    name: 'false'
+    name: "false"
     value: false
     factorTypeId: Mmk6EszYubTmuPbNc
   - _id: WGcHLj9z74xXm4wPP
-    name: 'true'
+    name: "true"
     value: true
     factorTypeId: bQ28KcJTHzCT8WmPJ
   - _id: 5pFwrqKJpGdcDa3GX
-    name: 'false'
+    name: "false"
     value: false
     factorTypeId: bQ28KcJTHzCT8WmPJ
   - _id: 5PkcNm4zJLZQG8Pw6
-    name: 'true'
+    name: "true"
     value: true
     factorTypeId: TTskujkQiE8PDtojt
   - _id: nsfCCXxG2MefRgwYb
-    name: 'false'
+    name: "false"
     value: false
     factorTypeId: TTskujkQiE8PDtojt
 lobbyConfigs:

@@ -32,12 +32,12 @@ Empirica.onRoundStart((game, round) => {
         player.round.set("prediction", round.get("task").model_prediction_prob);
       } else {
         console.log(
-            "previous prediction",
-            player.get(`prediction-${round.get("effectiveIndex")}`)
+          "previous prediction",
+          player.get(`prediction-${round.get("effectiveIndex")}`)
         );
         player.round.set(
-            "prediction",
-            player.get(`prediction-${round.get("effectiveIndex")}`)
+          "prediction",
+          player.get(`prediction-${round.get("effectiveIndex")}`)
         );
         player.round.set(
           "previousPrediction",
@@ -62,12 +62,12 @@ Empirica.onStageStart((game, round, stage) => {
         if (prediction !== null && prediction !== undefined) {
           const score = 1 - Math.pow(prediction - outcome, 2); //1 - brier score
           console.log(
-              "outcome is ",
-              outcome,
-              "prediction",
-              prediction,
-              "score",
-              score
+            "outcome is ",
+            outcome,
+            "prediction",
+            prediction,
+            "score",
+            score
           );
           player.round.set("score", score);
         } else {
@@ -106,12 +106,12 @@ Empirica.onRoundEnd((game, round, players) => {
       if (prediction !== null && prediction !== undefined) {
         const score = 1 - Math.pow(prediction - outcome, 2); //1 - brier score
         console.log(
-            "outcome is ",
-            outcome,
-            "prediction",
-            prediction,
-            "score",
-            score
+          "outcome is ",
+          outcome,
+          "prediction",
+          prediction,
+          "score",
+          score
         );
         player.round.set("score", score);
       } else {
@@ -123,8 +123,8 @@ Empirica.onRoundEnd((game, round, players) => {
   if (round.get("case") === "revise" && !round.get("practice")) {
     players.forEach((player) => {
       player.set(
-          "cumulativeScore",
-          player.get("cumulativeScore") + player.round.get("score")
+        "cumulativeScore",
+        player.get("cumulativeScore") + player.round.get("score")
       );
     });
   }
@@ -139,9 +139,9 @@ Empirica.onGameEnd((game, players) => {
 
   players.forEach((player) => {
     const bonus =
-        player.get("cumulativeScore") > 0
-            ? Math.round(player.get("cumulativeScore") * conversionRate * 100) / 100
-            : 0;
+      player.get("cumulativeScore") > 0
+        ? Math.round(player.get("cumulativeScore") * conversionRate * 100) / 100
+        : 0;
     player.set("bonus", bonus);
   });
 });

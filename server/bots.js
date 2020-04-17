@@ -14,8 +14,7 @@ Empirica.bot("bob", {
     }
     //console.log("stage.name", stage.name);
     bot.stage.submit();
-
-  }
+  },
 
   // // NOT SUPPORTED A player has changed a value
   // // This might happen a lot!
