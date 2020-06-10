@@ -1,8 +1,6 @@
 import Empirica from "meteor/empirica:core";
-
-import "./callbacks.js";
 import "./bots.js";
-
+import "./callbacks.js";
 import data from "./experiment_data/2-exp1_data_20190319.json";
 
 // gameInit is where the structure of a game is defined.
@@ -40,10 +38,10 @@ let practiceData = {
     Intelligent_Partner: 8.0,
     Fun_Partner: 7.0,
     Ambitious_Partner: 4.0,
-    SharedInterests_Partner: 3.0
+    SharedInterests_Partner: 3.0,
   },
   model_global_explination: "/task/tasks/global.png",
-  model_local_explination: "/task/tasks/237.png"
+  model_local_explination: "/task/tasks/237.png",
 };
 
 Empirica.gameInit((game, treatment, players) => {
@@ -58,8 +56,10 @@ Empirica.gameInit((game, treatment, players) => {
   const playerCount = game.treatment.playerCount || 1;
   const interpretationType = game.treatment.interpretationType || "None";
   const feedback = game.treatment.giveFeedback || false;
-  const stageDuration = game.treatment.stageLength || 120;
-  const socialStageDuration = game.treatment.socialStageLength || 120;
+  // const stageDuration = game.treatment.stageLength || 120;
+  // const socialStageDuration = game.treatment.socialStageLength || 120;
+  const stageDuration = 50000;
+  const socialStageDuration = 2000;
 
   for (let i = -1; i < roundCount; i++) {
     if (i === -1) {
@@ -68,8 +68,8 @@ Empirica.gameInit((game, treatment, players) => {
       const round = game.addRound({
         data: {
           ...pair,
-          practice: true
-        }
+          practice: true,
+        },
       });
 
       round.addStage({
@@ -79,8 +79,8 @@ Empirica.gameInit((game, treatment, players) => {
         data: {
           type: "solo",
           practice: true,
-          questionText: questionText
-        }
+          questionText: questionText,
+        },
       });
 
       if (playerCount > 1) {
@@ -92,8 +92,8 @@ Empirica.gameInit((game, treatment, players) => {
             type: "social",
             practice: true,
             questionText: questionText,
-            interpretationType: interpretationType
-          }
+            interpretationType: interpretationType,
+          },
         });
       }
 
@@ -104,8 +104,8 @@ Empirica.gameInit((game, treatment, players) => {
           durationInSeconds: stageDuration,
           data: {
             type: "feedback",
-            practice: false
-          }
+            practice: false,
+          },
         });
       }
     } else {
@@ -113,8 +113,8 @@ Empirica.gameInit((game, treatment, players) => {
 
       const round = game.addRound({
         data: {
-          ...randomPair
-        }
+          ...randomPair,
+        },
       });
 
       round.addStage({
@@ -124,8 +124,8 @@ Empirica.gameInit((game, treatment, players) => {
         data: {
           type: "solo",
           practice: false,
-          questionText: questionText
-        }
+          questionText: questionText,
+        },
       });
 
       if (playerCount > 1) {
@@ -137,8 +137,8 @@ Empirica.gameInit((game, treatment, players) => {
             type: "social",
             practice: false,
             questionText: questionText,
-            interpretationType: interpretationType
-          }
+            interpretationType: interpretationType,
+          },
         });
       }
 
@@ -149,8 +149,8 @@ Empirica.gameInit((game, treatment, players) => {
           durationInSeconds: stageDuration,
           data: {
             type: "feedback",
-            practice: false
-          }
+            practice: false,
+          },
         });
       }
     }
