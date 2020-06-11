@@ -1,8 +1,18 @@
 import React from "react";
+import Slider from "./component/Slider";
 
 export default class Round extends React.Component {
+  state = {
+    prediction: 0,
+  };
+  handleChange = (value) => {
+    this.setState({
+      prediction: value,
+    });
+  };
   render() {
     const { round, stage, player, game } = this.props;
+    const { prediction } = this.state;
 
     const single = false;
 
@@ -23,57 +33,118 @@ export default class Round extends React.Component {
             <div className="couples">
               <div className="person">
                 <header className="person-card">
-                  {/* svg */}
-                  <div className="gender">Male</div>
-                  <div className="age">27 years old</div>
-                  <div className="origin">European Caucasian</div>
+                  <div className="person-thumb">
+                    <img src="/male.svg" alt="Person male" />
+                  </div>
+                  <div className="person-detail">
+                    <div className="gender">Male</div>
+                    <div className="age">27 years,</div>
+                    <div className="origin">European/Caucasian- American</div>
+                  </div>
                 </header>
-                <h3>Ratings</h3>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>Attractiveness</td>
-                      <td>8</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div className="ratings">
+                  <h3>Ratings</h3>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Attractiveness</td>
+                        <td>8</td>
+                      </tr>
+                      <tr>
+                        <td>Sincerity</td>
+                        <td>8</td>
+                      </tr>
+                      <tr>
+                        <td>Shared interest</td>
+                        <td>9</td>
+                      </tr>
+                      <tr>
+                        <td>Intelligence</td>
+                        <td>6</td>
+                      </tr>
+                      <tr>
+                        <td>Ambitions</td>
+                        <td>10</td>
+                      </tr>
+                      <tr>
+                        <td>Fun</td>
+                        <td>10</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               <div className="interests">
-                <h4>Interest correlation</h4>
-                <div className="interest-bar">
-                  <div className="interest-measurements">
-                    <div className="interest-measurement">1</div>
-                    <div className="interest-measurement">0</div>
-                    <div className="interest-measurement">-1</div>
+                <h4 className="title">Interest correlation</h4>
+                <div className="interest-component">
+                  <div className="interest-bar">
+                    <div className="interest-measurements">
+                      <div className="interest-measurement">1</div>
+                      <div className="interest-measurement">0</div>
+                      <div className="interest-measurement">-1</div>
+                    </div>
+                    <div className="interest-gradient"></div>
+                    <div className="interest-marker">0,08</div>
                   </div>
-                  <div className="interest-gradient"></div>
-                  <div className="interest-marker">0.08</div>
                 </div>
               </div>
 
               <div className="person">
-                <header className="person-card">
-                  {/* svg */}
-                  <div className="gender">Female</div>
-                  <div className="age">27 years old</div>
-                  <div className="origin">European Caucasian</div>
+                <header className="person-card  person-right">
+                  <div className="person-thumb">
+                    <img src="/female.svg" alt="Person male" />
+                  </div>
+                  <div className="person-detail">
+                    <div className="gender">Female</div>
+                    <div className="age">21 years,</div>
+                    <div className="origin">European/Caucasian- American</div>
+                  </div>
                 </header>
-                <h3>Ratings</h3>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>Attractiveness</td>
-                      <td>8</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div className="ratings ratings-right">
+                  <h3>Ratings</h3>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Attractiveness</td>
+                        <td>8</td>
+                      </tr>
+                      <tr>
+                        <td>Sincerity</td>
+                        <td>8</td>
+                      </tr>
+                      <tr>
+                        <td>Shared interest</td>
+                        <td>9</td>
+                      </tr>
+                      <tr>
+                        <td>Intelligence</td>
+                        <td>6</td>
+                      </tr>
+                      <tr>
+                        <td>Ambitions</td>
+                        <td>10</td>
+                      </tr>
+                      <tr>
+                        <td>Fun</td>
+                        <td>10</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
             <div className="response">
-              <h3>What you think?</h3>
-              <div className="slide">Slide here</div>
-              <button>Submit</button>
+              <h3>
+                Please make a prediction about whether the couple shown in the
+                chart would want a second date.
+              </h3>
+
+              <Slider value={prediction} onSlideChange={this.handleChange} />
+
+              <button type="button" onClick={() => console.log("click")}>
+                Submit Prediction
+              </button>
             </div>
           </div>
         </section>
