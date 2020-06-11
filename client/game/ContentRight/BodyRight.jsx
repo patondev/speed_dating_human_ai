@@ -3,11 +3,11 @@ import React from "react";
 import SlidersPrediction from "./SlidersPrediction";
 import BodyDescription from "./BodyDescription";
 import RelativeBars from "./RelativeBars";
-import HurtImprovedBars from "./HurtImprovedBars";
+import HurtImprovedBars from "./GraphBars";
 
 export default class BodyRight extends React.Component {
   render() {
-    const isRelative = true;
+    const isRelative = false;
     return (
       <section className="content-right">
         <SlidersPrediction {...this.props} />

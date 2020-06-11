@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class BodyRight extends React.Component {
+export default class RelativeBars extends React.Component {
   renderBar = (maxValue, { name, value, isWoman }) => {
     return (
       <div key={name} className="relative-bar-container">
