@@ -1,5 +1,7 @@
 import React from "react";
 
+import ContentRight from "./ContentRight";
+
 export default class Round extends React.Component {
   render() {
     const { round, stage, player, game } = this.props;
@@ -78,12 +80,7 @@ export default class Round extends React.Component {
           </div>
         </section>
 
-        {!single && (
-          <>
-            <header className="header-right">Right</header>
-            <section className="content-right">Right content</section>{" "}
-          </>
-        )}
+        {!single && <ContentRight {...this.props} />}
       </main>
       // <div className="round">
       //   <div className="content">

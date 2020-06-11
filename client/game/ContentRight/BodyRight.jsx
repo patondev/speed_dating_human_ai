@@ -1,0 +1,19 @@
+import React from "react";
+
+import SlidersPrediction from "./SlidersPrediction";
+import BodyDescription from "./BodyDescription";
+import RelativeBars from "./RelativeBars";
+import HurtImprovedBars from "./HurtImprovedBars";
+
+export default class BodyRight extends React.Component {
+  render() {
+    const isRelative = true;
+    return (
+      <section className="content-right">
+        <SlidersPrediction {...this.props} />
+        <BodyDescription isRelative={isRelative} />
+        {isRelative ? <RelativeBars {...this.props} /> : <HurtImprovedBars {...this.props} />}
+      </section>
+    );
+  }
+}
