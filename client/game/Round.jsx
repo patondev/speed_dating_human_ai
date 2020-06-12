@@ -8,11 +8,15 @@ export default class Round extends React.Component {
     newPrediction: null,
     aiPrediction: null,
     userPrediction: null,
+    interestValue: 0.08,
   };
   handleChange = (value) => {
     this.setState({
       prediction: value,
     });
+  };
+  interestPosition = () => {
+    return (1 / 2 - this.state.interestValue / 2) * 100;
   };
   render() {
     const { round, stage, player, game } = this.props;
@@ -22,6 +26,7 @@ export default class Round extends React.Component {
       newPrediction,
       aiPrediction,
       userPrediction,
+      interestValue,
     } = this.state;
 
     const single = false;
@@ -95,7 +100,12 @@ export default class Round extends React.Component {
                       <div className="interest-measurement">-1</div>
                     </div>
                     <div className="interest-gradient"></div>
-                    <div className="interest-marker">0,08</div>
+                    <div
+                      className="interest-marker"
+                      style={{ top: `calc(${this.interestPosition()}% - 9px)` }}
+                    >
+                      {interestValue.toFixed(2)}
+                    </div>
                   </div>
                 </div>
               </div>
