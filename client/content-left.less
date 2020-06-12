@@ -210,7 +210,7 @@
     justify-content: center;
     flex-wrap: wrap;
     color: #7d8893;
-    margin-bottom: 40px;
+    margin-bottom: 75px;
 
     .slider-component {
       flex: 0 0 500px;
@@ -310,7 +310,7 @@
         height: 27px;
         box-shadow: unset;
         top: -5px;
-        z-index: 1;
+        z-index: 10;
 
         & > .bp3-slider-label {
           width: auto;
@@ -330,3 +330,89 @@
   }
 }
 /** End of response person style */
+
+.prediction {
+  position: absolute;
+  height: 107px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #2e5882;
+  top: 2px;
+  z-index: 5;
+
+  .prediction-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: visible;
+    width: 1px;
+
+    .prediction-point {
+      flex: 0 0 11px;
+      min-width: 11px;
+      height: 11px;
+      border-radius: 100%;
+      background-color: #a9dbff;
+    }
+    .prediction-line {
+      width: 1px;
+      height: 82px;
+      background-color: #a9dbff;
+    }
+    .prediction-box {
+      border-radius: 50%;
+      text-align: center;
+      padding: 4px 6px;
+      background-color: #a9dbff;
+      border-radius: 5px;
+      white-space: nowrap;
+    }
+  }
+  &.user {
+    /* Auto Layout */
+    z-index: 6;
+    color: #505962;
+
+    .prediction-line {
+      height: 53px;
+      background-color: #a7b0ba;
+    }
+    .prediction-point {
+      background-color: #a7b0ba;
+    }
+    .prediction-box {
+      background-color: #eff0f3;
+    }
+  }
+
+  &.new-prediction {
+    color: #505962;
+    top: -54px;
+    .prediction-line {
+      height: 36px;
+      background-color: #a7b0ba;
+    }
+    .prediction-box {
+      background: linear-gradient(180deg, #f6f8fb 0%, #e0e2e4 100%);
+      border: 1px solid #d3dae0;
+    }
+  }
+}
+
+.box-green {
+  background: #e0fce6;
+  border: 1px solid #00b125;
+  border-radius: 4px;
+  font-size: 17px;
+  line-height: 20px;
+  text-align: center;
+  color: #00b125;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  .box-content {
+    padding: 20px;
+  }
+}

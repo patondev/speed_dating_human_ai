@@ -140,7 +140,13 @@ export default class Round extends React.Component {
                 chart would want a second date.
               </h3>
 
-              <Slider value={prediction} onSlideChange={this.handleChange} />
+              <Slider
+                value={prediction}
+                onSlideChange={this.handleChange}
+                newPrediction={0.5}
+                aiPrediction={0.25}
+                userPrediction={0.58}
+              />
 
               <button type="button" onClick={() => console.log("click")}>
                 Submit Prediction

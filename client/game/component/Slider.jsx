@@ -5,7 +5,13 @@
 import React from "react";
 import Slider from "meteor/empirica:slider";
 
-export default ({ value, onSlideChange }) => {
+export default ({
+  value,
+  onSlideChange,
+  newPrediction,
+  aiPrediction,
+  userPrediction,
+}) => {
   handleChange = (num) => {
     onSlideChange(num);
   };
@@ -44,6 +50,42 @@ export default ({ value, onSlideChange }) => {
             return number.toFixed(2).toString();
           }}
         />
+        {aiPrediction && (
+          <div
+            className="prediction ai"
+            style={{ left: `calc(${aiPrediction * 100}% - 6.5px)` }}
+          >
+            <div className="prediction-content">
+              <div className="prediction-point" />
+              <div className="prediction-line" />
+              <div className="prediction-box">AI Prediction – 25%</div>
+            </div>
+          </div>
+        )}
+        {userPrediction && (
+          <div
+            className="prediction user"
+            style={{ left: `calc(${userPrediction * 100}% - 6.5px)` }}
+          >
+            <div className="prediction-content">
+              <div className="prediction-point" />
+              <div className="prediction-line" />
+              <div className="prediction-box">Your final prediction – 58%</div>
+            </div>
+          </div>
+        )}
+        {newPrediction && (
+          <div
+            className="prediction new-prediction"
+            style={{ left: `calc(${newPrediction * 100}% - 6.5px)` }}
+          >
+            <div className="prediction-content">
+              <div className="prediction-box">Your New Prediction</div>
+
+              <div className="prediction-line" />
+            </div>
+          </div>
+        )}
       </div>
       <div className="slider-component slider-component-text">
         <div className="slider-text-row">
