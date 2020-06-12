@@ -11,10 +11,15 @@ export default ({
   newPrediction,
   aiPrediction,
   userPrediction,
+  disabled,
 }) => {
   handleChange = (num) => {
     onSlideChange(num);
   };
+
+  const aiPercentage = `${aiPrediction * 100}%`;
+  const userPercentage = `${userPrediction * 100}%`;
+  const newPredictPercentage = `${newPrediction * 100}%`;
 
   return (
     <div className="slider">
@@ -39,12 +44,13 @@ export default ({
       </div>
       <div className="slider-component">
         <Slider
-          className="task-response-slider"
+          className={`task-response-slider${disabled ? " no-handle" : ""}`}
           min={0}
           max={1}
           stepSize={0.01}
           labelStepSize={0.25}
           onChange={handleChange}
+          disabled={disabled}
           value={value}
           labelRenderer={(number) => {
             return number.toFixed(2).toString();
@@ -53,31 +59,35 @@ export default ({
         {aiPrediction && (
           <div
             className="prediction ai"
-            style={{ left: `calc(${aiPrediction * 100}% - 6.5px)` }}
+            style={{ left: `calc(${aiPercentage} - 6.5px)` }}
           >
             <div className="prediction-content">
               <div className="prediction-point" />
               <div className="prediction-line" />
-              <div className="prediction-box">AI Prediction – 25%</div>
+              <div className="prediction-box">
+                AI Prediction – {aiPercentage}
+              </div>
             </div>
           </div>
         )}
         {userPrediction && (
           <div
             className="prediction user"
-            style={{ left: `calc(${userPrediction * 100}% - 6.5px)` }}
+            style={{ left: `calc(${userPercentage} - 6.5px)` }}
           >
             <div className="prediction-content">
               <div className="prediction-point" />
               <div className="prediction-line" />
-              <div className="prediction-box">Your final prediction – 58%</div>
+              <div className="prediction-box">
+                Your final prediction – {userPercentage}
+              </div>
             </div>
           </div>
         )}
         {newPrediction && (
           <div
             className="prediction new-prediction"
-            style={{ left: `calc(${newPrediction * 100}% - 6.5px)` }}
+            style={{ left: `calc(${newPredictPercentage} - 6.5px)` }}
           >
             <div className="prediction-content">
               <div className="prediction-box">Your New Prediction</div>
