@@ -4,6 +4,10 @@ import Slider from "./component/Slider";
 export default class Round extends React.Component {
   state = {
     prediction: 0,
+    showResult: false,
+    newPrediction: null,
+    aiPrediction: null,
+    userPrediction: null,
   };
   handleChange = (value) => {
     this.setState({
@@ -12,7 +16,13 @@ export default class Round extends React.Component {
   };
   render() {
     const { round, stage, player, game } = this.props;
-    const { prediction } = this.state;
+    const {
+      prediction,
+      showResult,
+      newPrediction,
+      aiPrediction,
+      userPrediction,
+    } = this.state;
 
     const single = false;
 
@@ -143,10 +153,35 @@ export default class Round extends React.Component {
               <Slider
                 value={prediction}
                 onSlideChange={this.handleChange}
-                newPrediction={0.5}
-                aiPrediction={0.25}
-                userPrediction={0.58}
+                newPrediction={newPrediction}
+                aiPrediction={aiPrediction}
+                userPrediction={userPrediction}
+                disabled={showResult}
               />
+
+              {showResult && (
+                <div className="result">
+                  <div className="box-green">
+                    <div className="box-content">
+                      <strong>Outcome</strong> The couple goes on a Second Date
+                    </div>
+                  </div>
+                  <div className="result-score">
+                    <div className="result-item">
+                      <div className="result-entry label">Error</div>
+                      <div className="result-entry value">25%</div>
+                    </div>
+                    <div className="result-item">
+                      <div className="result-entry label">Penalty</div>
+                      <div className="result-entry value">-18</div>
+                    </div>
+                    <div className="result-item last-item">
+                      <div className="result-entry label">Score</div>
+                      <div className="result-entry value">82</div>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               <button type="button" onClick={() => console.log("click")}>
                 Submit Prediction
