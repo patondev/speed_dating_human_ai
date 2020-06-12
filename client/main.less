@@ -126,25 +126,37 @@ main {
     width: 600px;
     position: relative;
     max-width: 800px;
-    height: 400px;
-    background: #ddd;
     display: flex;
 
     .bar-text-content {
-      width: 12%;
+      width: 30%;
       height: 100%;
-      background-color: yellow;
+
+      .text {
+        height: 20px;
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 25px;
+        margin-bottom: 10px;
+        align-items: center;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 16px;
+        color: #677380;
+      }
     }
 
     .bar-lines-container {
-      width: 88%;
+      width: 70%;
       height: 100%;
-      background-color: red;
 
       .bar {
-        height: 16.666667%;
-        background-color: blue;
-        z-index: 25;
+        position: relative;
+        width: 20%;
+        height: 20px;
+        margin-bottom: 10px;
+        background-color: #007013;
+        z-index: 99;
         border-bottom: 1px solid #222;
         border-right: 1px solid #222;
       }
@@ -152,9 +164,39 @@ main {
       .line {
         position: absolute;
         top: 0;
-        bottom: 0;
+        z-index: 9;
+        bottom: 10px;
         width: 2px;
-        background: rgba(0, 0, 0, 0.1);
+        background: #eff0f3;
+      }
+
+      .line-label {
+        position: absolute;
+        z-index: 9;
+
+        font-size: 12px;
+        line-height: 14px;
+        color: #7d8893;
+      }
+
+      .top-label {
+        position: absolute;
+        z-index: 9;
+        top: -30px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+        color: #007013;
+      }
+
+      .bottom-label {
+        position: absolute;
+        z-index: 9;
+        bottom: -40px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+        color: #b91913;
       }
     }
   }

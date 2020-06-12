@@ -7,7 +7,7 @@ import HurtImprovedBars from "./GraphBars";
 
 export default class BodyRight extends React.Component {
   render() {
-    const isRelative = false;
+    const isRelative = true;
     return (
       <section className="content-right">
         <SlidersPrediction {...this.props} />
