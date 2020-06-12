@@ -5,10 +5,17 @@ export default class Round extends React.Component {
   state = {
     prediction: 0,
     showResult: false,
-    newPrediction: null,
+    showNewPrediction: false,
     aiPrediction: null,
     userPrediction: null,
     interestValue: 0.08,
+    secondDate: true,
+    results: {
+      error: "25%",
+      penalty: -18,
+      score: 82,
+    },
+    single: true,
   };
   handleChange = (value) => {
     this.setState({
@@ -23,23 +30,24 @@ export default class Round extends React.Component {
     const {
       prediction,
       showResult,
-      newPrediction,
+      showNewPrediction,
       aiPrediction,
       userPrediction,
       interestValue,
+      secondDate,
+      results,
+      single,
     } = this.state;
-
-    const single = false;
 
     return (
       <main className={`main-container ${single ? "single-column" : ""}`}>
         <header className="header-left">
-          <div>
+          <div className="value-label">
             <span>CASE</span> 01/10
           </div>
           <div className="timer">00:15</div>
-          <div>
-            <span>SCORE</span> 50
+          <div className="value-label">
+            <span>SCORE</span> {results.score}
           </div>
         </header>
 
@@ -155,15 +163,17 @@ export default class Round extends React.Component {
               </div>
             </div>
             <div className="response">
-              <h3>
-                Please make a prediction about whether the couple shown in the
-                chart would want a second date.
-              </h3>
+              {!showResult && (
+                <h3>
+                  Please make a prediction about whether the couple shown in the
+                  chart would want a second date.
+                </h3>
+              )}
 
               <Slider
                 value={prediction}
                 onSlideChange={this.handleChange}
-                newPrediction={newPrediction}
+                newPrediction={showNewPrediction}
                 aiPrediction={aiPrediction}
                 userPrediction={userPrediction}
                 disabled={showResult}
@@ -171,23 +181,35 @@ export default class Round extends React.Component {
 
               {showResult && (
                 <div className="result">
-                  <div className="box-green">
-                    <div className="box-content">
-                      <strong>Outcome</strong> The couple goes on a Second Date
+                  {secondDate ? (
+                    <div className="alert">
+                      <div className="alert-content">
+                        <strong>Outcome</strong> The couple goes on a Second
+                        Date
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div className="alert alert-error">
+                      <div className="alert-content">
+                        <strong>Outcome</strong> The couple didn’t get a Second
+                        Date
+                      </div>
+                    </div>
+                  )}
                   <div className="result-score">
                     <div className="result-item">
                       <div className="result-entry label">Error</div>
-                      <div className="result-entry value">25%</div>
+                      <div className="result-entry value">{results.error}</div>
                     </div>
                     <div className="result-item">
                       <div className="result-entry label">Penalty</div>
-                      <div className="result-entry value">-18</div>
+                      <div className="result-entry value">
+                        {results.penalty}
+                      </div>
                     </div>
                     <div className="result-item last-item">
                       <div className="result-entry label">Score</div>
-                      <div className="result-entry value">82</div>
+                      <div className="result-entry value">{results.score}</div>
                     </div>
                   </div>
                 </div>

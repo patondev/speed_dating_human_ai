@@ -17,9 +17,9 @@ export default ({
     onSlideChange(num);
   };
 
-  const aiPercentage = `${aiPrediction * 100}%`;
-  const userPercentage = `${userPrediction * 100}%`;
-  const newPredictPercentage = `${newPrediction * 100}%`;
+  const aiPercentage = aiPrediction * 100;
+  const userPercentage = userPrediction * 100;
+  const newPredictPercentage = value * 100;
 
   return (
     <div className="slider">
@@ -59,13 +59,13 @@ export default ({
         {aiPrediction && (
           <div
             className="prediction ai"
-            style={{ left: `calc(${aiPercentage} - 6.5px)` }}
+            style={{ left: `calc(${aiPercentage}% - 6.5px)` }}
           >
             <div className="prediction-content">
               <div className="prediction-point" />
               <div className="prediction-line" />
               <div className="prediction-box">
-                AI Prediction – {aiPercentage}
+                AI Prediction – {Math.round(aiPercentage)}%
               </div>
             </div>
           </div>
@@ -73,13 +73,13 @@ export default ({
         {userPrediction && (
           <div
             className="prediction user"
-            style={{ left: `calc(${userPercentage} - 6.5px)` }}
+            style={{ left: `calc(${userPercentage}% - 6.5px)` }}
           >
             <div className="prediction-content">
               <div className="prediction-point" />
               <div className="prediction-line" />
               <div className="prediction-box">
-                Your final prediction – {userPercentage}
+                Your final prediction – {Math.round(userPercentage)}%
               </div>
             </div>
           </div>
@@ -87,7 +87,7 @@ export default ({
         {newPrediction && (
           <div
             className="prediction new-prediction"
-            style={{ left: `calc(${newPredictPercentage} - 6.5px)` }}
+            style={{ left: `calc(${newPredictPercentage}% - 6.5px)` }}
           >
             <div className="prediction-content">
               <div className="prediction-box">Your New Prediction</div>
