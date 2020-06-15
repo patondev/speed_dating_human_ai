@@ -6,7 +6,7 @@ main {
   width: 100vw;
   height: calc(~"100vh - 50px");
   display: grid;
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 44px 1fr;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "header-left header-right"
@@ -27,10 +27,16 @@ main {
   align-items: center;
   padding: 0 20px;
   font-weight: bold;
+  color: #000000;
+
+  .value-label span {
+    color: #a7b0ba;
+  }
 
   .timer {
     font-size: 2rem;
     font-weight: 600;
+    color: #505962;
   }
 
   & > div > span {
@@ -58,6 +64,8 @@ main {
   align-items: center;
   flex-direction: column;
 
+  color: #505962;
+
   .couples-card {
     width: 650px;
     background: #ffffff;
@@ -67,21 +75,12 @@ main {
 
     .couples {
       display: grid;
-      grid-template-columns: 1fr 80px 1fr;
-      padding: 30px;
+      grid-template-columns: 1fr 106px 1fr;
+      padding: 30px 20px;
+      height: 404px;
 
       .interests {
         align-self: flex-end;
-      }
-    }
-
-    .response {
-      background-color: #fafafc;
-      padding: 30px 36px;
-      border-radius: 0 0 1rem 1rem;
-
-      h3 {
-        margin: 0;
       }
     }
   }
