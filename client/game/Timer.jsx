@@ -10,9 +10,6 @@ class timer extends React.Component {
     const timer = remainingSeconds;
     let minutes = parseInt(timer / 60, 10);
     let seconds = parseInt(timer % 60, 10);
-
-    minutes = minutes < 10 ? minutes : minutes;
-    seconds = seconds < 10 ? seconds : seconds;
     return (
       minutes.toString().padStart(2, "0") +
       ":" +
