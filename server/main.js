@@ -56,10 +56,8 @@ Empirica.gameInit((game, treatment, players) => {
   const playerCount = game.treatment.playerCount || 1;
   const interpretationType = game.treatment.interpretationType || "None";
   const feedback = game.treatment.giveFeedback || false;
-  // const stageDuration = game.treatment.stageLength || 120;
-  // const socialStageDuration = game.treatment.socialStageLength || 120;
-  const stageDuration = 3500;
-  const socialStageDuration = 3500;
+  const stageDuration = game.treatment.stageLength || 120;
+  const socialStageDuration = game.treatment.socialStageLength || 120;
 
   for (let i = -1; i < roundCount; i++) {
     if (i === -1) {

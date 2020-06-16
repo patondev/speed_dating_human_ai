@@ -8,14 +8,16 @@ class timer extends React.Component {
   startTimer = () => {
     const { remainingSeconds } = this.props;
     const timer = remainingSeconds;
-    let minutes;
-    let seconds;
-    minutes = parseInt(timer / 60, 10);
-    seconds = parseInt(timer % 60, 10);
+    let minutes = parseInt(timer / 60, 10);
+    let seconds = parseInt(timer % 60, 10);
 
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
-    return minutes + ":" + seconds;
+    return (
+      minutes.toString().padStart(2, "0") +
+      ":" +
+      seconds.toString().padStart(2, "0")
+    );
   };
 
   render() {

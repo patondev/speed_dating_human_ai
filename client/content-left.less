@@ -262,6 +262,13 @@
       .slider-percentage-label {
         color: #000000;
         padding: 0 0 5px;
+        &:nth-child(2) {
+          & > span {
+            &:after {
+              right: -3px;
+            }
+          }
+        }
       }
     }
     .slider-text-row {
@@ -273,14 +280,6 @@
       .slider-text-label {
         color: #7d8893;
         width: 77px;
-
-        &:nth-child(2) {
-          & > span {
-            &:after {
-              right: 4px;
-            }
-          }
-        }
         &:nth-child(4) {
           & > span {
             &:after {
