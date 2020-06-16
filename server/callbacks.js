@@ -33,6 +33,7 @@ Empirica.onStageStart((game, round, stage) => {
 
   game.players.forEach(player => {
     player.stage.set("prediction", player.round.get("prediction"));
+    player.stage.set("firstPrediction", player.round.get("firstPrediction"));
   });
 
   if (stage.name === "outcome" || stage.name === "practice-outcome") {
