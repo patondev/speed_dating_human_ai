@@ -40,6 +40,7 @@
       .gender {
         font-weight: bold;
         margin-bottom: 10px;
+        text-transform: capitalize;
       }
     }
     &.person-right {
@@ -184,7 +185,7 @@
     margin: 0 0 40px;
   }
 
-  button {
+  .btn-prediction-big {
     padding: 10px 30px;
     width: 580px;
     height: 40px;
@@ -203,6 +204,11 @@
 
     &:hover {
       opacity: 0.85;
+    }
+
+    &[disabled],
+    :disabled {
+      opacity: 0.5;
     }
   }
 
@@ -256,6 +262,13 @@
       .slider-percentage-label {
         color: #000000;
         padding: 0 0 5px;
+        &:nth-child(2) {
+          & > span {
+            &:after {
+              right: -3px;
+            }
+          }
+        }
       }
     }
     .slider-text-row {
@@ -267,7 +280,6 @@
       .slider-text-label {
         color: #7d8893;
         width: 77px;
-
         &:nth-child(4) {
           & > span {
             &:after {
