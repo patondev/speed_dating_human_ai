@@ -2,8 +2,9 @@ import React from "react";
 
 import { Centered } from "meteor/empirica:core";
 
+import Radio from "./Radio";
 export default class QuizTwoLocalInterpretability extends React.Component {
-  state = { sum: "", horse: "" };
+  state = { answer: "", answer_2: "", answer_3: "" };
 
   handleChange = (event) => {
     const el = event.currentTarget;
@@ -12,56 +13,118 @@ export default class QuizTwoLocalInterpretability extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const { answer, answer_2, answer_3 } = this.state;
+    const { player } = this.props;
 
-    if (this.state.sum !== "10" || this.state.horse !== "white") {
-      alert("Incorrect! Read the instructions, and please try again.");
+    if (answer !== "d" && answer_2 !== "true" && answer_3 != "a") {
+      player.exit("failedQuestion");
     } else {
       this.props.onNext();
     }
   };
 
   render() {
-    const { hasPrev, hasNext, onNext, onPrev } = this.props;
-    const { sum, horse } = this.state;
+    const { hasPrev, onPrev } = this.props;
+    const { answer, answer_2, answer_3 } = this.state;
     return (
       <Centered>
         <div className="quiz">
           <h1> Quiz </h1>
+          <p>
+            Having read the instructions, please answer the following question
+            before starting the experiment.
+          </p>
           <form onSubmit={this.handleSubmit}>
-            <p>
-              <label htmlFor="sum">
-                How many different dates will you have to predict in this HIT?
-              </label>
-              <input
-                type="text"
-                dir="auto"
-                id="sum"
-                name="sum"
-                placeholder="e.g. 3"
-                value={sum}
-                onChange={this.handleChange}
-                autoComplete="off"
-                required
-              />
-            </p>
-            <p>
-              <label htmlFor="horse">
-                What color was Napoleon's white horse?
-              </label>
-              <input
-                type="text"
-                dir="auto"
-                id="horse"
-                name="horse"
-                placeholder="e.g. brown"
-                value={horse}
-                onChange={this.handleChange}
-                autoComplete="off"
-                required
-              />
-            </p>
-
-            <p>
+            <div>
+              <ol className="question">
+                <li>
+                  <p>In step 2, you will:</p>
+                  <p>
+                    <Radio
+                      selected={answer}
+                      name="answer"
+                      value="a"
+                      label="a. Receive predictions made by an AI system"
+                      onChange={this.handleChange}
+                    />
+                  </p>
+                  <p>
+                    <Radio
+                      selected={answer}
+                      name="answer"
+                      value="b"
+                      label="b. Receive predictions made by other people"
+                      onChange={this.handleChange}
+                    />
+                  </p>
+                  <p>
+                    <Radio
+                      selected={answer}
+                      name="answer"
+                      value="c"
+                      label="c. Have a chance to revise your initial predictions from step 1"
+                      onChange={this.handleChange}
+                    />
+                  </p>
+                  <p>
+                    <Radio
+                      selected={answer}
+                      name="answer"
+                      value="d"
+                      label="d. Both a and c"
+                      onChange={this.handleChange}
+                    />
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    True or False: The AI system’s predictions will be
+                    accompanied by information about how the AI system makes its
+                    predictions.
+                  </p>
+                  <p>
+                    <Radio
+                      selected={answer_2}
+                      name="answer_2"
+                      value="false"
+                      label="False"
+                      onChange={this.handleChange}
+                    />
+                  </p>
+                  <p>
+                    <Radio
+                      selected={answer_2}
+                      name="answer_2"
+                      value="true"
+                      label="True"
+                      onChange={this.handleChange}
+                    />
+                  </p>
+                </li>
+                <li>
+                  <p>Which of the following two statements is true:</p>
+                  <p>
+                    <Radio
+                      selected={answer_3}
+                      name="answer_3"
+                      value="a"
+                      label="a. After you revise your prediction, you will receive information about whether that couple actually had a second date."
+                      onChange={this.handleChange}
+                    />
+                  </p>
+                  <p>
+                    <Radio
+                      selected={answer_3}
+                      name="answer_3"
+                      value="b"
+                      label="b. Even after you revise your prediction, you will not receive information about whether the couple actually went on a second date."
+                      onChange={this.handleChange}
+                    />
+                  </p>
+                </li>
+              </ol>
+            </div>
+            <p className="action-step">
               <button type="button" onClick={onPrev} disabled={!hasPrev}>
                 Back to instructions
               </button>

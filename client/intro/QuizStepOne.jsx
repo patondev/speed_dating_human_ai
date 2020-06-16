@@ -2,23 +2,9 @@ import React from "react";
 
 import { Centered } from "meteor/empirica:core";
 
-// import { Button, ButtonGroup, HTMLSelect, InputGroup } from "@blueprintjs/core";
-
-const Radio = ({ selected, name, value, label, onChange }) => (
-  <label className="radio-label">
-    <input
-      type="radio"
-      name={name}
-      value={value}
-      checked={selected === value}
-      onChange={onChange}
-    />{" "}
-    {label}
-  </label>
-);
-
+import Radio from "./Radio";
 export default class QuizStepOne extends React.Component {
-  state = { step_one_question: "" };
+  state = { answer: "" };
 
   handleChange = (event) => {
     const el = event.currentTarget;
@@ -27,10 +13,10 @@ export default class QuizStepOne extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { step_one_question } = this.state;
+    const { answer } = this.state;
     const { player } = this.props;
 
-    if (step_one_question !== "b") {
+    if (answer !== "b") {
       player.exit("failedQuestion");
     } else {
       this.props.onNext();
@@ -39,7 +25,7 @@ export default class QuizStepOne extends React.Component {
 
   render() {
     const { hasPrev, hasNext, onNext, onPrev } = this.props;
-    const { step_one_question } = this.state;
+    const { answer } = this.state;
     return (
       <Centered>
         <div className="quiz">
@@ -58,8 +44,8 @@ export default class QuizStepOne extends React.Component {
                   </p>
                   <p>
                     <Radio
-                      selected={step_one_question}
-                      name="step_one_question"
+                      selected={answer}
+                      name="answer"
                       value="a"
                       label="a. When the couple met"
                       onChange={this.handleChange}
@@ -67,8 +53,8 @@ export default class QuizStepOne extends React.Component {
                   </p>
                   <p>
                     <Radio
-                      selected={step_one_question}
-                      name="step_one_question"
+                      selected={answer}
+                      name="answer"
                       value="b"
                       label="b. How likely the couple is to want a second date"
                       onChange={this.handleChange}
@@ -76,8 +62,8 @@ export default class QuizStepOne extends React.Component {
                   </p>
                   <p>
                     <Radio
-                      selected={step_one_question}
-                      name="step_one_question"
+                      selected={answer}
+                      name="answer"
                       value="c"
                       label="c. How long the couple has been dating"
                       onChange={this.handleChange}
@@ -85,8 +71,8 @@ export default class QuizStepOne extends React.Component {
                   </p>
                   <p>
                     <Radio
-                      selected={step_one_question}
-                      name="step_one_question"
+                      selected={answer}
+                      name="answer"
                       value="d"
                       label="d. None of the above"
                       onChange={this.handleChange}

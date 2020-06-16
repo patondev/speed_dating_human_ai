@@ -2,14 +2,16 @@ import React from "react";
 
 import { Centered } from "meteor/empirica:core";
 
-import TaskStimulus from "../game/TaskStimulus"; //TODO: we should make this work!
-
 export default class StepTwoGlobalInterpretability extends React.Component {
   render() {
     const {
       hasPrev,
       onPrev,
-      game: { treatment },
+      onNext,
+      hasNext,
+      game: {
+        treatment: { giveFeedback },
+      },
     } = this.props;
     return (
       <Centered>
@@ -52,15 +54,50 @@ export default class StepTwoGlobalInterpretability extends React.Component {
             any one couple.
           </p>
 
-          <div className="intro-flex mb-25">
+          <div className="intro-flex mb-25 jc-center">
             <div className="intro-column-90">
               <img
-                src="/step-2-local-ai-prediction.svg"
-                alt="AI Prediction step 2 local interpretability"
+                src="/step-2-global-ai-prediction.svg"
+                alt="AI Prediction step 2 global interpretability"
                 className="img-centered"
               />
             </div>
           </div>
+
+          {giveFeedback && (
+            <>
+              <p>
+                After you make your prediction, you will be provided with the
+                actual outcome of the date (whether the couple did or did not go
+                on a second date). Specifically, you will be shown a slider
+                scale like the one you made your predictions on, which will
+                provide you with your prediction, the prediction of the AI
+                system and the actual outcome. An example of this is shown
+                below.
+              </p>
+
+              <div className="intro-flex mb-25 jc-center">
+                <div className="intro-column-90">
+                  <img
+                    src="/step-2-feedback-green.svg"
+                    alt="AI Prediction step 2 global interpretability feedback"
+                    className="img-centered"
+                  />
+                </div>
+              </div>
+
+              <p>
+                If the outcome is that they had a second date, predictions
+                closer to 100% are more accurate, while if the outcome is that
+                they did not have a second date, predictions closer to 0% are
+                more correct. Based on how far your final prediction was from
+                the actual outcome, your error, penalty, and score are
+                calculated, as shown above. The closer your final prediction was
+                to the actual outcome, the higher your score will be, and the
+                more money you will earn.
+              </p>
+            </>
+          )}
 
           <p className="action-step">
             <button type="button" onClick={onPrev} disabled={!hasPrev}>

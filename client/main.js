@@ -26,29 +26,23 @@ Empirica.breadcrumb(null);
 // different instruction steps depending on the assigned treatment.
 Empirica.introSteps((game) => {
   const { treatment } = game;
+  const { interpretationType } = treatment;
   const steps = [InstructionStepOne, QuizStepOne];
 
   console.log(treatment);
 
-  if (treatment.interpretationType.toLowerCase() === "global") {
+  if (interpretationType.toLowerCase() === "global") {
     steps.push(StepTwoGlobalInterpretability);
     steps.push(QuizStepTwoGlobalInterpretability);
   }
-  if (treatment.interpretationType.toLowerCase() === "local") {
+  if (interpretationType.toLowerCase() === "local") {
     steps.push(StepTwoLocalInterpretability);
     steps.push(QuizTwoLocalInterpretability);
   }
-  if (treatment.interpretationType.toLowerCase() === "none") {
+  if (interpretationType.toLowerCase() === "none") {
     steps.push(StepTwoNoInterpretability);
     steps.push(QuizTwoNoInterpretability);
   }
-  // if (game.treatment.playerCount > 1) {
-  //   steps.push(InstructionStepThree);
-  // }
-  // if (game.treatment.giveFeedback) {
-  //   steps.push(InstructionStepFour);
-  // }
-  // steps.push(Quiz);
   return steps;
 });
 
