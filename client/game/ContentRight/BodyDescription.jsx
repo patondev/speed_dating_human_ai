@@ -2,8 +2,8 @@ import React from "react";
 
 export default class BodyDescription extends React.Component {
   render() {
-    const { isRelative } = this.props;
-    const description = !isRelative ? (
+    const { isGlobal } = this.props;
+    const description = !isGlobal ? (
       <p>
         It determined that some factors improved this couple’s chances of wanting a second date,
         while others hurt their chances. The factors and how much they helped/hurt are{" "}

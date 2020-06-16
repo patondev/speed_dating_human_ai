@@ -1,18 +1,19 @@
 import React from "react";
 
-import SlidersPrediction from "../component/Slider";
-import BodyDescription from "./BodyDescription";
-import RelativeBars from "./RelativeBars";
-import HurtImprovedBars from "./GraphBars";
+import SocialExposure from "../SocialExposure.jsx";
+import TaskFeedback from "../TaskFeedback.jsx";
 
 export default class BodyRight extends React.Component {
   render() {
-    const isRelative = false;
+    const { stage, player, game, round } = this.props;
     return (
       <section className="content-right">
-        <SlidersPrediction {...this.props} />
+        {stage.get("type") === "social" || stage.get("type") === "feedback" ? (
+          <SocialExposure stage={stage} player={player} game={game} round={round} />
+        ) : null}
+        {/* <SlidersPrediction {...this.props} />
         <BodyDescription isRelative={isRelative} />
-        {isRelative ? <RelativeBars {...this.props} /> : <HurtImprovedBars {...this.props} />}
+        {isRelative ? <RelativeBars {...this.props} /> : <HurtImprovedBars {...this.props} />} */}
       </section>
     );
   }
