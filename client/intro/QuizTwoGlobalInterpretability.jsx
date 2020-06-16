@@ -13,10 +13,10 @@ export default class QuizTwoGlobalInterpretability extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { answer, answer_2 } = this.state;
+    const { answer, answer_2, answer_3 } = this.state;
     const { player } = this.props;
 
-    if (answer !== "d" && answer_2 !== "true" && answer_3 != "a") {
+    if (answer !== "d" || answer_2 !== "true" || answer_3 != "a") {
       player.exit("failedQuestion");
     } else {
       this.props.onNext();

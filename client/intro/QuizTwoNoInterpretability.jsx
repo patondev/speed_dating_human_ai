@@ -16,7 +16,7 @@ export default class QuizTwoNoInterpretability extends React.Component {
     const { answer, answer_3 } = this.state;
     const { player } = this.props;
 
-    if (answer !== "d" && answer_3 !== "a") {
+    if (answer !== "d" || answer_3 !== "a") {
       player.exit("failedQuestion");
     } else {
       this.props.onNext();

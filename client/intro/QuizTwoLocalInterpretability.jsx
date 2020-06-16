@@ -16,7 +16,7 @@ export default class QuizTwoLocalInterpretability extends React.Component {
     const { answer, answer_2, answer_3 } = this.state;
     const { player } = this.props;
 
-    if (answer !== "d" && answer_2 !== "true" && answer_3 != "a") {
+    if (answer !== "d" || answer_2 !== "true" || answer_3 != "a") {
       player.exit("failedQuestion");
     } else {
       this.props.onNext();
