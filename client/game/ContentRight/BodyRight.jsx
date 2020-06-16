@@ -11,9 +11,6 @@ export default class BodyRight extends React.Component {
         {stage.get("type") === "social" || stage.get("type") === "feedback" ? (
           <SocialExposure stage={stage} player={player} game={game} round={round} />
         ) : null}
-        {/* <SlidersPrediction {...this.props} />
-        <BodyDescription isRelative={isRelative} />
-        {isRelative ? <RelativeBars {...this.props} /> : <HurtImprovedBars {...this.props} />} */}
       </section>
     );
   }

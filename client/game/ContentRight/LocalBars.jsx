@@ -76,13 +76,17 @@ export default class LocalBars extends React.Component {
   };
 
   render() {
-    const data = modelLocalJson[0].data;
+    const { round, stage } = this.props;
+    const stageType = stage.get("practice") ? "practice" : "exp";
+    let currentModel = modelLocalJson.filter((m) => m.type === stageType);
+    currentModel = stageType === "practice" ? currentModel[0] : currentModel[round.index - 1];
+
     return (
       <div className="graph-wrapper">
         <div className="graph">
-          {this.renderBarTextContent(data)}
+          {this.renderBarTextContent(currentModel.data)}
           <div className="bar-lines-container">
-            {this.renderBars(data)}
+            {this.renderBars(currentModel.data)}
             {this.renderLines({ numbefOfLines: 11, step: 5, maxValue: 25, minValue: -25 })}
           </div>
         </div>
