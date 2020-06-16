@@ -18,7 +18,7 @@ export default class PlayerProfile extends React.Component {
 
         <Timer stage={stage} />
         <div className="value-label">
-          <span>SCORE</span> {Math.round(player.get("cumulativeScore")) || 0}
+          <span>SCORE</span> {player.get("cumulativeScore").toFixed(2) || 0}
         </div>
       </>
     );

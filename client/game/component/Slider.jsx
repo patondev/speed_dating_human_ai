@@ -11,6 +11,7 @@ export default ({
   newPrediction,
   aiPrediction,
   userPrediction,
+  userFinalPrediction,
   disabled,
   isPrevious,
 }) => {
@@ -20,6 +21,7 @@ export default ({
 
   const aiPercentage = aiPrediction * 100;
   const userPercentage = userPrediction * 100;
+  const finalUserPercentage = userFinalPrediction * 100;
   const newPredictPercentage = value * 100;
 
   return (
@@ -72,7 +74,21 @@ export default ({
               <div className="prediction-point" />
               <div className="prediction-line" />
               <div className="prediction-box">
-                Your {isPrevious ? "previous" : "final"} prediction – {Math.round(userPercentage)}%
+                Your previous prediction – {Math.round(userPercentage)}%
+              </div>
+            </div>
+          </div>
+        )}
+        {userFinalPrediction && (
+          <div
+            className="prediction user"
+            style={{ left: `calc(${finalUserPercentage}% - 6.5px)` }}
+          >
+            <div className="prediction-content">
+              <div className="prediction-point" />
+              <div className="prediction-line" />
+              <div className="prediction-box">
+                Your final prediction – {Math.round(finalUserPercentage)}%
               </div>
             </div>
           </div>
