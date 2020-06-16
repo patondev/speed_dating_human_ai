@@ -53,7 +53,7 @@ export default class TaskResponse extends React.Component {
       player.stage.submit();
       return;
     }
-    if (!prediction) {
+    if (prediction === null || prediction === undefined) {
       WarningToaster.show({ message: "Please make a prediction first." });
     } else {
       player.round.set("prediction", prediction);
@@ -69,7 +69,10 @@ export default class TaskResponse extends React.Component {
 
   renderSlider() {
     const { player, round, stage } = this.props;
-    const prediction = player.stage.get("prediction");
+    let prediction = player.stage.get("prediction");
+    if (prediction === null || prediction === undefined) {
+      prediction = 0.5;
+    }
     const isSolo = stage.get("type") === "solo";
     const isSocial = stage.get("type") === "social";
     const isOutcome =
@@ -184,7 +187,7 @@ export default class TaskResponse extends React.Component {
         <TimedButton
           stage={stage}
           player={player}
-          activateAt={48}
+          activateAt={120}
           onClick={this.handleSubmit}
         />
       </div>
