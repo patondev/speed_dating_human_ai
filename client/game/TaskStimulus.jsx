@@ -98,7 +98,7 @@ export default class TaskStimulus extends React.Component {
 
         <Interest data={pairData} />
 
-        <PersonCard pairData={pairData} isPartner />
+        <PersonCard pairData={pairData} />
       </div>
     );
   }
