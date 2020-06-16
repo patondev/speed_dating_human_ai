@@ -33,9 +33,13 @@ const TimedButton = StageTimeWrapper((props) => {
 
 export default class TaskResponse extends React.Component {
   handleChange = (num) => {
-    const { player } = this.props;
+    const { player, stage } = this.props;
     const prediction = Math.round(num * 100) / 100;
+    const isSolo = stage.get("type") === "solo";
     player.stage.set("prediction", prediction);
+    if (isSolo) {
+      player.stage.set("firstPrediction", prediction);
+    }
   };
 
   handleSubmit = (event) => {
@@ -43,6 +47,7 @@ export default class TaskResponse extends React.Component {
 
     const { player, stage } = this.props;
     const prediction = player.stage.get("prediction");
+    const isSolo = stage.get("type") === "solo";
 
     if (stage.name === "outcome" || stage.name === "outcome") {
       player.stage.submit();
@@ -53,6 +58,10 @@ export default class TaskResponse extends React.Component {
     } else {
       player.round.set("prediction", prediction);
       player.stage.set("prediction", prediction);
+      if (isSolo) {
+        player.stage.set("firstPrediction", prediction);
+        player.round.set("firstPrediction", prediction);
+      }
       player.stage.submit();
       return;
     }
@@ -62,7 +71,7 @@ export default class TaskResponse extends React.Component {
     const { player, round, stage } = this.props;
     const prediction = player.stage.get("prediction");
     const isSolo = stage.get("type") === "solo";
-
+    const isSocial = stage.get("type") === "social";
     const isOutcome =
       stage.name === "outcome" || stage.name === "practice-outcome";
 
@@ -70,7 +79,11 @@ export default class TaskResponse extends React.Component {
     stage.name === "outcome" || stage.name === "practice-outcome";
     const aiPrediction =
       (!isSolo && round.get("model_prediction_prob")) || null;
-    const userPrediction = (isOutcome && prediction) || null;
+    const userPrediction =
+      (isSocial && player.stage.get("firstPrediction")) || null;
+    const userFinalPrediction = (isOutcome && prediction) || null;
+
+    console.log(userPrediction);
 
     return (
       <Slider
@@ -79,6 +92,7 @@ export default class TaskResponse extends React.Component {
         newPrediction={indicateNewPrediction}
         aiPrediction={aiPrediction}
         userPrediction={userPrediction}
+        userFinalPrediction={userFinalPrediction}
         disabled={isOutcome}
       />
     );
@@ -169,7 +183,7 @@ export default class TaskResponse extends React.Component {
         <TimedButton
           stage={stage}
           player={player}
-          activateAt={3480}
+          activateAt={48}
           onClick={this.handleSubmit}
         />
       </div>
