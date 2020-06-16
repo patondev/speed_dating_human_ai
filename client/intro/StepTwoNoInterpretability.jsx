@@ -4,46 +4,35 @@ import { Centered } from "meteor/empirica:core";
 
 export default class StepTwoNoInterpretability extends React.Component {
   render() {
-    const { hasPrev, hasNext, onNext, onPrev, game } = this.props;
+    const { hasPrev, hasNext, onNext, onPrev } = this.props;
     return (
       <Centered>
         <div className="instructions">
-          <h1 className={"bp3-heading"}> Instructions - For each round</h1>
+          <h1 className={"bp3-heading"}> Instructions (Part 2) </h1>
 
           <p>
-            You will predict the success/failure of {game.treatment.roundCount}{" "}
-            different dates by using 17 different attributes of the pair.
-            Specifically, you will predict the probability of a match.
+            In step 2, you will have the opportunity to modify the predictions
+            you made in step 1. You will receive predictions from an Artificial
+            Intelligence (AI) system for the same 10 couples you made
+            predictions for in step 1. For each couple, you will see a slider
+            scale like what is shown below, which has your initial prediction
+            from step 1, as well as the AI system’s prediction. You will submit
+            your new prediction using this same slider scale. If you do not want
+            to modify your initial prediction, you can submit the same value as
+            your initial prediction.
           </p>
 
-          <p>
-            You will be able to review several attributes of each participant
-            (demographics such as race as well as ratings such as attractiveness
-            as rated by the partner):
-          </p>
+          <div className="intro-flex mb-25 jc-center">
+            <div className="intro-column-90">
+              <img
+                src="/slider-step-2-local.svg"
+                alt="Slider step 2 local interpretability"
+                className="img-centered"
+              />
+            </div>
+          </div>
 
-          <p>
-            <strong>
-              Attractive, Sincere, Intelligent, Fun, Ambitious, Shared Interests
-            </strong>
-            : Evaluation scores (0 to 10) from the partner after a short
-            four-minute date. For example, if a woman's fun is six points, it
-            means that the male partner gave her six points on the attribute of
-            “fun”.
-          </p>
-          <p>
-            <strong>Interests Correlation</strong>: Correlation score (-1 to 1)
-            between woman’s and man’s interests (e.g. sports, foods, hobby,
-            etc.). If this score is 1, the woman and man share exactly the same
-            interests. If this score is -1, the two participants have perfectly
-            opposite tastes. If the score is zero, the two have no common
-            interests. Please refer to the picture below for an example of the
-            information you will see in this experiment.
-          </p>
-
-          <img src="/solosample.png" className="sample-img" />
-
-          <p>
+          <p className="action-step">
             <button type="button" onClick={onPrev} disabled={!hasPrev}>
               Previous
             </button>

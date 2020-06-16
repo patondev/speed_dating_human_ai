@@ -41,10 +41,10 @@ export default class InstructionStepOne extends React.Component {
           </p>
 
           <div className="intro-flex">
-            <div className="intro-column-55">
+            <div className="intro-column-65">
               <img src="/first-date-information.svg" alt="first information" />
             </div>
-            <div className="intro-column-45">
+            <div className="intro-column-35">
               <p>
                 → <u>Demographic Information</u>: The age and race of the man
                 and woman in each couple.

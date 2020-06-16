@@ -28,6 +28,8 @@ Empirica.introSteps((game) => {
   const { treatment } = game;
   const steps = [InstructionStepOne, QuizStepOne];
 
+  console.log(treatment);
+
   if (treatment.interpretationType.toLowerCase() === "global") {
     steps.push(StepTwoGlobalInterpretability);
     steps.push(QuizStepTwoGlobalInterpretability);
