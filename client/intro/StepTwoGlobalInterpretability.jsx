@@ -2,9 +2,9 @@ import React from "react";
 
 import { Centered } from "meteor/empirica:core";
 
-import TaskStimulus from "./../game/TaskStimulus"; //TODO: we should make this work!
+import TaskStimulus from "../game/TaskStimulus"; //TODO: we should make this work!
 
-export default class InstructionStepTwo extends React.Component {
+export default class StepTwoGlobalInterpretability extends React.Component {
   render() {
     const { hasPrev, hasNext, onNext, onPrev, game } = this.props;
     return (
@@ -34,18 +34,18 @@ export default class InstructionStepTwo extends React.Component {
             “fun”.
           </p>
           <p>
-            <strong>Interests Correlation</strong>
-            : Correlation score (-1 to 1) between woman’s and man’s interests
-            (e.g. sports, foods, hobby, etc.). If this score is 1, the woman and
-            man share exactly the same interests. If this score is -1, the two
-            participants have perfectly opposite tastes. If the score is zero,
-            the two have no common interests. Please refer to the picture below
-            for an example of the information you will see in this experiment.
+            <strong>Interests Correlation</strong>: Correlation score (-1 to 1)
+            between woman’s and man’s interests (e.g. sports, foods, hobby,
+            etc.). If this score is 1, the woman and man share exactly the same
+            interests. If this score is -1, the two participants have perfectly
+            opposite tastes. If the score is zero, the two have no common
+            interests. Please refer to the picture below for an example of the
+            information you will see in this experiment.
           </p>
 
           <img src="/solosample.png" className="sample-img" />
 
-          <p>
+          <p className="action-step">
             <button type="button" onClick={onPrev} disabled={!hasPrev}>
               Previous
             </button>
