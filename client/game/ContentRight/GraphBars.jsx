@@ -1,4 +1,5 @@
 import React from "react";
+import { BAR_COLORS } from "../../constants/colors";
 
 export default class BodyRight extends React.Component {
   renderLines = ({ numbefOfLines, minValue, maxValue, step }) => {
@@ -18,7 +19,7 @@ export default class BodyRight extends React.Component {
 
     return (
       <>
-        <div className="top-label" style={{ right: "130px" }}>
+        <div className="top-label" style={{ right: "140px" }}>
           Improved Chances
         </div>
         {Array(numbefOfLines)
@@ -62,6 +63,7 @@ export default class BodyRight extends React.Component {
   };
 
   render() {
+    console.log("props ", this.props);
     const data = [
       {
         name: "Woman's Attractiveness ",
