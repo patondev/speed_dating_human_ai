@@ -32,6 +32,16 @@ const TimedButton = StageTimeWrapper((props) => {
 });
 
 export default class TaskResponse extends React.Component {
+  componentDidMount() {
+    const { player, stage } = this.props;
+    const prediction = player.stage.get("prediction");
+    const isSolo = stage.get("type") === "solo";
+
+    if (isSolo && !prediction) {
+      // initiate prediction to 50% only for first stage
+      player.stage.set("prediction", 0.5);
+    }
+  }
   handleChange = (num) => {
     const { player, stage } = this.props;
     const prediction = Math.round(num * 100) / 100;
@@ -184,7 +194,7 @@ export default class TaskResponse extends React.Component {
         <TimedButton
           stage={stage}
           player={player}
-          activateAt={48}
+          activateAt={120}
           onClick={this.handleSubmit}
         />
       </div>
