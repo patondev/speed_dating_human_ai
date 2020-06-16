@@ -83,8 +83,6 @@ export default class TaskResponse extends React.Component {
       (isSocial && player.stage.get("firstPrediction")) || null;
     const userFinalPrediction = (isOutcome && prediction) || null;
 
-    console.log(userPrediction);
-
     return (
       <Slider
         value={prediction}
@@ -153,16 +151,16 @@ export default class TaskResponse extends React.Component {
   }
 
   renderSubmitted() {
+    const { player, stage } = this.props;
     return (
       <div className="response">
         {this.renderSlider()}
-        <button
-          type="button"
-          className="btn-prediction"
-          onClick={() => console.log("click")}
-        >
-          Submit Prediction
-        </button>
+        <TimedButton
+          stage={stage}
+          player={player}
+          activateAt={48}
+          onClick={this.handleSubmit}
+        />
       </div>
     );
   }
@@ -170,14 +168,17 @@ export default class TaskResponse extends React.Component {
   render() {
     const { player, stage } = this.props;
 
-    // If the player already submitted, don't show the slider or submit button
+    const isOutcome =
+      stage.name === "outcome" || stage.name === "practice-outcome";
+
+    // If the player already submitted, disabled the slider or submit button
     if (player.stage.submitted) {
       return this.renderSubmitted();
     }
 
     return (
       <div className="response">
-        <h3>{stage.get("questionText")}</h3>
+        {!isOutcome && <h3>{stage.get("questionText")}</h3>}
         {this.renderSlider()}
         {this.renderResult()}
         <TimedButton
