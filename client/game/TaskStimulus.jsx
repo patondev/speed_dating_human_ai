@@ -7,6 +7,7 @@ const gender = {
 const PersonCard = ({ pairData, isPartner }) => {
   const suffix = isPartner ? "_Partner" : "";
   const classPartner = !isPartner ? " person-right" : "";
+  const classRating = !isPartner ? " ratings-right" : "";
 
   return (
     <div className="person">
@@ -23,7 +24,7 @@ const PersonCard = ({ pairData, isPartner }) => {
           <div className="origin">{pairData["Race" + suffix]}</div>
         </div>
       </header>
-      <div className="ratings">
+      <div className={`ratings${classRating}`}>
         <h3>Ratings</h3>
         <table>
           <tbody>
