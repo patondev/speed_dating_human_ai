@@ -1,9 +1,7 @@
 import React from "react";
-// import Slider from "meteor/empirica:slider";
 import Slider from "./component/Slider";
 import { Toaster, Position } from "@blueprintjs/core";
 import { StageTimeWrapper } from "meteor/empirica:core";
-// import { Button } from "@blueprintjs/core";
 
 const WarningToaster = Toaster.create({
   className: "warning-toaster",
@@ -67,7 +65,7 @@ export default class TaskResponse extends React.Component {
     }
   };
 
-  renderSlider() {
+  renderSlider(disabled) {
     const { player, round, stage } = this.props;
     let prediction = player.stage.get("prediction");
     if (prediction === null || prediction === undefined) {
@@ -94,7 +92,7 @@ export default class TaskResponse extends React.Component {
         aiPrediction={aiPrediction}
         userPrediction={userPrediction}
         userFinalPrediction={userFinalPrediction}
-        disabled={isOutcome}
+        disabled={isOutcome || disabled}
       />
     );
   }
@@ -154,16 +152,13 @@ export default class TaskResponse extends React.Component {
   }
 
   renderSubmitted() {
-    const { player, stage } = this.props;
     return (
       <div className="response">
-        {this.renderSlider()}
-        <TimedButton
-          stage={stage}
-          player={player}
-          activateAt={48}
-          onClick={this.handleSubmit}
-        />
+        <h3> </h3>
+        {this.renderSlider(true)}
+        <button type="button" className="btn-prediction-big" disabled={true}>
+          Submit Prediction
+        </button>
       </div>
     );
   }
@@ -187,7 +182,7 @@ export default class TaskResponse extends React.Component {
         <TimedButton
           stage={stage}
           player={player}
-          activateAt={120}
+          activateAt={48}
           onClick={this.handleSubmit}
         />
       </div>
