@@ -29,19 +29,22 @@ export default class SocialExposure extends React.Component {
 
   renderSlider() {
     const { player, round, stage } = this.props;
-    const prediction = player.round.get("firstPrediction");
+    let prediction = player.stage.get("prediction");
     const isSolo = stage.get("type") === "solo";
+    const isSocial = stage.get("type") === "social";
+    const isOutcome = stage.name === "outcome" || stage.name === "practice-outcome";
 
     const aiPrediction = (!isSolo && round.get("model_prediction_prob")) || null;
-    const isPrevious = stage.get("type") === "social";
+    const userPrediction = (isSocial && player.stage.get("firstPrediction")) || null;
+    const userFinalPrediction = (isOutcome && prediction) || null;
     return (
       <SlidersPrediction
         value={prediction}
         newPrediction={false}
         aiPrediction={aiPrediction}
-        userPrediction={prediction}
+        userPrediction={userPrediction}
+        userFinalPrediction={userFinalPrediction}
         disabled={true}
-        isPrevious={isPrevious}
       />
     );
   }
