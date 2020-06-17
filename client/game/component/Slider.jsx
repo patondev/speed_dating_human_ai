@@ -60,16 +60,24 @@ export default ({
           }}
         />
         {aiPrediction && (
-          <div className="prediction ai" style={{ left: `calc(${aiPercentage}% - 6.5px)` }}>
+          <div
+            className="prediction ai"
+            style={{ left: `calc(${aiPercentage}% - 6.5px)` }}
+          >
             <div className="prediction-content">
               <div className="prediction-point" />
               <div className="prediction-line" />
-              <div className="prediction-box">AI Prediction – {Math.round(aiPercentage)}%</div>
+              <div className="prediction-box">
+                AI Prediction – {Math.round(aiPercentage)}%
+              </div>
             </div>
           </div>
         )}
         {userPrediction && (
-          <div className="prediction user" style={{ left: `calc(${userPercentage}% - 6.5px)` }}>
+          <div
+            className="prediction user"
+            style={{ left: `calc(${userPercentage}% - 6.5px)` }}
+          >
             <div className="prediction-content">
               <div className="prediction-point" />
               <div className="prediction-line" />
@@ -100,8 +108,8 @@ export default ({
           >
             <div className="prediction-content">
               <div className="prediction-box">Your New Prediction</div>
-
               <div className="prediction-line" />
+              <div className="prediction-point" />
             </div>
           </div>
         )}
