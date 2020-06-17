@@ -76,11 +76,10 @@ export default class LocalBars extends React.Component {
   };
 
   render() {
-    const { round, stage } = this.props;
-    const stageType = stage.get("practice") ? "practice" : "exp";
-    let currentModel = modelLocalJson.filter((m) => m.type === stageType);
-    currentModel = stageType === "practice" ? currentModel[0] : currentModel[round.index - 1];
-
+    const { round } = this.props;
+    const roundType = round.get("practice") ? "practice" : "exp";
+    let currentModel = modelLocalJson.filter((m) => m.type === roundType);
+    currentModel = roundType === "practice" ? currentModel[0] : currentModel[round.index - 1];
     return (
       <div className="graph-wrapper">
         <div className="graph">
