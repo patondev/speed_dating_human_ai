@@ -182,7 +182,7 @@ export default class TaskResponse extends React.Component {
         <TimedButton
           stage={stage}
           player={player}
-          activateAt={120}
+          activateAt={48}
           onClick={this.handleSubmit}
         />
       </div>
