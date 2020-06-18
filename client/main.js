@@ -1,8 +1,5 @@
 import { render } from "react-dom";
 import Empirica from "meteor/empirica:core";
-
-import Round from "./game/Round";
-import Consent from "./intro/Consent";
 // import InstructionOverview from "./intro/InstructionOverview";
 // import InstructionEachRound from "./intro/InstructionEachRound";
 // import InstructionFeedback from "./intro/InstructionFeedback";

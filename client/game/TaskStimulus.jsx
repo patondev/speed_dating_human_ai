@@ -8,8 +8,7 @@ const PersonCard = ({ pairData, isPartner }) => {
   const suffix = isPartner ? "_Partner" : "";
   const classPartner = !isPartner ? " person-right" : "";
   const classRating = !isPartner ? " ratings-right" : "";
-  const task = round.get("task");
-
+  // const task = round.get("task");
   return (
     //   <tr>
     //   <th>Matching ID</th>
@@ -99,7 +98,9 @@ export default class TaskStimulus extends React.Component {
 
   render() {
     const { round } = this.props;
-    const pairData = round.get("features");
+    const task = round.get("task");
+    const pairData = task.features;
+
     return (
       <div className="couples">
         <PersonCard pairData={pairData} isPartner />
