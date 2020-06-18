@@ -80,11 +80,11 @@ Empirica.onStageStart((game, round, stage) => {
 
 // onStageEnd is triggered after each stage.
 // It receives the same options as onRoundEnd, and the stage that just ended.
-Empirica.onStageEnd((game, round, stage, players) => {});
+Empirica.onStageEnd((game, round, stage) => {});
 
 // onRoundEnd is triggered after each round.
 // It receives the same options as onGameEnd, and the round that just ended.
-Empirica.onRoundEnd((game, round, players) => {
+Empirica.onRoundEnd((game, round) => {
   if (round.get("case") === "initial") {
     game.players.forEach((player) => {
       const prediction = player.round.get("prediction");
@@ -132,12 +132,12 @@ Empirica.onRoundEnd((game, round, players) => {
 
 // onGameEnd is triggered when the game ends.
 // It receives the same options as onGameStart.
-Empirica.onGameEnd((game, players) => {
+Empirica.onGameEnd((game) => {
   console.log("The game", game._id, "has ended");
   //const nStages = game.treatment.nBlocks * game.players.length + 1;
   const conversionRate = game.treatment.conversionRate;
 
-  players.forEach((player) => {
+  game.players.forEach((player) => {
     const bonus =
       player.get("cumulativeScore") > 0
         ? Math.round(player.get("cumulativeScore") * conversionRate * 100) / 100

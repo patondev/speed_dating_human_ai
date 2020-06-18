@@ -11,3 +11,4 @@ local.json
 **.idea
 .DS_Store
 deployment.json
+token.json
