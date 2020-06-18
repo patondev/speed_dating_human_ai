@@ -1,4 +1,6 @@
 import React from "react";
+import { Centered } from "meteor/empirica:core";
+import { Button } from "@blueprintjs/core";
 
 import PlayerProfile from "./PlayerProfile.jsx";
 import TaskStimulus from "./TaskStimulus.jsx";
