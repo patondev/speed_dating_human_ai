@@ -59,6 +59,11 @@ Empirica.onStageStart((game, round, stage) => {
 
       game.players.forEach((player) => {
         const prediction = player.round.get("prediction");
+        player.stage.set(
+          "firstPrediction",
+          player.round.get("firstPrediction")
+        );
+
         if (prediction !== null && prediction !== undefined) {
           const score = 1 - Math.pow(prediction - outcome, 2); //1 - brier score
           console.log(

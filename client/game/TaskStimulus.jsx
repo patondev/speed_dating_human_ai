@@ -1,65 +1,103 @@
 import React from "react";
 
-export default class TaskStimulus extends React.Component {
-  renderFeatureRow(pairData, feature, display = null) {
-    const partnerFeature = feature + "_Partner";
-    const displayName = display ? display : feature;
-    return (
-      <tr>
-        <th className="color-female">{displayName}</th>
-        <td>{pairData[feature]}</td>
-        <th className="color-male">{displayName}</th>
-        <td>{pairData[partnerFeature]}</td>
-      </tr>
-    );
-  }
+const gender = {
+  Woman: "female",
+  Man: "male",
+};
+const PersonCard = ({ pairData, isPartner }) => {
+  const suffix = isPartner ? "_Partner" : "";
+  const classPartner = !isPartner ? " person-right" : "";
+  const classRating = !isPartner ? " ratings-right" : "";
 
-  render() {
-    const { round, stage, game } = this.props;
-    const task = round.get("task");
-
-    const revealBots = game.treatment.revealBots || false;
-
-    return (
-      <div className="task-stimulus">
-        {!stage.get("practice") ? (
-          <h3 className="bp3-heading">{stage.get("questionText")}</h3>
-        ) : (
-          ""
-        )}
-
-        <div className="task-table">
-          <table>
-            <tbody>
-              <tr>
-                <th>Matching ID</th>
-                <td>{task._id}</td>
-                <th>Interests Correlation</th>
-                <td>{task.features.InterestsCorr}</td>
-              </tr>
-              <tr>
-                <th className="color-female" colSpan="2">
-                  Woman
-                </th>
-                <th className="color-male" colSpan="2">
-                  Man
-                </th>
-              </tr>
-              {this.renderFeatureRow(task.features, "Race")}
-              {this.renderFeatureRow(task.features, "Age")}
-              {this.renderFeatureRow(task.features, "Attractive")}
-              {this.renderFeatureRow(task.features, "Sincere")}
-              {this.renderFeatureRow(task.features, "Intelligent")}
-              {this.renderFeatureRow(task.features, "Fun")}
-              {this.renderFeatureRow(task.features, "Ambitious")}
-              {this.renderFeatureRow(
-                task.features,
-                "SharedInterests",
-                "Shared Interests"
-              )}
-            </tbody>
-          </table>
+  return (
+    <div className="person">
+      <header className={`person-card${classPartner}`}>
+        <div className="person-thumb">
+          <img
+            src={`/${gender[pairData["Gender" + suffix]]}.svg`}
+            alt={`Person ${pairData["Gender" + suffix]}`}
+          />
         </div>
+        <div className="person-detail">
+          <div className="gender">{gender[pairData["Gender" + suffix]]}</div>
+          <div className="age">{pairData["Age" + suffix]} years,</div>
+          <div className="origin">{pairData["Race" + suffix]}</div>
+        </div>
+      </header>
+      <div className={`ratings${classRating}`}>
+        <h3>Ratings</h3>
+        <table>
+          <tbody>
+            <tr>
+              <td>Attractiveness</td>
+              <td>{pairData["Attractive" + suffix]}</td>
+            </tr>
+            <tr>
+              <td>Sincerity</td>
+              <td>{pairData["Sincere" + suffix]}</td>
+            </tr>
+            <tr>
+              <td>Shared interest</td>
+              <td>{pairData["SharedInterests" + suffix]}</td>
+            </tr>
+            <tr>
+              <td>Intelligence</td>
+              <td>{pairData["Intelligent" + suffix]}</td>
+            </tr>
+            <tr>
+              <td>Ambitious</td>
+              <td>{pairData["Sincere" + suffix]}</td>
+            </tr>
+            <tr>
+              <td>Fun</td>
+              <td>{pairData["Fun" + suffix]}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+const Interest = ({ data }) => {
+  const interestPosition = (InterestsCorr) => {
+    return (1 / 2 - InterestsCorr / 2) * 100;
+  };
+  return (
+    <div className="interests">
+      <h4 className="title">Interest correlation</h4>
+      <div className="interest-component">
+        <div className="interest-bar">
+          <div className="interest-measurements">
+            <div className="interest-measurement">1</div>
+            <div className="interest-measurement">0</div>
+            <div className="interest-measurement">-1</div>
+          </div>
+          <div className="interest-gradient"></div>
+          <div
+            className="interest-marker"
+            style={{
+              top: `calc(${interestPosition(data.InterestsCorr)}% - 9px)`,
+            }}
+          >
+            {data.InterestsCorr.toFixed(2)}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default class TaskStimulus extends React.Component {
+  render() {
+    const { round } = this.props;
+    const pairData = round.get("features");
+    return (
+      <div className="couples">
+        <PersonCard pairData={pairData} isPartner />
+
+        <Interest data={pairData} />
+
+        <PersonCard pairData={pairData} />
       </div>
     );
   }

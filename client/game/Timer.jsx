@@ -1,9 +1,22 @@
 import React from "react";
 
 import { StageTimeWrapper } from "meteor/empirica:core";
+
 import Timer from "./Timer.jsx";
 
 class timer extends React.Component {
+  startTimer = () => {
+    const { remainingSeconds } = this.props;
+    const timer = remainingSeconds;
+    let minutes = parseInt(timer / 60, 10);
+    let seconds = parseInt(timer % 60, 10);
+    return (
+      minutes.toString().padStart(2, "0") +
+      ":" +
+      seconds.toString().padStart(2, "0")
+    );
+  };
+
   render() {
     const { remainingSeconds } = this.props;
 
@@ -14,13 +27,8 @@ class timer extends React.Component {
       classes.push("lessThan10");
     }
 
-    return (
-      <div className={classes.join(" ")}>
-        <h4>Timer</h4>
-        <span className="seconds">{remainingSeconds}</span>
-      </div>
-    );
+    return <div className="timer">{this.startTimer()}</div>;
   }
 }
 
-export default (Timer = StageTimeWrapper(timer));
+export default Timer = StageTimeWrapper(timer);

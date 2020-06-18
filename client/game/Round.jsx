@@ -1,38 +1,42 @@
 import React from "react";
 
 import PlayerProfile from "./PlayerProfile.jsx";
-import SocialExposure from "./SocialExposure.jsx";
-import TaskFeedback from "./TaskFeedback.jsx";
-import Task from "./Task.jsx";
+// import SocialExposure from "./SocialExposure.jsx";
+// import TaskFeedback from "./TaskFeedback.jsx";
+// import Task from "./Task.jsx";
 import { Button } from "@blueprintjs/core";
 import { Centered } from "meteor/empirica:core";
+import TaskStimulus from "./TaskStimulus.jsx";
+import TaskResponse from "./TaskResponse.jsx";
+
+import ContentRight from "./ContentRight";
 
 export default class Round extends React.Component {
   renderRound() {
     const { round, stage, player, game } = this.props;
+    const single =
+      stage.get("type") !== "social" && stage.get("type") !== "feedback";
+
     return (
-      <div className="round">
-        <div className="content">
+      <main className={`main-container ${single ? "single-column" : ""}`}>
+        <header className="header-left">
           <PlayerProfile
             player={player}
             stage={stage}
             game={game}
             round={round}
           />
-          <Task game={game} round={round} stage={stage} player={player} />
-          {stage.get("type") === "social" ? (
-            <SocialExposure
-              stage={stage}
-              player={player}
-              game={game}
-              round={round}
-            />
-          ) : null}
-          {stage.get("type") === "feedback" ? (
-            <TaskFeedback game={game} player={player} round={round} />
-          ) : null}
-        </div>
-      </div>
+        </header>
+
+        <section className="content-left">
+          <div className="couples-card">
+            <TaskStimulus round={round} />
+            <TaskResponse {...this.props} />
+          </div>
+        </section>
+
+        {!single && <ContentRight {...this.props} />}
+      </main>
     );
   }
 
@@ -89,10 +93,10 @@ export default class Round extends React.Component {
               </p>
               <p>
                 On the other hand, the algorithm indicates that the{" "}
-                <strong>Participant’s Sincerity</strong>{" "} or{" "}
-                {" "}<strong>Man’s Ambition</strong>{" "} has little effect on whether a
+                <strong>Participant’s Sincerity</strong> or{" "}
+                <strong>Man’s Ambition</strong> has little effect on whether a
                 speed date will be in a match. Whether the participants are of
-                the {" "}<strong>Same Race</strong> {" "} or {" "}<strong>Man’s Race</strong>{" "} is
+                the <strong>Same Race</strong> or <strong>Man’s Race</strong> is
                 determined to be the least important factor.
               </p>
             </div>
@@ -134,8 +138,8 @@ export default class Round extends React.Component {
                 <strong> Man’s Attractiveness</strong>
                 had <strong>negative </strong> effects on the match probability
                 by more than <strong>20%</strong>. The relatively young{" "}
-                <strong>Age of Women </strong>{" "}
-                was also a factor that lowered the chances of matching.
+                <strong>Age of Women </strong> was also a factor that lowered
+                the chances of matching.
               </p>
             </div>
           ) : (
@@ -177,7 +181,7 @@ export default class Round extends React.Component {
 
   render() {
     const { round } = this.props;
-    console.log("inst", round.get("instruction"));
+    // console.log("inst", round.get("instruction"));
     return round.get("case") === "instruction"
       ? this.renderInstructions()
       : this.renderRound();

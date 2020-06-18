@@ -41,18 +41,34 @@ export default class PlayerProfile extends React.Component {
     );
   }
 
-  render() {
-    const { game, stage, round } = this.props;
+  // render() {
+  //   const { game, stage, round } = this.props;
 
+  //   return (
+  //     <aside className="player-profile">
+  //       {this.renderProfile()}
+  //       {game.treatment.giveFeedback && round.get("case") === "revise"
+  //         ? this.renderScore()
+  //         : null}
+  //       {this.renderTracker()}
+  render() {
+    const { game, stage, player, round } = this.props;
+    const roundIndex = game.roundIds.indexOf(player.round._id);
+    const roundCount = game.roundIds.length;
     return (
-      <aside className="player-profile">
-        {this.renderProfile()}
-        {game.treatment.giveFeedback && round.get("case") === "revise"
-          ? this.renderScore()
-          : null}
-        {this.renderTracker()}
+      <>
+        <div className="value-label">
+          <span>CASE</span>{" "}
+          {round.get("practice")
+            ? "Practice"
+            : roundIndex.toString() + " / " + (roundCount - 1).toString()}
+        </div>
+
         <Timer stage={stage} />
-      </aside>
+        <div className="value-label">
+          <span>SCORE</span> {player.get("cumulativeScore").toFixed(2) || 0}
+        </div>
+      </>
     );
   }
 }
