@@ -1,37 +1,37 @@
 import { render } from "react-dom";
-
 import Empirica from "meteor/empirica:core";
 
 import Round from "./game/Round";
 import Consent from "./intro/Consent";
-import InstructionOverview from "./intro/InstructionOverview";
-import InstructionEachRound from "./intro/InstructionEachRound";
-import InstructionFeedback from "./intro/InstructionFeedback";
-import Quiz from "./intro/Quiz";
+// import InstructionOverview from "./intro/InstructionOverview";
+// import InstructionEachRound from "./intro/InstructionEachRound";
+// import InstructionFeedback from "./intro/InstructionFeedback";
+// import Quiz from "./intro/Quiz";
 import ExitSurvey from "./exit/ExitSurvey";
-import Thanks from "./exit/Thanks";
 import Sorry from "./exit/Sorry";
-import Breadcrumb from "./game/Breadcrumb";
+import Thanks from "./exit/Thanks";
+import Round from "./game/Round";
+import Consent from "./intro/Consent";
 
 // Set the Consent Component you want to present players (optional).
 Empirica.consent(Consent);
 
-Empirica.breadcrumb(Breadcrumb);
+Empirica.breadcrumb(null);
 
 // Introduction pages to show before they play the game (optional).
 // At this point they have been assigned a treatment. You can return
 // different instruction steps depending on the assigned treatment.
-Empirica.introSteps((game) => {
-  const steps = [InstructionOverview, InstructionEachRound];
-  // if (game.treatment.playerCount > 1) {
-  //   steps.push(InstructionStepThree);
-  // }
-  if (game.treatment.giveFeedback) {
-    steps.push(InstructionFeedback);
-  }
-  steps.push(Quiz);
-  return steps;
-});
+// Empirica.introSteps(game => {
+//   const steps = [InstructionStepOne, InstructionStepTwo];
+//   if (game.treatment.playerCount > 1) {
+//     steps.push(InstructionStepThree);
+//   }
+//   if (game.treatment.giveFeedback) {
+//     steps.push(InstructionStepFour);
+//   }
+//   steps.push(Quiz);
+//   return steps;
+// });
 
 // The Round component containing the game UI logic.
 // This is where you will be doing the most development.

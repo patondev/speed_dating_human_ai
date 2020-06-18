@@ -6,6 +6,7 @@ import Empirica from "meteor/empirica:core";
 Empirica.onGameStart((game) => {
   game.players.forEach((player) => {
     player.set("cumulativeScore", 0);
+    player.stage.set("firstPrediction", player.round.get("firstPrediction"));
   });
 });
 
