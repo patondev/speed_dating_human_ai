@@ -130,11 +130,11 @@ export default class Round extends React.Component {
                     </p>
                     <img
                       className="interpretation-image"
-                      src="/task_sample.png"
+                      src="/interpretation-image.svg"
                     />
                     <img
                       className="interpretation-image"
-                      src="/task/tasks/1049.png"
+                      src="/explosure-bar-chart.svg"
                     />
                     <p>
                       According to the algorithm, <strong>Woman</strong>{" "}
