@@ -1,9 +1,13 @@
 import { render } from "react-dom";
 import Empirica from "meteor/empirica:core";
-// import InstructionOverview from "./intro/InstructionOverview";
-// import InstructionEachRound from "./intro/InstructionEachRound";
-// import InstructionFeedback from "./intro/InstructionFeedback";
-// import Quiz from "./intro/Quiz";
+import InstructionStepOne from "./intro/InstructionStepOne";
+import StepTwoGlobalInterpretability from "./intro/StepTwoGlobalInterpretability";
+import StepTwoLocalInterpretability from "./intro/StepTwoLocalInterpretability";
+import StepTwoNoInterpretability from "./intro/StepTwoNoInterpretability";
+import QuizStepOne from "./intro/QuizStepOne";
+import QuizStepTwoGlobalInterpretability from "./intro/QuizTwoGlobalInterpretability";
+import QuizTwoLocalInterpretability from "./intro/QuizTwoLocalInterpretability";
+import QuizTwoNoInterpretability from "./intro/QuizTwoNoInterpretability";
 import ExitSurvey from "./exit/ExitSurvey";
 import Sorry from "./exit/Sorry";
 import Thanks from "./exit/Thanks";
@@ -18,17 +22,25 @@ Empirica.breadcrumb(null);
 // Introduction pages to show before they play the game (optional).
 // At this point they have been assigned a treatment. You can return
 // different instruction steps depending on the assigned treatment.
-// Empirica.introSteps(game => {
-//   const steps = [InstructionStepOne, InstructionStepTwo];
-//   if (game.treatment.playerCount > 1) {
-//     steps.push(InstructionStepThree);
-//   }
-//   if (game.treatment.giveFeedback) {
-//     steps.push(InstructionStepFour);
-//   }
-//   steps.push(Quiz);
-//   return steps;
-// });
+Empirica.introSteps((game) => {
+  const { treatment } = game;
+  const { interpretationType = "None" } = treatment;
+  const steps = [InstructionStepOne, QuizStepOne];
+
+  if (interpretationType.toLowerCase() === "global") {
+    steps.push(StepTwoGlobalInterpretability);
+    steps.push(QuizStepTwoGlobalInterpretability);
+  }
+  if (interpretationType.toLowerCase() === "local") {
+    steps.push(StepTwoLocalInterpretability);
+    steps.push(QuizTwoLocalInterpretability);
+  }
+  if (interpretationType.toLowerCase() === "none") {
+    steps.push(StepTwoNoInterpretability);
+    steps.push(QuizTwoNoInterpretability);
+  }
+  return steps;
+});
 
 // The Round component containing the game UI logic.
 // This is where you will be doing the most development.
