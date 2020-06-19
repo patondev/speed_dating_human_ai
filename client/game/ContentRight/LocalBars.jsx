@@ -9,7 +9,10 @@ export default class LocalBars extends React.Component {
       return (
         <>
           <div className="line" style={{ left: `${left + 180}px` }}></div>
-          <span className="line-label" style={{ left: `${left + leftLabel}px` }}>
+          <span
+            className="line-label"
+            style={{ left: `${left + leftLabel}px` }}
+          >
             {label}
           </span>
         </>
@@ -29,7 +32,13 @@ export default class LocalBars extends React.Component {
             if (i !== 0) {
               currentLabel += step;
             }
-            return <Line key={i} left={(420 / numbefOfLines) * i} label={currentLabel} />;
+            return (
+              <Line
+                key={i}
+                left={(420 / numbefOfLines) * i}
+                label={currentLabel}
+              />
+            );
           })}
         <div className="bottom-label" style={{ right: "230px" }}>
           Hurt Chances
@@ -38,7 +47,7 @@ export default class LocalBars extends React.Component {
     );
   };
 
-  renderBarTextContent = (data) => {
+  renderBarTextContent = data => {
     return (
       <div className="bar-text-content">
         {data.map((d, i) => (
@@ -50,7 +59,7 @@ export default class LocalBars extends React.Component {
     );
   };
 
-  renderBars = (data) => {
+  renderBars = data => {
     const total = data.reduce((cur, next) => {
       return cur + next.value;
     }, 0);
@@ -77,16 +86,20 @@ export default class LocalBars extends React.Component {
 
   render() {
     const { round } = this.props;
-    const roundType = round.get("practice") ? "practice" : "exp";
-    let currentModel = modelLocalJson.filter((m) => m.type === roundType);
-    currentModel = roundType === "practice" ? currentModel[0] : currentModel[round.index - 1];
+    const task = round.get("task");
+    let currentModel = modelLocalJson.find(m => m._id === task._id);
     return (
       <div className="graph-wrapper">
         <div className="graph">
           {this.renderBarTextContent(currentModel.data)}
           <div className="bar-lines-container">
             {this.renderBars(currentModel.data)}
-            {this.renderLines({ numbefOfLines: 11, step: 5, maxValue: 25, minValue: -25 })}
+            {this.renderLines({
+              numbefOfLines: 11,
+              step: 5,
+              maxValue: 25,
+              minValue: -25,
+            })}
           </div>
         </div>
       </div>
