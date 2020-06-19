@@ -255,6 +255,7 @@ Empirica.gameInit((game) => {
             data: {
               type: "feedback",
               practice: false,
+              interpretationType: interpretationType,
             },
           });
         }
@@ -289,6 +290,7 @@ Empirica.gameInit((game) => {
             data: {
               type: "feedback",
               practice: false,
+              interpretationType: interpretationType,
             },
           });
         }
