@@ -86,7 +86,7 @@ const Interest = ({ data }) => {
               top: `calc(${interestPosition(data.InterestsCorr)}% - 9px)`,
             }}
           >
-            {data.InterestsCorr.toFixed(2)}
+            {(data.InterestsCorr || 0).toFixed(2)}
           </div>
         </div>
       </div>
@@ -98,8 +98,8 @@ export default class TaskStimulus extends React.Component {
 
   render() {
     const { round } = this.props;
-    const task = round.get("task");
-    const pairData = task.features;
+    const task = round.get("task") || {};
+    const pairData = task.features || {};
 
     return (
       <div className="couples">

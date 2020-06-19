@@ -1,4 +1,6 @@
 import Empirica from "meteor/empirica:core";
+
+import "./callbacks.js";
 import "./bots.js";
 
 import data from "./experiment_data/task_data";
@@ -139,7 +141,7 @@ let practiceData = [
 
 Empirica.gameInit((game) => {
   game.players.forEach((player, i) => {
-  player.set("avatar", `/avatars/jdenticon/${player._id}`);
+    player.set("avatar", `/avatars/jdenticon/${player._id}`);
     player.set("score", 0);
   });
 
