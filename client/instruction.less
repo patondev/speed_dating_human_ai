@@ -22,6 +22,12 @@
         background: linear-gradient(180deg, #f6f8fb 0%, #e0e2e4 100%);
         border: 1px solid #e0e2e4;
         padding: 7px 15px;
+        cursor: pointer;
+        transition: opacity 300ms;
+
+        &:hover {
+          opacity: 0.75;
+        }
       }
     }
     .intro-flex {
@@ -54,6 +60,26 @@
     }
     .radio-label {
       line-height: 1.5;
+      display: flex;
+      flex-wrap: wrap;
+
+      .input-radio {
+        width: 35px;
+        display: flex;
+        align-items: flex-start;
+
+        &.no-option {
+          width: 19px;
+        }
+
+        input {
+          margin-top: 5px;
+          margin-right: 7px;
+        }
+      }
+      .text-radio {
+        flex: 0 0 calc(100% - 35px);
+      }
     }
     .question {
       padding-left: 15px;

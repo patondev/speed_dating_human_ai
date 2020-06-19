@@ -47,7 +47,8 @@ export default class QuizStepOne extends React.Component {
                       selected={answer}
                       name="answer"
                       value="a"
-                      label="a. When the couple met"
+                      option="a"
+                      label="When the couple met"
                       onChange={this.handleChange}
                     />
                   </p>
@@ -56,7 +57,8 @@ export default class QuizStepOne extends React.Component {
                       selected={answer}
                       name="answer"
                       value="b"
-                      label="b. How likely the couple is to want a second date"
+                      option="b"
+                      label="How likely the couple is to want a second date"
                       onChange={this.handleChange}
                     />
                   </p>
@@ -64,8 +66,8 @@ export default class QuizStepOne extends React.Component {
                     <Radio
                       selected={answer}
                       name="answer"
-                      value="c"
-                      label="c. How long the couple has been dating"
+                      option="c"
+                      label="How long the couple has been dating"
                       onChange={this.handleChange}
                     />
                   </p>
@@ -74,7 +76,8 @@ export default class QuizStepOne extends React.Component {
                       selected={answer}
                       name="answer"
                       value="d"
-                      label="d. None of the above"
+                      option="d"
+                      label="None of the above"
                       onChange={this.handleChange}
                     />
                   </p>

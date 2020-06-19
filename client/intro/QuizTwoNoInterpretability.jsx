@@ -44,7 +44,8 @@ export default class QuizTwoNoInterpretability extends React.Component {
                       selected={answer}
                       name="answer"
                       value="a"
-                      label="a. Receive predictions made by an AI system"
+                      option="a"
+                      label="Receive predictions made by an AI system"
                       onChange={this.handleChange}
                     />
                   </p>
@@ -53,7 +54,8 @@ export default class QuizTwoNoInterpretability extends React.Component {
                       selected={answer}
                       name="answer"
                       value="b"
-                      label="b. Receive predictions made by other people"
+                      option="b"
+                      label="Receive predictions made by other people"
                       onChange={this.handleChange}
                     />
                   </p>
@@ -62,7 +64,8 @@ export default class QuizTwoNoInterpretability extends React.Component {
                       selected={answer}
                       name="answer"
                       value="c"
-                      label="c. Have a chance to revise your initial predictions from step 1"
+                      option="c"
+                      label="Have a chance to revise your initial predictions from step 1"
                       onChange={this.handleChange}
                     />
                   </p>
@@ -71,7 +74,8 @@ export default class QuizTwoNoInterpretability extends React.Component {
                       selected={answer}
                       name="answer"
                       value="d"
-                      label="d. Both a and c"
+                      option="d"
+                      label="Both a and c"
                       onChange={this.handleChange}
                     />
                   </p>
@@ -83,7 +87,8 @@ export default class QuizTwoNoInterpretability extends React.Component {
                       selected={answer_3}
                       name="answer_3"
                       value="a"
-                      label="a. After you revise your prediction, you will receive information about whether that couple actually had a second date."
+                      option="a"
+                      label="After you revise your prediction, you will receive information about whether that couple actually had a second date."
                       onChange={this.handleChange}
                     />
                   </p>
@@ -92,7 +97,8 @@ export default class QuizTwoNoInterpretability extends React.Component {
                       selected={answer_3}
                       name="answer_3"
                       value="b"
-                      label="b. Even after you revise your prediction, you will not receive information about whether the couple actually went on a second date."
+                      option="b"
+                      label="Even after you revise your prediction, you will not receive information about whether the couple actually went on a second date."
                       onChange={this.handleChange}
                     />
                   </p>
