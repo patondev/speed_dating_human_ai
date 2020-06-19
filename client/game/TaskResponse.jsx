@@ -175,7 +175,12 @@ export default class TaskResponse extends React.Component {
 
     return (
       <div className="response">
-        {!isOutcome && <h3>{stage.get("questionText")}</h3>}
+        {!isOutcome && (
+          <h3>
+            Please review the profile above and predict whether this couple that
+            met once would like to go on a second date.
+          </h3>
+        )}
         {this.renderSlider()}
         {this.renderResult()}
         <TimedButton
