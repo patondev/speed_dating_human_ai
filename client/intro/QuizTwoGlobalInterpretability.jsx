@@ -39,7 +39,7 @@ export default class QuizTwoGlobalInterpretability extends React.Component {
               <ol className="question">
                 <li>
                   <p>In step 2, you will:</p>
-                  <p>
+                  <div>
                     <Radio
                       selected={answer}
                       name="answer"
@@ -48,8 +48,8 @@ export default class QuizTwoGlobalInterpretability extends React.Component {
                       label="Receive predictions made by an AI system"
                       onChange={this.handleChange}
                     />
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <Radio
                       selected={answer}
                       name="answer"
@@ -58,8 +58,8 @@ export default class QuizTwoGlobalInterpretability extends React.Component {
                       label="Receive predictions made by other people"
                       onChange={this.handleChange}
                     />
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <Radio
                       selected={answer}
                       name="answer"
@@ -68,8 +68,8 @@ export default class QuizTwoGlobalInterpretability extends React.Component {
                       label="Have a chance to revise your initial predictions from step 1"
                       onChange={this.handleChange}
                     />
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <Radio
                       selected={answer}
                       name="answer"
@@ -78,7 +78,7 @@ export default class QuizTwoGlobalInterpretability extends React.Component {
                       label="Both a and c"
                       onChange={this.handleChange}
                     />
-                  </p>
+                  </div>
                 </li>
                 <li>
                   <p>
@@ -86,7 +86,7 @@ export default class QuizTwoGlobalInterpretability extends React.Component {
                     accompanied by information about how the AI system makes its
                     predictions.
                   </p>
-                  <p>
+                  <div>
                     <Radio
                       selected={answer_2}
                       name="answer_2"
@@ -94,8 +94,8 @@ export default class QuizTwoGlobalInterpretability extends React.Component {
                       label="False"
                       onChange={this.handleChange}
                     />
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <Radio
                       selected={answer_2}
                       name="answer_2"
@@ -103,11 +103,11 @@ export default class QuizTwoGlobalInterpretability extends React.Component {
                       label="True"
                       onChange={this.handleChange}
                     />
-                  </p>
+                  </div>
                 </li>
                 <li>
                   <p>Which of the following two statements is true:</p>
-                  <p>
+                  <div>
                     <Radio
                       selected={answer_3}
                       name="answer_3"
@@ -116,8 +116,8 @@ export default class QuizTwoGlobalInterpretability extends React.Component {
                       label="After you revise your prediction, you will receive information about whether that couple actually had a second date."
                       onChange={this.handleChange}
                     />
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <Radio
                       selected={answer_3}
                       name="answer_3"
@@ -126,7 +126,7 @@ export default class QuizTwoGlobalInterpretability extends React.Component {
                       label="Even after you revise your prediction, you will not receive information about whether the couple actually went on a second date."
                       onChange={this.handleChange}
                     />
-                  </p>
+                  </div>
                 </li>
               </ol>
             </div>

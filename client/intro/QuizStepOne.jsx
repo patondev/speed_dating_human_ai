@@ -42,7 +42,7 @@ export default class QuizStepOne extends React.Component {
                     In step 1, you will look at information about a couple that
                     met through speed dating and make a prediction about:
                   </p>
-                  <p>
+                  <div>
                     <Radio
                       selected={answer}
                       name="answer"
@@ -51,8 +51,8 @@ export default class QuizStepOne extends React.Component {
                       label="When the couple met"
                       onChange={this.handleChange}
                     />
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <Radio
                       selected={answer}
                       name="answer"
@@ -61,17 +61,18 @@ export default class QuizStepOne extends React.Component {
                       label="How likely the couple is to want a second date"
                       onChange={this.handleChange}
                     />
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <Radio
                       selected={answer}
                       name="answer"
+                      value="c"
                       option="c"
                       label="How long the couple has been dating"
                       onChange={this.handleChange}
                     />
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <Radio
                       selected={answer}
                       name="answer"
@@ -80,7 +81,7 @@ export default class QuizStepOne extends React.Component {
                       label="None of the above"
                       onChange={this.handleChange}
                     />
-                  </p>
+                  </div>
                 </li>
               </ol>
             </div>
