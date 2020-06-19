@@ -13,8 +13,10 @@ export default class TaskFeedback extends React.Component {
         : true;
 
     const revealBots = game.treatment.revealBots || false;
+    const task = round.get("task");
 
-    const correct_answer = round.get("correct_answer") === "Yes" ? 1 : 0;
+    const correct_answer = task.correct_answer === "Yes" ? 1 : 0;
+    console.log(correct_answer);
     return (
       <div className="task-feedback">
         <HTMLTable>
@@ -22,7 +24,7 @@ export default class TaskFeedback extends React.Component {
             <tr>
               <th />
               <th>Prediction</th>
-              <th>Outcome</th>
+              <th>Real Outcome</th>
               <th>Error</th>
               <th>Penalty</th>
               <th>Score</th>
@@ -37,7 +39,7 @@ export default class TaskFeedback extends React.Component {
                   : "not given"}
               </td>
               <td>
-                {round.get("correct_answer") === "Yes"
+                {correct_answer
                   ? "Match (1)"
                   : "No match (0)"}
               </td>
@@ -67,7 +69,7 @@ export default class TaskFeedback extends React.Component {
                   {other.round.get("prediction").toFixed(2)}
                 </td>
                 <td>
-                  {round.get("correct_answer") === "Yes"
+                  {correct_answer
                     ? "Match (1)"
                     : "No match (0)"}
                 </td>
@@ -79,7 +81,7 @@ export default class TaskFeedback extends React.Component {
                     : 1}
                 </td>
                 <td>
-                  {player.round.get("prediction") !== null
+                  {player.round.get("prediction")
                     ? Math.pow(
                         correct_answer - other.round.get("prediction"),
                         2

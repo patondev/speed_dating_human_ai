@@ -1,11 +1,11 @@
 [
   {
-    "title": "Man's Attractive",
+    "title": "Man's Attractiveness",
     "gender": "man",
     "value": 0.128956
   },
   {
-    "title": "Woman's Attractive",
+    "title": "Woman's Attractiveness",
     "gender": "woman",
     "value": 0.120393
   },
@@ -15,7 +15,7 @@
     "value": 0.085175
   },
   {
-    "title": "Woman's SharedInterests",
+    "title": "Woman's Shared Interests",
     "gender": "woman",
     "value": 0.072986
   },
@@ -30,7 +30,7 @@
     "value": 0.055879
   },
   {
-    "title": "Man's SharedInterests",
+    "title": "Man's Shared Interests",
     "gender": "man",
     "value": 0.052336
   },
@@ -50,32 +50,32 @@
     "value": 0.027694
   },
   {
-    "title": "Woman's Ambitious",
+    "title": "Woman's Ambition",
     "gender": "woman",
     "value": 0.019983
   },
   {
-    "title": "Man's Intelligent",
+    "title": "Man's Intelligence",
     "gender": "man",
     "value": 0.017547
   },
   {
-    "title": "Woman's Intelligent",
+    "title": "Woman's Intelligence",
     "gender": "woman",
     "value": 0.010236
   },
   {
-    "title": "Man's Sincere",
+    "title": "Man's Sincerity",
     "gender": "man",
     "value": 0.010174
   },
   {
-    "title": "Woman's Sincere",
+    "title": "Woman's Sincerity",
     "gender": "woman",
     "value": 0.009189
   },
   {
-    "title": "Man's Ambitious",
+    "title": "Man's Ambition",
     "gender": "man",
     "value": 0.008003
   },

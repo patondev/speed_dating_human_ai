@@ -1,5 +1,9 @@
-import Empirica from "meteor/empirica:core";
 import { render } from "react-dom";
+import Empirica from "meteor/empirica:core";
+// import InstructionOverview from "./intro/InstructionOverview";
+// import InstructionEachRound from "./intro/InstructionEachRound";
+// import InstructionFeedback from "./intro/InstructionFeedback";
+// import Quiz from "./intro/Quiz";
 import ExitSurvey from "./exit/ExitSurvey";
 import Sorry from "./exit/Sorry";
 import Thanks from "./exit/Thanks";

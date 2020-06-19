@@ -6,8 +6,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.10.2",
-    "@blueprintjs/core": "^3.28.2",
-    "bcrypt-nodejs": "0.0.3",
+    "@blueprintjs/core": "^3.15.1",
+    "bcrypt": "^3.0.8",
     "meteor-node-stubs": "0.4.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",

@@ -2,14 +2,14 @@ import React from "react";
 
 import { Centered } from "meteor/empirica:core";
 
-export default class InstructionStepOne extends React.Component {
+export default class InstructionOverview extends React.Component {
   render() {
     const { hasPrev, hasNext, onNext, onPrev, game } = this.props;
 
     return (
       <Centered>
         <div className="instructions">
-          <h1 className={"bp3-heading"}> Game overview </h1>
+          <h1 className={"bp3-heading"}> Game overview</h1>
           <p>
             <strong>
               What influences love at first sight? (Or, at least, love in the
@@ -23,9 +23,9 @@ export default class InstructionStepOne extends React.Component {
             During the event, women attendees had a four-minute "first date"
             with every other man participant. At the end of their four minutes,
             participants were asked if they would like to see their date again.
-            Data on 2,080 dates were collected, half of which, or 1,040 dates,
-            resulted in matches, but the other half, 1,040 dates, failed to
-            match. All participants were also asked to rate their date on six
+            Data on 1,000 dates were collected, half of which, or 500 dates,
+            resulted in matches, but the other half, 500 dates, failed to match.
+            All participants were also asked to rate their date on six
             attributes: Attractiveness, Sincerity, Intelligence, Fun, Ambition,
             and Shared Interests.
           </p>
@@ -73,12 +73,9 @@ export default class InstructionStepOne extends React.Component {
 
           <p>
             At the end of the experiment, you will get points based on the
-            accuracy of your final prediction{" "}
-            {game.treatment.playerCount > 1
-              ? "i.e., after you have received the AI recommendation"
-              : "."}{" "}
-            Note that the biggest portion of your pay is dependent on your
-            performance (i.e., accuracy) in this task.
+            accuracy of your final prediction i.e., after you have received the
+            AI recommendation. Note that the biggest portion of your pay is
+            dependent on your performance (i.e., accuracy) in this task.
           </p>
 
           <p>
@@ -94,7 +91,7 @@ export default class InstructionStepOne extends React.Component {
           <p>
             Now let's take part in the game, get high scores, and beat other
             players
-            {game.treatment.playerCount > 1 ? "and even A.I." : "."}{" "}
+            {game.treatment.playerCount > 1 ? " and even A.I." : "."}{" "}
           </p>
 
           <p>

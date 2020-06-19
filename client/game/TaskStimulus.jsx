@@ -8,8 +8,14 @@ const PersonCard = ({ pairData, isPartner }) => {
   const suffix = isPartner ? "_Partner" : "";
   const classPartner = !isPartner ? " person-right" : "";
   const classRating = !isPartner ? " ratings-right" : "";
-
+  // const task = round.get("task");
   return (
+    //   <tr>
+    //   <th>Matching ID</th>
+    //   <td>{task._id}</td>
+    //   <th>Interests Correlation</th>
+    //   <td>{task.features.InterestsCorr}</td>
+    // </tr>
     <div className="person">
       <header className={`person-card${classPartner}`}>
         <div className="person-thumb">
@@ -45,7 +51,7 @@ const PersonCard = ({ pairData, isPartner }) => {
               <td>{pairData["Intelligent" + suffix]}</td>
             </tr>
             <tr>
-              <td>Ambitious</td>
+              <td>Ambition</td>
               <td>{pairData["Sincere" + suffix]}</td>
             </tr>
             <tr>
@@ -60,7 +66,7 @@ const PersonCard = ({ pairData, isPartner }) => {
 };
 
 const Interest = ({ data }) => {
-  const interestPosition = (InterestsCorr) => {
+  const interestPosition = InterestsCorr => {
     return (1 / 2 - InterestsCorr / 2) * 100;
   };
   return (
@@ -80,7 +86,7 @@ const Interest = ({ data }) => {
               top: `calc(${interestPosition(data.InterestsCorr)}% - 9px)`,
             }}
           >
-            {data.InterestsCorr.toFixed(2)}
+            {(data.InterestsCorr || 0).toFixed(2)}
           </div>
         </div>
       </div>
@@ -92,7 +98,9 @@ export default class TaskStimulus extends React.Component {
 
   render() {
     const { round } = this.props;
-    const pairData = round.get("features");
+    const task = round.get("task") || {};
+    const pairData = task.features || {};
+
     return (
       <div className="couples">
         <PersonCard pairData={pairData} isPartner />

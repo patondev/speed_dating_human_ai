@@ -31,20 +31,17 @@ const TimedButton = StageTimeWrapper((props) => {
 
 export default class TaskResponse extends React.Component {
   handleChange = (num) => {
-    const { player, stage } = this.props;
+    const { player, stage, round } = this.props;
     const prediction = Math.round(num * 100) / 100;
-    const isSolo = stage.get("type") === "solo";
-    player.stage.set("prediction", prediction);
-    if (isSolo) {
-      player.stage.set("firstPrediction", prediction);
-    }
+
+    player.round.set("prediction", prediction);
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
 
     const { player, stage } = this.props;
-    const prediction = player.stage.get("prediction");
+    const prediction = player.round.get("prediction");
     const isSolo = stage.get("type") === "solo";
 
     if (stage.name === "outcome" || stage.name === "outcome") {
@@ -55,11 +52,6 @@ export default class TaskResponse extends React.Component {
       WarningToaster.show({ message: "Please make a prediction first." });
     } else {
       player.round.set("prediction", prediction);
-      player.stage.set("prediction", prediction);
-      if (isSolo) {
-        player.stage.set("firstPrediction", prediction);
-        player.round.set("firstPrediction", prediction);
-      }
       player.stage.submit();
       return;
     }
@@ -67,21 +59,25 @@ export default class TaskResponse extends React.Component {
 
   renderSlider(disabled) {
     const { player, round, stage } = this.props;
-    let prediction = player.stage.get("prediction");
+    let prediction = player.round.get("prediction");
     if (prediction === null || prediction === undefined) {
       prediction = 0.5;
     }
+    const predictionProb =
+      round.get("model_prediction_prob") ||
+      round.get("task").model_prediction_prob;
+
+    const effectiveIndex = round.get("effectiveIndex");
+
     const isSolo = stage.get("type") === "solo";
     const isSocial = stage.get("type") === "social";
+    const initialPrediction = player.get(`prediction-${effectiveIndex}`);
     const isOutcome =
       stage.name === "outcome" || stage.name === "practice-outcome";
-
     const indicateNewPrediction = stage.get("type") === "social";
     stage.name === "outcome" || stage.name === "practice-outcome";
-    const aiPrediction =
-      (!isSolo && round.get("model_prediction_prob")) || null;
-    const userPrediction =
-      (isSocial && player.stage.get("firstPrediction")) || null;
+    const aiPrediction = (!isSolo && predictionProb) || null;
+    const userPrediction = (isSocial && initialPrediction) || null;
     const userFinalPrediction = (isOutcome && prediction) || null;
 
     return (
@@ -99,8 +95,10 @@ export default class TaskResponse extends React.Component {
 
   renderResult() {
     const { player, round, stage } = this.props;
-    const correct_answer = round.get("correct_answer") === "Yes" ? 1 : 0;
-    if (stage.name === "outcome" || stage.name === "practice-outcome") {
+    const task = round.get("task");
+
+    const correct_answer = task.correct_answer === "Yes" ? 1 : 0;
+    if (stage.get("type") === "feedback") {
       return (
         <div className="result">
           {correct_answer === 1 ? (
@@ -176,13 +174,18 @@ export default class TaskResponse extends React.Component {
 
     return (
       <div className="response">
-        {!isOutcome && <h3>{stage.get("questionText")}</h3>}
+        {!isOutcome && (
+          <h3>
+            Please review the profile above and predict whether this couple that
+            met once would like to go on a second date.
+          </h3>
+        )}
         {this.renderSlider()}
         {this.renderResult()}
         <TimedButton
           stage={stage}
           player={player}
-          activateAt={48}
+          activateAt={60}
           onClick={this.handleSubmit}
         />
       </div>
