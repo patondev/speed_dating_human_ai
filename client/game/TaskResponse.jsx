@@ -31,14 +31,10 @@ const TimedButton = StageTimeWrapper((props) => {
 
 export default class TaskResponse extends React.Component {
   handleChange = (num) => {
-    const { player, stage } = this.props;
+    const { player, stage, round } = this.props;
     const prediction = Math.round(num * 100) / 100;
-    // player.round.set("prediction", prediction);
-    const isSolo = stage.get("type") === "solo";
+
     player.round.set("prediction", prediction);
-    if (isSolo) {
-      player.round.set("firstPrediction", prediction);
-    }
   };
 
   handleSubmit = (event) => {
@@ -56,9 +52,6 @@ export default class TaskResponse extends React.Component {
       WarningToaster.show({ message: "Please make a prediction first." });
     } else {
       player.round.set("prediction", prediction);
-      if (isSolo) {
-        player.stage.set("firstPrediction", prediction);
-      }
       player.stage.submit();
       return;
     }
@@ -70,17 +63,21 @@ export default class TaskResponse extends React.Component {
     if (prediction === null || prediction === undefined) {
       prediction = 0.5;
     }
+    const predictionProb =
+      round.get("model_prediction_prob") ||
+      round.get("task").model_prediction_prob;
+
+    const effectiveIndex = round.get("effectiveIndex");
+
     const isSolo = stage.get("type") === "solo";
     const isSocial = stage.get("type") === "social";
+    const initialPrediction = player.get(`prediction-${effectiveIndex}`);
     const isOutcome =
       stage.name === "outcome" || stage.name === "practice-outcome";
-
     const indicateNewPrediction = stage.get("type") === "social";
     stage.name === "outcome" || stage.name === "practice-outcome";
-    const aiPrediction =
-      (!isSolo && round.get("model_prediction_prob")) || null;
-    const userPrediction =
-      (isSocial && player.stage.get("firstPrediction")) || null;
+    const aiPrediction = (!isSolo && predictionProb) || null;
+    const userPrediction = (isSocial && initialPrediction) || null;
     const userFinalPrediction = (isOutcome && prediction) || null;
 
     return (
