@@ -51,7 +51,7 @@ const PersonCard = ({ pairData, isPartner }) => {
               <td>{pairData["Intelligent" + suffix]}</td>
             </tr>
             <tr>
-              <td>Ambitious</td>
+              <td>Ambition</td>
               <td>{pairData["Sincere" + suffix]}</td>
             </tr>
             <tr>
@@ -66,7 +66,7 @@ const PersonCard = ({ pairData, isPartner }) => {
 };
 
 const Interest = ({ data }) => {
-  const interestPosition = (InterestsCorr) => {
+  const interestPosition = InterestsCorr => {
     return (1 / 2 - InterestsCorr / 2) * 100;
   };
   return (
