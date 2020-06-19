@@ -33,7 +33,7 @@ export default class Round extends React.Component {
           </div>
         </section>
 
-        {/* {!single && <ContentRight {...this.props} />} */}
+        {!single && <ContentRight {...this.props} />}
       </main>
     );
   }
@@ -195,7 +195,6 @@ export default class Round extends React.Component {
   }
   render() {
     const { round } = this.props;
-    // console.log("inst", round.get("instruction"));
     return round.get("case") === "instruction"
       ? this.renderInstructions()
       : this.renderRound();
