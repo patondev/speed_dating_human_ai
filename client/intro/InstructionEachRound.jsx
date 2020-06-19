@@ -25,7 +25,7 @@ export default class InstructionEachRound extends React.Component {
 
           <p>
             <strong>
-              Attractive, Sincere, Intelligent, Fun, Ambitious, Shared Interests
+              Attractive, Sincere, Intelligent, Fun, Ambition, Shared Interests
             </strong>
             : Evaluation scores (0 to 10) from the partner after a short
             four-minute date. For example, if a woman's fun is seven points, it

@@ -4,30 +4,30 @@
     "type": "exp",
     "data": [
       { "condition": "Man's Fun", "value": 7.2 },
-      { "condition": "Man's Attractive", "value": 6.8 },
-      { "condition": "Woman's SharedInterests", "value": 6 },
+      { "condition": "Man’s Attractiveness", "value": 6.8 },
+      { "condition": "Woman’s Shared Interests", "value": 6 },
       { "condition": "Man's Age", "value": 2.4 },
       { "condition": "Woman's Age", "value": 0.5 },
-      { "condition": "Woman's Sincere", "value": -2 },
+      { "condition": "Woman’s Sincerity", "value": -2 },
       { "condition": "Man's Intelligen", "value": -2 },
-      { "condition": "Woman's Ambitious", "value": -3.5 },
+      { "condition": "Woman's Ambition", "value": -3.5 },
       { "condition": "Interests Correlation", "value": -4 },
-      { "condition": "Man's SharedInterests", "value": -11 }
+      { "condition": "Man’s Shared Interests", "value": -11 }
     ]
   },
   {
     "_id": 84,
     "type": "exp",
     "data": [
-      { "condition": "Man's Attractive ", "value": 3 },
-      { "condition": "Woman's SharedInterests ", "value": 5 },
-      { "condition": "Man's Intelligent", "value": 2 },
-      { "condition": "Woman's Attractive", "value": 1 },
+      { "condition": "Man’s Attractiveness ", "value": 3 },
+      { "condition": "Woman’s Shared Interests ", "value": 5 },
+      { "condition": "Man’s Intelligence", "value": 2 },
+      { "condition": "Woman’s Attractiveness", "value": 1 },
       { "condition": "Woman's Fun", "value": 0.2 },
       { "condition": "Man's Sincere", "value": -2 },
-      { "condition": "Woman's Ambitious", "value": -2 },
+      { "condition": "Woman's Ambition", "value": -2 },
       { "condition": "Man's Age", "value": -6 },
-      { "condition": "Man's SharedInterests", "value": -11 },
+      { "condition": "Man’s Shared Interests", "value": -11 },
       { "condition": "Man's Fun", "value": -13 }
     ]
   },
@@ -35,66 +35,66 @@
     "_id": 231,
     "type": "exp",
     "data": [
-      { "condition": "Man's SharedInterests ", "value": 7 },
+      { "condition": "Man’s Shared Interests ", "value": 7 },
       { "condition": "Man's Fun", "value": 6 },
       {
-        "condition": "Woman's SharedInterests",
+        "condition": "Woman’s Shared Interests",
         "value": 5
       },
       { "condition": "Interests Correlation", "value": 3 },
       { "condition": "Man's Sincere", "value": 3 },
-      { "condition": "Woman's Ambitious", "value": -1.5 },
-      { "condition": "Woman's Attractive", "value": -2 },
-      { "condition": "Woman's Sincere", "value": -2 },
+      { "condition": "Woman's Ambition", "value": -1.5 },
+      { "condition": "Woman’s Attractiveness", "value": -2 },
+      { "condition": "Woman’s Sincerity", "value": -2 },
       { "condition": "Man's Age", "value": -6 },
-      { "condition": "Man's Attractive", "value": -22 }
+      { "condition": "Man’s Attractiveness", "value": -22 }
     ]
   },
   {
     "_id": 536,
     "type": "exp",
     "data": [
-      { "condition": "Woman's SharedInterests", "value": 13 },
+      { "condition": "Woman’s Shared Interests", "value": 13 },
       { "condition": "Interests Correlation", "value": 4 },
       { "condition": "Man's Age", "value": 3 },
       { "condition": "Woman's Age", "value": 2 },
-      { "condition": "Man's SharedInterests", "value": 1 },
-      { "condition": "Woman's Ambitious", "value": -2 },
-      { "condition": "Man's Ambitious ", "value": -2 },
+      { "condition": "Man’s Shared Interests", "value": 1 },
+      { "condition": "Woman's Ambition", "value": -2 },
+      { "condition": "Man's Ambition ", "value": -2 },
       { "condition": "Woman's Fun", "value": -12 },
       { "condition": "Man's Fun", "value": -14 },
-      { "condition": "Man's Attractive", "value": -22 }
+      { "condition": "Man’s Attractiveness", "value": -22 }
     ]
   },
   {
     "_id": 893,
     "type": "exp",
     "data": [
-      { "condition": "Woman's SharedInterests", "value": 5 },
+      { "condition": "Woman’s Shared Interests", "value": 5 },
       { "condition": "2Man's Age", "value": 3 },
-      { "condition": "Man's Ambitious", "value": 3 },
-      { "condition": "Man's SharedInterests", "value": 1 },
-      { "condition": "Woman's Attractive", "value": 0.5 },
+      { "condition": "Man's Ambition", "value": 3 },
+      { "condition": "Man’s Shared Interests", "value": 1 },
+      { "condition": "Woman’s Attractiveness", "value": 0.5 },
       { "condition": "Woman's Age", "value": -3 },
-      { "condition": "Woman's Ambitious", "value": -4 },
+      { "condition": "Woman's Ambition", "value": -4 },
       { "condition": "Woman's Fun", "value": -12 },
       { "condition": "Man's Fun", "value": -13 },
-      { "condition": "Man's Attractive", "value": -22 }
+      { "condition": "Man’s Attractiveness", "value": -22 }
     ]
   },
   {
     "_id": 1210,
     "type": "exp",
     "data": [
-      { "condition": "Man's Attractive ", "value": 12 },
+      { "condition": "Man’s Attractiveness ", "value": 12 },
       { "condition": "Man's Fun", "value": 7 },
       { "condition": "Interests Correlation", "value": 4 },
       { "condition": "Man's Age", "value": 3 },
-      { "condition": "Man's Intelligent", "value": 2 },
-      { "condition": "Woman's Sincere", "value": -2 },
-      { "condition": "Woman's Ambitious ", "value": -2.5 },
+      { "condition": "Man’s Intelligence", "value": 2 },
+      { "condition": "Woman’s Sincerity", "value": -2 },
+      { "condition": "Woman's Ambition ", "value": -2.5 },
       { "condition": "Woman's Age", "value": -5 },
-      { "condition": "Man's SharedInterests", "value": -10 },
+      { "condition": "Man’s Shared Interests", "value": -10 },
       { "condition": "Woman's Fun", "value": -12 }
     ]
   },
@@ -102,30 +102,30 @@
     "_id": 1233,
     "type": "exp",
     "data": [
-      { "condition": "Woman's SharedInterests", "value": 5.5 },
+      { "condition": "Woman’s Shared Interests", "value": 5.5 },
       { "condition": "Man's Age", "value": 3 },
-      { "condition": "Man's Intelligent", "value": 2 },
-      { "condition": "Man's Ambitious", "value": 1 },
+      { "condition": "Man’s Intelligence", "value": 2 },
+      { "condition": "Man's Ambition", "value": 1 },
       { "condition": "Woman's Age", "value": 0.8 },
-      { "condition": "Woman's Sincere", "value": -1 },
+      { "condition": "Woman’s Sincerity", "value": -1 },
       { "condition": "Man's Sincere", "value": -2 },
-      { "condition": "Man's SharedInterests", "value": -10.5 },
+      { "condition": "Man’s Shared Interests", "value": -10.5 },
       { "condition": "Man's Fun", "value": -12 },
-      { "condition": "Man's Attractive", "value": -22 }
+      { "condition": "Man’s Attractiveness", "value": -22 }
     ]
   },
   {
     "_id": 1324,
     "type": "exp",
     "data": [
-      { "condition": "Man's Attractive", "value": 12 },
+      { "condition": "Man’s Attractiveness", "value": 12 },
       { "condition": "Man's Fun", "value": 6.5 },
-      { "condition": "Man's SharedInterests", "value": 5.5 },
+      { "condition": "Man’s Shared Interests", "value": 5.5 },
       { "condition": "Interests Correlation", "value": 4 },
-      { "condition": "Woman's Ambitious", "value": 4 },
-      { "condition": "Woman's Attractive", "value": -0.8 },
-      { "condition": "Woman's Intelligent", "value": -1.2 },
-      { "condition": "Woman's Sincere", "value": -1.8 },
+      { "condition": "Woman's Ambition", "value": 4 },
+      { "condition": "Woman’s Attractiveness", "value": -0.8 },
+      { "condition": "WoMan’s Intelligence", "value": -1.2 },
+      { "condition": "Woman’s Sincerity", "value": -1.8 },
       { "condition": "Man's Sincere", "value": -1.8 },
       { "condition": "Woman's Age", "value": -3.9 }
     ]
@@ -134,15 +134,15 @@
     "_id": 1326,
     "type": "exp",
     "data": [
-      { "condition": "Man's Attractive ", "value": 13.8 },
-      { "condition": "Man's SharedInterests ", "value": 8.5 },
+      { "condition": "Man’s Attractiveness ", "value": 13.8 },
+      { "condition": "Man’s Shared Interests ", "value": 8.5 },
       { "condition": "Man's Fun ", "value": 8.5 },
-      { "condition": "Woman's Ambitious", "value": 4.5 },
+      { "condition": "Woman's Ambition", "value": 4.5 },
       { "condition": "Man's Age", "value": 4 },
-      { "condition": "Man's Intelligent ", "value": -1 },
-      { "condition": "Woman's Sincere", "value": -1.5 },
+      { "condition": "Man’s Intelligence ", "value": -1 },
+      { "condition": "Woman’s Sincerity", "value": -1.5 },
       { "condition": "Interests Correlation", "value": -2 },
-      { "condition": "Man's Ambitious ", "value": -2.5 },
+      { "condition": "Man's Ambition ", "value": -2.5 },
       { "condition": "Woman's Age", "value": -3 }
     ]
   },
@@ -150,38 +150,38 @@
     "_id": 1767,
     "type": "exp",
     "data": [
-      { "condition": "Man's SharedInterests ", "value": 8 },
+      { "condition": "Man’s Shared Interests ", "value": 8 },
       { "condition": "Man's Fun", "value": 7 },
-      { "condition": "Woman's SharedInterests", "value": 5 },
+      { "condition": "Woman’s Shared Interests", "value": 5 },
       { "condition": "Woman's Age", "value": 3 },
-      { "condition": "Man's Intelligent", "value": 2 },
+      { "condition": "Man’s Intelligence", "value": 2 },
       {
         "condition": "Interests Correlation",
         "value": -1
       },
-      { "condition": "Woman's Ambitious", "value": -2 },
+      { "condition": "Woman's Ambition", "value": -2 },
       { "condition": "Woman's Fun", "value": -12 },
-      { "condition": "Woman's Attractive", "value": -19 },
-      { "condition": "Man's Attractive", "value": -22 }
+      { "condition": "Woman’s Attractiveness", "value": -19 },
+      { "condition": "Man’s Attractiveness", "value": -22 }
     ]
   },
   {
     "_id": 853,
     "type": "practice",
     "data": [
-      { "condition": "Woman's Attractive ", "value": 16 },
+      { "condition": "Woman’s Attractiveness ", "value": 16 },
       { "condition": "Man's Fun", "value": 6 },
       { "condition": "Woman's Age", "value": 3 },
-      { "condition": "Man's Intelligent", "value": 2 },
-      { "condition": "Woman's Sincere", "value": 1 },
+      { "condition": "Man’s Intelligence", "value": 2 },
+      { "condition": "Woman’s Sincerity", "value": 1 },
       {
         "condition": "Interests Correlation",
         "value": -2
       },
-      { "condition": "Man's SharedInterests", "value": -10 },
-      { "condition": "Woman's SharedInterests", "value": -10 },
+      { "condition": "Man’s Shared Interests", "value": -10 },
+      { "condition": "Woman’s Shared Interests", "value": -10 },
       { "condition": "Woman's Fun", "value": -11 },
-      { "condition": "Man's Attractive", "value": -22 }
+      { "condition": "Man’s Attractiveness", "value": -22 }
     ]
   },
   {
@@ -189,45 +189,45 @@
     "type": "introduction",
     "data": [
       {
-        "condition": "Woman's Ambitious",
+        "condition": "Woman's Ambition",
         "value": 17
       },
       {
-        "condition": "Woman's SharedInterests ",
+        "condition": "Woman’s Shared Interests ",
         "value": 13
       },
-      { "condition": "Man's SharedInterests ", "value": 8 },
+      { "condition": "Man’s Shared Interests ", "value": 8 },
       { "condition": "Man's Fun", "value": 7 },
       { "condition": "Man's Age", "value": 2 },
-      { "condition": "Man's Intelligent", "value": -2 },
-      { "condition": "Man's Ambitious ", "value": -2 },
+      { "condition": "Man’s Intelligence", "value": -2 },
+      { "condition": "Man's Ambition ", "value": -2 },
       {
         "condition": "Interests Correlation",
         "value": -2
       },
       { "condition": "Woman's Age", "value": -4 },
-      { "condition": "Man's Attractive", "value": -22 }
+      { "condition": "Man’s Attractiveness", "value": -22 }
     ]
   },
   {
     "_id": 1202,
     "type": "practice",
     "data": [
-      { "condition": "Man's Attractive", "value": 14 },
+      { "condition": "Man’s Attractiveness", "value": 14 },
       { "condition": "Man's Fun", "value": 8.5 },
-      { "condition": "Man's SharedInterests ", "value": 7 },
+      { "condition": "Man’s Shared Interests ", "value": 7 },
       {
-        "condition": "Woman's SharedInterests",
+        "condition": "Woman’s Shared Interests",
         "value": 5.5
       },
-      { "condition": "Woman's Ambitious", "value": 4.5 },
-      { "condition": "Man's Ambitious", "value": -1 },
-      { "condition": "Woman's Sincere", "value": -1 },
+      { "condition": "Woman's Ambition", "value": 4.5 },
+      { "condition": "Man's Ambition", "value": -1 },
+      { "condition": "Woman’s Sincerity", "value": -1 },
       {
         "condition": "Interests Correlation",
         "value": -1.5
       },
-      { "condition": "Woman's Intelligent", "value": -2 },
+      { "condition": "WoMan’s Intelligence", "value": -2 },
       { "condition": "Woman's Age", "value": -3.5 }
     ]
   }
