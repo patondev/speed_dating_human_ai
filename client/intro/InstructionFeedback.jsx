@@ -2,7 +2,7 @@ import React from "react";
 
 import { Centered } from "meteor/empirica:core";
 
-export default class InstructionStepOne extends React.Component {
+export default class InstructionFeedback extends React.Component {
   render() {
     const { hasPrev, hasNext, onNext, onPrev, game } = this.props;
 

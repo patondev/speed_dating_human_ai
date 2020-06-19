@@ -1,0 +1,87 @@
+[
+  {
+    "title": "Man's Attractiveness",
+    "gender": "man",
+    "value": 0.128956
+  },
+  {
+    "title": "Woman's Attractiveness",
+    "gender": "woman",
+    "value": 0.120393
+  },
+  {
+    "title": "Woman's Fun",
+    "gender": "woman",
+    "value": 0.085175
+  },
+  {
+    "title": "Woman's Shared Interests",
+    "gender": "woman",
+    "value": 0.072986
+  },
+  {
+    "title": "Man's fun",
+    "gender": "man",
+    "value": 0.066992
+  },
+  {
+    "title": "Woman's Race",
+    "gender": "woman",
+    "value": 0.055879
+  },
+  {
+    "title": "Man's Shared Interests",
+    "gender": "man",
+    "value": 0.052336
+  },
+  {
+    "title": "Man's Age",
+    "gender": "man",
+    "value": 0.034477
+  },
+  {
+    "title": "Interest Correlation",
+    "gender": "man",
+    "value": 0.031248
+  },
+  {
+    "title": "Woman's Age",
+    "gender": "woman",
+    "value": 0.027694
+  },
+  {
+    "title": "Woman's Ambition",
+    "gender": "woman",
+    "value": 0.019983
+  },
+  {
+    "title": "Man's Intelligence",
+    "gender": "man",
+    "value": 0.017547
+  },
+  {
+    "title": "Woman's Intelligence",
+    "gender": "woman",
+    "value": 0.010236
+  },
+  {
+    "title": "Man's Sincerity",
+    "gender": "man",
+    "value": 0.010174
+  },
+  {
+    "title": "Woman's Sincerity",
+    "gender": "woman",
+    "value": 0.009189
+  },
+  {
+    "title": "Man's Ambition",
+    "gender": "man",
+    "value": 0.008003
+  },
+  {
+    "title": "Man's Race",
+    "gender": "man",
+    "value": 0.003193
+  }
+]
