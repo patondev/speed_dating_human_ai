@@ -5,8 +5,6 @@ import Timer from "./Timer.jsx";
 export default class PlayerProfile extends React.Component {
   render() {
     const { game, stage, player, round } = this.props;
-    const roundIndex = game.roundIds.indexOf(player.round._id);
-    const roundCount = game.roundIds.length;
     return (
       <>
         <div className="value-label">

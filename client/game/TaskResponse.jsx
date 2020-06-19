@@ -99,7 +99,7 @@ export default class TaskResponse extends React.Component {
   renderResult() {
     const { player, round, stage } = this.props;
     const correct_answer = round.get("correct_answer") === "Yes" ? 1 : 0;
-    if (stage.name === "outcome" || stage.name === "practice-outcome") {
+    if (stage.get("type") === "feedback") {
       return (
         <div className="result">
           {correct_answer === 1 ? (
