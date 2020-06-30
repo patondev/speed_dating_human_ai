@@ -14,22 +14,21 @@ export default class QuizTwoLocalInterpretability extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { answer, answer_2, answer_3 } = this.state;
-    const { player } = this.props;
+    const { nextStep } = this.props;
 
     if (answer !== "d" || answer_2 !== "true" || answer_3 != "a") {
-      player.exit("failedQuestion");
+      nextStep();
     } else {
-      this.props.onNext();
+      nextStep(true);
     }
   };
 
   render() {
-    const { hasPrev, onPrev } = this.props;
     const { answer, answer_2, answer_3 } = this.state;
     return (
       <Centered>
         <div className="quiz">
-          <h1> Quiz </h1>
+          <h2>Quiz </h2>
           <p>
             Having read the instructions, please answer the following question
             before starting the experiment.
@@ -128,11 +127,10 @@ export default class QuizTwoLocalInterpretability extends React.Component {
                 </li>
               </ol>
             </div>
-            <p className="action-step">
-              <button type="button" onClick={onPrev} disabled={!hasPrev}>
-                Back to instructions
+            <p>
+              <button type="submit" className="btn-prediction-big">
+                Submit
               </button>
-              <button type="submit">Submit</button>
             </p>
           </form>
         </div>
