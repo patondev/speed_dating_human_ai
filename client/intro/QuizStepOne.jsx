@@ -27,7 +27,7 @@ export default class QuizStepOne extends React.Component {
     const { hasPrev, hasNext, onNext, onPrev } = this.props;
     const { answer } = this.state;
     return (
-      <Centered>
+      <Centered className="with-topper">
         <div className="quiz">
           <h1> Quiz </h1>
           <p>

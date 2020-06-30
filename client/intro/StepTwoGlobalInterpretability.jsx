@@ -4,20 +4,11 @@ import { Centered } from "meteor/empirica:core";
 
 export default class StepTwoGlobalInterpretability extends React.Component {
   render() {
-    const {
-      hasPrev,
-      onPrev,
-      onNext,
-      hasNext,
-      game: {
-        treatment: { giveFeedback },
-      },
-    } = this.props;
+    const { giveFeedback = "false", nextStep } = this.props;
+
     return (
       <Centered>
         <div className="instructions">
-          <h1 className={"bp3-heading"}> Instructions (Part 2) </h1>
-
           <p>
             In step 2, you will have the opportunity to modify the predictions
             you made in step 1. You will receive predictions from an Artificial
@@ -99,11 +90,12 @@ export default class StepTwoGlobalInterpretability extends React.Component {
             </>
           )}
 
-          <p className="action-step">
-            <button type="button" onClick={onPrev} disabled={!hasPrev}>
-              Previous
-            </button>
-            <button type="button" onClick={onNext} disabled={!hasNext}>
+          <p>
+            <button
+              type="button"
+              className="btn-prediction-big"
+              onClick={nextStep}
+            >
               Next
             </button>
           </p>

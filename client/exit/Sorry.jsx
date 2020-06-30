@@ -7,7 +7,7 @@ export default class Sorry extends React.Component {
   static stepName = "Sorry";
 
   render() {
-    const { player, hasNext, onSubmit } = this.props;
+    const { player } = this.props;
     let msg;
     switch (player.exitStatus) {
       case "gameFull":
@@ -27,7 +27,10 @@ export default class Sorry extends React.Component {
         msg = "Unfortunately the Game was cancelled...";
         break;
     }
-
+    if (player.exitReason === "failedQuestion") {
+      msg =
+        "Unfortunately you did not meet the conditions required to play the game.";
+    }
     return (
       <Centered>
         <div className="score">
@@ -78,15 +81,15 @@ export default class Sorry extends React.Component {
           {/*This is not really needed .. all of these people failed to start the game .. if we allow them to submit, then their data will be deleted, we don't want that*/}
           <p>
             {/*{hasNext ? (*/}
-              {/*<Button*/}
-                {/*intent={"primary"}*/}
-                {/*type="button"*/}
-                {/*onClick={() => onSubmit()}*/}
-              {/*>*/}
-                {/*Done*/}
-              {/*</Button>*/}
+            {/*<Button*/}
+            {/*intent={"primary"}*/}
+            {/*type="button"*/}
+            {/*onClick={() => onSubmit()}*/}
+            {/*>*/}
+            {/*Done*/}
+            {/*</Button>*/}
             {/*) : (*/}
-              {/*""*/}
+            {/*""*/}
             {/*)}*/}
           </p>
         </div>
