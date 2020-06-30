@@ -7,7 +7,7 @@ export default class InstructionStepOne extends React.Component {
     const { hasPrev, hasNext, onNext, onPrev, game } = this.props;
 
     return (
-      <Centered>
+      <Centered className="with-topper">
         <div className="instructions">
           <h1 className={"bp3-heading"}>Instructions (Part 1)</h1>
           <p>
