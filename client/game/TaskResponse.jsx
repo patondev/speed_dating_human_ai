@@ -56,6 +56,7 @@ export default class TaskResponse extends React.Component {
     }
     if (prediction === null || prediction === undefined) {
       WarningToaster.show({ message: "Please make a prediction first." });
+      return;
     } else {
       player.round.set("prediction", prediction);
       player.stage.submit();
@@ -78,13 +79,17 @@ export default class TaskResponse extends React.Component {
     const isOutcome =
       stage.name === "outcome" || stage.name === "practice-outcome";
     const indicateNewPrediction = stage.get("type") === "social";
+
     stage.name === "outcome" || stage.name === "practice-outcome";
     const aiPrediction = (!isSolo && predictionProb) || null;
     const userPrediction =
       isSocial && initialPrediction !== null && initialPrediction !== undefined
         ? initialPrediction
         : null;
-    const userFinalPrediction = (isOutcome && prediction) || null;
+    const userFinalPrediction =
+      isOutcome && prediction !== null && prediction !== undefined
+        ? prediction
+        : null;
 
     return (
       <Slider

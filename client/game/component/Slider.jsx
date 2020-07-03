@@ -22,8 +22,6 @@ export default ({
   const userPercentage = userPrediction * 100;
   const finalUserPercentage = userFinalPrediction * 100;
   const newPredictPercentage = value * 100;
-  console.log(userPrediction);
-  console.log(userPrediction);
 
   return (
     <div className="slider">
@@ -109,7 +107,11 @@ export default ({
         {userFinalPrediction !== null && userFinalPrediction !== undefined && (
           <div
             className="prediction user"
-            style={{ left: `calc(${finalUserPercentage}% - 6.5px)` }}
+            style={{
+              left: `calc(${finalUserPercentage}% - ${
+                userFinalPrediction == 1 ? "1px" : "6.5px"
+              })`,
+            }}
           >
             <div className="prediction-content">
               <div className="prediction-point" />
