@@ -34,19 +34,26 @@ export default class ExitSurvey extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const { game } = this.props;
 
     if (
-      this.state.botUnderstand === "" ||
-      this.state.botTrust === "" ||
-      this.state.botAdopt === "" ||
-      this.state.botUseful === ""
+      (this.state.botUnderstand === "" ||
+        this.state.botTrust === "" ||
+        this.state.botAdopt === "" ||
+        this.state.botUseful === "") &&
+      game.treatment.playerCount > 1
     ) {
       alert(
         "Please answer all the radio button survey questions before you can submit."
       );
-    } else {
-      this.props.onSubmit(this.state);
+      return;
     }
+
+    if (this.state.education === "") {
+      alert("Please fill out all required field*.");
+      return;
+    }
+    this.props.onSubmit(this.state);
   };
 
   exitMessage = (player, game) => {
@@ -193,6 +200,7 @@ export default class ExitSurvey extends React.Component {
                 value={strategy}
                 fill={true}
                 name="strategy"
+                required
               />
             </FormGroup>
 
@@ -230,6 +238,7 @@ export default class ExitSurvey extends React.Component {
                 onChange={this.handleChange}
                 value={feedback}
                 fill={true}
+                required
               />
             </FormGroup>
           </div>
