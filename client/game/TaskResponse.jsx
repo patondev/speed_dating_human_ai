@@ -31,7 +31,7 @@ const TimedButton = StageTimeWrapper((props) => {
 
 export default class TaskResponse extends React.Component {
   handleChange = (num) => {
-    const { player, stage, round } = this.props;
+    const { player } = this.props;
     const prediction = Math.round(num * 100) / 100;
 
     player.round.set("prediction", prediction);
@@ -42,7 +42,6 @@ export default class TaskResponse extends React.Component {
 
     const { player, stage } = this.props;
     const prediction = player.round.get("prediction");
-    const isSolo = stage.get("type") === "solo";
 
     if (stage.name === "outcome" || stage.name === "outcome") {
       player.stage.submit();
@@ -50,6 +49,7 @@ export default class TaskResponse extends React.Component {
     }
     if (prediction === null || prediction === undefined) {
       WarningToaster.show({ message: "Please make a prediction first." });
+      return;
     } else {
       player.round.set("prediction", prediction);
       player.stage.submit();

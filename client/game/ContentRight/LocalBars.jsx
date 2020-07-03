@@ -47,7 +47,7 @@ export default class LocalBars extends React.Component {
     );
   };
 
-  renderBarTextContent = data => {
+  renderBarTextContent = (data) => {
     return (
       <div className="bar-text-content">
         {data.map((d, i) => (
@@ -59,7 +59,7 @@ export default class LocalBars extends React.Component {
     );
   };
 
-  renderBars = data => {
+  renderBars = (data) => {
     const total = data.reduce((cur, next) => {
       return cur + next.value;
     }, 0);
@@ -87,13 +87,16 @@ export default class LocalBars extends React.Component {
   render() {
     const { round } = this.props;
     const task = round.get("task");
-    let currentModel = modelLocalJson.find(m => m._id === task._id);
+    const { data } = modelLocalJson.find((m) => m._id === task._id);
+    data.sort((a, b) => {
+      return b.value - a.value;
+    });
     return (
       <div className="graph-wrapper">
         <div className="graph">
-          {this.renderBarTextContent(currentModel.data)}
+          {this.renderBarTextContent(data)}
           <div className="bar-lines-container">
-            {this.renderBars(currentModel.data)}
+            {this.renderBars(data)}
             {this.renderLines({
               numbefOfLines: 11,
               step: 5,
