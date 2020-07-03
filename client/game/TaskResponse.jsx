@@ -30,13 +30,6 @@ const TimedButton = StageTimeWrapper((props) => {
 });
 
 export default class TaskResponse extends React.Component {
-  // componentDidMount() {
-  //   const { player } = this.props;
-  //   const prediction = player.round.get("prediction");
-  //   if (prediction === null || prediction === undefined) {
-  //     player.round.set("prediction", 0.5);
-  //   }
-  // }
   handleChange = (num) => {
     const { player } = this.props;
     const prediction = Math.round(num * 100) / 100;
