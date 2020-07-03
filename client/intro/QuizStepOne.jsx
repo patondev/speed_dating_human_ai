@@ -4,28 +4,55 @@ import { Centered } from "meteor/empirica:core";
 
 import Radio from "./Radio";
 export default class QuizStepOne extends React.Component {
-  state = { answer: "" };
+  state = {
+    answer: {
+      value: "",
+      error: false,
+    },
+    toast: {
+      show: false,
+      message: "",
+    },
+  };
 
   handleChange = (event) => {
     const el = event.currentTarget;
-    this.setState({ [el.name]: el.value.trim().toLowerCase() });
+    this.setState({
+      [el.name]: {
+        value: el.value.trim().toLowerCase(),
+        error: false,
+      },
+    });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
     const { answer } = this.state;
-    const { player } = this.props;
 
-    if (answer !== "b") {
-      player.exit("failedQuestion");
-    } else {
-      this.props.onNext();
+    if (answer.value !== "b") {
+      this.setState({
+        answer: {
+          ...answer,
+          error: true,
+        },
+        toast: {
+          show: true,
+          message: "Your answer was incorrect. Please try again.",
+        },
+      });
+      return;
     }
+    this.props.onNext();
+    this.setState({
+      answer: {
+        error: false,
+      },
+    });
   };
 
   render() {
-    const { hasPrev, hasNext, onNext, onPrev } = this.props;
-    const { answer } = this.state;
+    const { hasPrev, onPrev } = this.props;
+    const { answer, toast } = this.state;
     return (
       <Centered className="with-topper">
         <div className="quiz">
@@ -34,17 +61,24 @@ export default class QuizStepOne extends React.Component {
             Having read the instructions, please answer the following question
             before starting the experiment.
           </p>
+          {toast.show && (
+            <div className="intro-alert alert-error">{toast.message}</div>
+          )}
           <form onSubmit={this.handleSubmit}>
             <div>
               <ol className="question">
-                <li>
+                <li
+                  className={`question-list${
+                    answer.error ? " wrong-answer" : ""
+                  }`}
+                >
                   <p>
                     In step 1, you will look at information about a couple that
                     met through speed dating and make a prediction about:
                   </p>
                   <div>
                     <Radio
-                      selected={answer}
+                      selected={answer.value}
                       name="answer"
                       value="a"
                       option="a"
@@ -54,7 +88,7 @@ export default class QuizStepOne extends React.Component {
                   </div>
                   <div>
                     <Radio
-                      selected={answer}
+                      selected={answer.value}
                       name="answer"
                       value="b"
                       option="b"
@@ -64,7 +98,7 @@ export default class QuizStepOne extends React.Component {
                   </div>
                   <div>
                     <Radio
-                      selected={answer}
+                      selected={answer.value}
                       name="answer"
                       value="c"
                       option="c"
@@ -74,7 +108,7 @@ export default class QuizStepOne extends React.Component {
                   </div>
                   <div>
                     <Radio
-                      selected={answer}
+                      selected={answer.value}
                       name="answer"
                       value="d"
                       option="d"
@@ -89,7 +123,9 @@ export default class QuizStepOne extends React.Component {
               <button type="button" onClick={onPrev} disabled={!hasPrev}>
                 Back to instructions
               </button>
-              <button type="submit">Submit</button>
+              <button type="submit" disabled={answer.value === ""}>
+                Submit
+              </button>
             </p>
           </form>
         </div>
