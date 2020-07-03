@@ -22,7 +22,7 @@ const TimedButton = StageTimeWrapper((props) => {
     >
       {disabled
         ? "Wait for " + Math.abs(remainingSeconds - activateAt) + "s"
-        : stage.name === "outcome"
+        : stage.name === "outcome" || stage.name === "practice-outcome"
         ? "Next"
         : "Submit Prediction"}
     </button>
@@ -75,10 +75,17 @@ export default class TaskResponse extends React.Component {
     const isOutcome =
       stage.name === "outcome" || stage.name === "practice-outcome";
     const indicateNewPrediction = stage.get("type") === "social";
+
     stage.name === "outcome" || stage.name === "practice-outcome";
     const aiPrediction = (!isSolo && predictionProb) || null;
-    const userPrediction = (isSocial && initialPrediction) || null;
-    const userFinalPrediction = (isOutcome && prediction) || null;
+    const userPrediction =
+      isSocial && initialPrediction !== null && initialPrediction !== undefined
+        ? initialPrediction
+        : null;
+    const userFinalPrediction =
+      isOutcome && prediction !== null && prediction !== undefined
+        ? prediction
+        : null;
 
     return (
       <Slider
