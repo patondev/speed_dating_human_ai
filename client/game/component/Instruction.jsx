@@ -28,7 +28,7 @@ export default class Instruction extends React.Component {
     this.setState({
       toast: {
         show: true,
-        message: "Please answered correctly!",
+        message: "Your answer was incorrect. Please try again.",
       },
     });
   };
