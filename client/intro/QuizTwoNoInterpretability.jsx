@@ -4,27 +4,69 @@ import { Centered } from "meteor/empirica:core";
 
 import Radio from "./Radio";
 export default class QuizTwoNoInterpretability extends React.Component {
-  state = { answer: "", answer_3: "" };
+  state = {
+    answer: {
+      value: "",
+      error: false,
+    },
+    answer_2: {
+      value: "",
+      error: false,
+    },
+    answer_3: {
+      value: "",
+      error: false,
+    },
+    answered: 0,
+  };
 
   handleChange = (event) => {
     const el = event.currentTarget;
-    this.setState({ [el.name]: el.value.trim().toLowerCase() });
+    let { answered } = this.state;
+    this.setState({
+      [el.name]: {
+        value: el.value.trim().toLowerCase(),
+        error: false,
+      },
+      answered: answered < 2 ? answered + 1 : answered,
+    });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { answer, answer_3 } = this.state;
     const { nextStep } = this.props;
+    const { answer, answer_3 } = this.state;
+    let count = 0;
 
-    if (answer !== "d" || answer_3 !== "a") {
-      nextStep();
-    } else {
-      nextStep(true);
+    if (answer.value !== "d") {
+      this.setState({
+        answer: {
+          ...answer,
+          error: true,
+        },
+      });
+      count++;
     }
+
+    if (answer_3.value != "a") {
+      this.setState({
+        answer_3: {
+          ...answer_3,
+          error: true,
+        },
+      });
+      count++;
+    }
+
+    if (count > 0) {
+      nextStep(false);
+      return;
+    }
+    nextStep(true);
   };
 
   render() {
-    const { answer, answer_3 } = this.state;
+    const { answer, answer_3, answered } = this.state;
     return (
       <Centered>
         <div className="quiz">
@@ -36,11 +78,15 @@ export default class QuizTwoNoInterpretability extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <div>
               <ol className="question">
-                <li>
+                <li
+                  className={`question-list${
+                    answer.error ? " wrong-answer" : ""
+                  }`}
+                >
                   <p>In step 2, you will:</p>
                   <div>
                     <Radio
-                      selected={answer}
+                      selected={answer.value}
                       name="answer"
                       value="a"
                       option="a"
@@ -50,7 +96,7 @@ export default class QuizTwoNoInterpretability extends React.Component {
                   </div>
                   <div>
                     <Radio
-                      selected={answer}
+                      selected={answer.value}
                       name="answer"
                       value="b"
                       option="b"
@@ -60,7 +106,7 @@ export default class QuizTwoNoInterpretability extends React.Component {
                   </div>
                   <div>
                     <Radio
-                      selected={answer}
+                      selected={answer.value}
                       name="answer"
                       value="c"
                       option="c"
@@ -70,7 +116,7 @@ export default class QuizTwoNoInterpretability extends React.Component {
                   </div>
                   <div>
                     <Radio
-                      selected={answer}
+                      selected={answer.value}
                       name="answer"
                       value="d"
                       option="d"
@@ -79,11 +125,15 @@ export default class QuizTwoNoInterpretability extends React.Component {
                     />
                   </div>
                 </li>
-                <li>
+                <li
+                  className={`question-list${
+                    answer_3.error ? " wrong-answer" : ""
+                  }`}
+                >
                   <p>Which of the following two statements is true:</p>
                   <div>
                     <Radio
-                      selected={answer_3}
+                      selected={answer_3.value}
                       name="answer_3"
                       value="a"
                       option="a"
@@ -93,7 +143,7 @@ export default class QuizTwoNoInterpretability extends React.Component {
                   </div>
                   <div>
                     <Radio
-                      selected={answer_3}
+                      selected={answer_3.value}
                       name="answer_3"
                       value="b"
                       option="b"
@@ -105,7 +155,11 @@ export default class QuizTwoNoInterpretability extends React.Component {
               </ol>
             </div>
             <p>
-              <button type="submit" className="btn-prediction-big">
+              <button
+                type="submit"
+                className="btn-prediction-big"
+                disabled={answered < 2}
+              >
                 Submit
               </button>
             </p>

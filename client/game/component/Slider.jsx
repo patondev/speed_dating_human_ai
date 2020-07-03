@@ -58,30 +58,60 @@ export default ({
             return number.toFixed(2).toString();
           }}
         />
-        {aiPrediction && (
-          <div className="prediction ai" style={{ left: `calc(${aiPercentage}% - 6.5px)` }}>
-            <div className="prediction-content">
-              <div className="prediction-point" />
-              <div className="prediction-line" />
-              <div className="prediction-box">AI Prediction – {Math.round(aiPercentage)}%</div>
-            </div>
-          </div>
-        )}
-        {userPrediction && (
-          <div className="prediction user" style={{ left: `calc(${userPercentage}% - 6.5px)` }}>
+        {aiPrediction !== null && aiPrediction !== undefined && (
+          <div
+            className="prediction ai"
+            style={{ left: `calc(${aiPercentage}% - 6.5px)` }}
+          >
             <div className="prediction-content">
               <div className="prediction-point" />
               <div className="prediction-line" />
               <div className="prediction-box">
-                Your previous prediction – {Math.round(userPercentage)}%
+                AI Prediction – {Math.round(aiPercentage)}%
               </div>
             </div>
           </div>
         )}
-        {userFinalPrediction && (
+        {disabled && !userFinalPrediction
+          ? userPrediction !== null &&
+            userPrediction !== undefined && (
+              <div
+                className="prediction user"
+                style={{ left: `calc(${userPercentage}% - 6.5px)` }}
+              >
+                <div className="prediction-content">
+                  <div className="prediction-point" />
+                  <div className="prediction-line" />
+                  <div className="prediction-box">
+                    Your previous prediction – {Math.round(userPercentage)}%
+                  </div>
+                </div>
+              </div>
+            )
+          : userPrediction !== null &&
+            userPrediction !== undefined &&
+            !userFinalPrediction && (
+              <div
+                className="prediction user"
+                style={{ left: `calc(${userPercentage}% - 6.5px)` }}
+              >
+                <div className="prediction-content">
+                  <div className="prediction-point" />
+                  <div className="prediction-line" />
+                  <div className="prediction-box">
+                    Your previous prediction – {Math.round(userPercentage)}%
+                  </div>
+                </div>
+              </div>
+            )}
+        {userFinalPrediction !== null && userFinalPrediction !== undefined && (
           <div
             className="prediction user"
-            style={{ left: `calc(${finalUserPercentage}% - 6.5px)` }}
+            style={{
+              left: `calc(${finalUserPercentage}% - ${
+                userFinalPrediction == 1 ? "1px" : "6.5px"
+              })`,
+            }}
           >
             <div className="prediction-content">
               <div className="prediction-point" />
