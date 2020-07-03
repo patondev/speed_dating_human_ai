@@ -22,7 +22,7 @@ const TimedButton = StageTimeWrapper((props) => {
     >
       {disabled
         ? "Wait for " + Math.abs(remainingSeconds - activateAt) + "s"
-        : stage.name === "outcome"
+        : stage.name === "outcome" || stage.name === "practice-outcome"
         ? "Next"
         : "Submit Prediction"}
     </button>

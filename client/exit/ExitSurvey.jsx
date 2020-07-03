@@ -29,20 +29,20 @@ export default class ExitSurvey extends React.Component {
 
   handleChange = (event) => {
     const el = event.currentTarget;
-    this.setState({[el.name]: el.value});
+    this.setState({ [el.name]: el.value });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
 
     if (
-        this.state.botUnderstand === "" ||
-        this.state.botTrust === "" ||
-        this.state.botAdopt === "" ||
-        this.state.botUseful === ""
+      this.state.botUnderstand === "" ||
+      this.state.botTrust === "" ||
+      this.state.botAdopt === "" ||
+      this.state.botUseful === ""
     ) {
       alert(
-          "Please answer all the radio button survey questions before you can submit."
+        "Please answer all the radio button survey questions before you can submit."
       );
     } else {
       this.props.onSubmit(this.state);
@@ -91,14 +91,14 @@ export default class ExitSurvey extends React.Component {
       <div>
         {" "}
         <p>
-          Please answer the following short survey. You do not have to provide
-          any information you feel uncomfortable with.
+          Please answer the following short survey. Fields with asterisk (*) are
+          required.
         </p>
         <form onSubmit={this.handleSubmit}>
           <div className="form-line">
             <FormGroup
               inline={true}
-              label={"Age"}
+              label={"Age*"}
               labelFor={"age"}
               className={"form-group"}
             >
@@ -119,7 +119,7 @@ export default class ExitSurvey extends React.Component {
 
             <FormGroup
               inline={true}
-              label={"Gender"}
+              label={"Gender*"}
               labelFor={"gender"}
               className={"form-group"}
             >
@@ -140,7 +140,7 @@ export default class ExitSurvey extends React.Component {
             <RadioGroup
               inline={true}
               name="education"
-              label="Highest Education Qualification?"
+              label="Highest Education Qualification?*"
               onChange={this.handleChange}
               selectedValue={education}
               required
@@ -180,7 +180,7 @@ export default class ExitSurvey extends React.Component {
             <FormGroup
               className={"form-group"}
               inline={false}
-              label={"How would you describe your strategy in the game?"}
+              label={"How would you describe your strategy in the game?*"}
               labelFor={"strategy"}
               //className={"form-group"}
               required
@@ -217,7 +217,7 @@ export default class ExitSurvey extends React.Component {
             <FormGroup
               className={"form-group"}
               inline={false}
-              label={"Feedback, including problems you encountered."}
+              label={"Feedback, including problems you encountered.*"}
               labelFor={"fair"}
               //className={"form-group"}
               required
@@ -241,7 +241,7 @@ export default class ExitSurvey extends React.Component {
                   required
                   inline={true}
                   name="botUnderstand"
-                  label="Was the A.I. prediction system easy to understand?"
+                  label="Was the A.I. prediction system easy to understand?*"
                   onChange={this.handleChange}
                   selectedValue={botUnderstand}
                 >
@@ -287,7 +287,7 @@ export default class ExitSurvey extends React.Component {
                 <RadioGroup
                   inline={true}
                   name="botTrust"
-                  label="Having experienced the A.I. system, do you trust the A.I. prediction systems?"
+                  label="Having experienced the A.I. system, do you trust the A.I. prediction systems?*"
                   onChange={this.handleChange}
                   selectedValue={botTrust}
                   required
@@ -334,7 +334,7 @@ export default class ExitSurvey extends React.Component {
                 <RadioGroup
                   inline={true}
                   name="botAdopt"
-                  label="Having experienced the A.I. system, how likely would you be to adopt A.I. prediction systems?"
+                  label="Having experienced the A.I. system, how likely would you be to adopt A.I. prediction systems?*"
                   onChange={this.handleChange}
                   selectedValue={botAdopt}
                   required
@@ -381,7 +381,7 @@ export default class ExitSurvey extends React.Component {
                 <RadioGroup
                   inline={true}
                   name="botUseful"
-                  label="Having experienced the A.I. system, how much would A.I. systems be useful to improve the quality of your decision making?"
+                  label="Having experienced the A.I. system, how much would A.I. systems be useful to improve the quality of your decision making?*"
                   onChange={this.handleChange}
                   selectedValue={botUseful}
                   required
