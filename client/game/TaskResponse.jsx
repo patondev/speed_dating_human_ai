@@ -80,7 +80,10 @@ export default class TaskResponse extends React.Component {
     const indicateNewPrediction = stage.get("type") === "social";
     stage.name === "outcome" || stage.name === "practice-outcome";
     const aiPrediction = (!isSolo && predictionProb) || null;
-    const userPrediction = (isSocial && initialPrediction) || null;
+    const userPrediction =
+      isSocial && initialPrediction !== null && initialPrediction !== undefined
+        ? initialPrediction
+        : null;
     const userFinalPrediction = (isOutcome && prediction) || null;
 
     return (
