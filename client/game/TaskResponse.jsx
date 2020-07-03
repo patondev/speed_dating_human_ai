@@ -30,8 +30,15 @@ const TimedButton = StageTimeWrapper((props) => {
 });
 
 export default class TaskResponse extends React.Component {
+  componentDidMount() {
+    const { player } = this.props;
+    const prediction = player.round.get("prediction");
+    if (prediction === null || prediction === undefined) {
+      player.round.set("prediction", 0.5);
+    }
+  }
   handleChange = (num) => {
-    const { player, stage, round } = this.props;
+    const { player } = this.props;
     const prediction = Math.round(num * 100) / 100;
 
     player.round.set("prediction", prediction);
@@ -42,7 +49,6 @@ export default class TaskResponse extends React.Component {
 
     const { player, stage } = this.props;
     const prediction = player.round.get("prediction");
-    const isSolo = stage.get("type") === "solo";
 
     if (stage.name === "outcome" || stage.name === "outcome") {
       player.stage.submit();
@@ -60,9 +66,6 @@ export default class TaskResponse extends React.Component {
   renderSlider(disabled) {
     const { player, round, stage } = this.props;
     let prediction = player.round.get("prediction");
-    if (prediction === null || prediction === undefined) {
-      prediction = 0.5;
-    }
     const predictionProb =
       round.get("model_prediction_prob") ||
       round.get("task").model_prediction_prob;
