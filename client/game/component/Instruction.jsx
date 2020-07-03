@@ -7,11 +7,13 @@ import StepTwoNoInterpretability from "../../intro/StepTwoNoInterpretability.jsx
 import QuizTwoGlobalInterpretability from "../../intro/QuizTwoGlobalInterpretability";
 import QuizTwoLocalInterpretability from "../../intro/QuizTwoLocalInterpretability";
 import QuizTwoNoInterpretability from "../../intro/QuizTwoNoInterpretability";
+import PreRound from "../../intro/PreRound";
 
 export default class Instruction extends React.Component {
   state = {
     quiz: false,
     answered: false,
+    preRound: false,
     toast: {},
   };
   goToQuiz = () => {
@@ -20,9 +22,14 @@ export default class Instruction extends React.Component {
     });
   };
   goToNextStep = (passed = false) => {
-    const { player } = this.props;
     if (passed) {
-      player.stage.submit();
+      this.setState({
+        toast: {
+          show: false,
+          message: "Your answer was incorrect. Please try again.",
+        },
+        preRound: true,
+      });
       return;
     }
     this.setState({
@@ -32,14 +39,22 @@ export default class Instruction extends React.Component {
       },
     });
   };
+  handleToNextRound = () => {
+    const { player } = this.props;
+    player.stage.submit();
+  };
   render() {
     const {
       game: { treatment },
     } = this.props;
     const { interpretationType = "None", giveFeedback } = treatment;
-    const { toast, quiz } = this.state;
+    const { toast, quiz, preRound } = this.state;
 
-    if (quiz) {
+    if (preRound) {
+      return <PreRound onNext={this.handleToNextRound} step={2} />;
+    }
+
+    if (quiz && !preRound) {
       return (
         <>
           {toast.show && (
@@ -57,7 +72,7 @@ export default class Instruction extends React.Component {
         </>
       );
     }
-    if (!quiz)
+    if (!quiz && !preRound)
       return (
         <>
           {!treatment.revealBots ? (

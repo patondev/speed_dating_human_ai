@@ -2,6 +2,7 @@ import { render } from "react-dom";
 import Empirica from "meteor/empirica:core";
 import InstructionStepOne from "./intro/InstructionStepOne";
 import QuizStepOne from "./intro/QuizStepOne";
+import PreRound from "./intro/PreRound";
 import ExitSurvey from "./exit/ExitSurvey";
 import Sorry from "./exit/Sorry";
 import Thanks from "./exit/Thanks";
@@ -17,7 +18,7 @@ Empirica.breadcrumb(null);
 // At this point they have been assigned a treatment. You can return
 // different instruction steps depending on the assigned treatment.
 Empirica.introSteps(() => {
-  const steps = [InstructionStepOne, QuizStepOne];
+  const steps = [InstructionStepOne, QuizStepOne, PreRound];
   return steps;
 });
 
