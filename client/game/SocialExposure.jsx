@@ -27,50 +27,12 @@ export default class SocialExposure extends React.Component {
     );
   }
 
-  renderSlider() {
-    const { player, round, stage } = this.props;
-    let prediction = player.round.get("prediction");
-    const predictionProb =
-      round.get("model_prediction_prob") ||
-      round.get("task").model_prediction_prob;
-
-    const effectiveIndex = round.get("effectiveIndex");
-
-    const isSolo = stage.get("type") === "solo";
-    const isSocial = stage.get("type") === "social";
-    const initialPrediction = player.get(`prediction-${effectiveIndex}`);
-    const isOutcome =
-      stage.name === "outcome" || stage.name === "practice-outcome";
-    stage.name === "outcome" || stage.name === "practice-outcome";
-    const aiPrediction = (!isSolo && predictionProb) || null;
-
-    const userPrediction =
-      isSocial && initialPrediction !== null && initialPrediction !== undefined
-        ? initialPrediction
-        : null;
-    const userFinalPrediction =
-      isOutcome && prediction !== null && prediction !== undefined
-        ? prediction
-        : null;
-
-    return (
-      <SlidersPrediction
-        value={prediction}
-        newPrediction={false}
-        aiPrediction={aiPrediction}
-        userPrediction={userPrediction}
-        userFinalPrediction={userFinalPrediction}
-        disabled={true}
-      />
-    );
-  }
-
   render() {
     const { stage } = this.props;
 
     return (
       <>
-        {this.renderSlider()}
+        <SlidersPrediction disabled={true} {...this.props} />
         {
           <BodyDescription
             isGlobal={stage.get("interpretationType") === "Global"}
