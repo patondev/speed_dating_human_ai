@@ -69,10 +69,15 @@ export default class TaskResponse extends React.Component {
       round.get("task").model_prediction_prob;
 
     const effectiveIndex = round.get("effectiveIndex");
+    const predictionPrefix = round.get("practice")
+      ? "prediction-practice"
+      : "prediction";
 
     const isSolo = stage.get("type") === "solo";
     const isSocial = stage.get("type") === "social";
-    const initialPrediction = player.get(`prediction-${effectiveIndex}`);
+    const initialPrediction = player.get(
+      `${predictionPrefix}-${effectiveIndex}`
+    );
     const isOutcome =
       stage.name === "outcome" || stage.name === "practice-outcome";
     const indicateNewPrediction = stage.get("type") === "social";
