@@ -60,9 +60,10 @@ export default class TaskResponse extends React.Component {
   renderSlider(disabled) {
     const { player, round, stage } = this.props;
     let prediction = player.round.get("prediction");
-    if (prediction === null || prediction === undefined) {
-      prediction = 0.5;
-    }
+    // if (prediction === null || prediction === undefined) {
+    //   prediction = 0.5;
+    // }
+
     const predictionProb =
       round.get("model_prediction_prob") ||
       round.get("task").model_prediction_prob;
