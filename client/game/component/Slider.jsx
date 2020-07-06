@@ -57,6 +57,7 @@ export default ({
           labelRenderer={(number) => {
             return number.toFixed(2).toString();
           }}
+          hideHandleOnEmpty
         />
         {aiPrediction !== null && aiPrediction !== undefined && (
           <div
@@ -122,7 +123,7 @@ export default ({
             </div>
           </div>
         )}
-        {newPrediction && (
+        {newPrediction && value !== null && value !== undefined && (
           <div
             className="prediction new-prediction"
             style={{ left: `calc(${newPredictPercentage}% - 6.5px)` }}
