@@ -29,15 +29,12 @@ export default class SocialExposure extends React.Component {
 
   render() {
     const { stage } = this.props;
-
     return (
       <>
         <SlidersPrediction disabled={true} {...this.props} />
-        {
-          <BodyDescription
-            isGlobal={stage.get("interpretationType") === "Global"}
-          />
-        }
+        <BodyDescription
+          isGlobal={stage.get("interpretationType") === "Global"}
+        />
         {stage.get("interpretationType") === "Global" ? (
           <GlobalBars {...this.props} />
         ) : (
