@@ -37,9 +37,9 @@ export default class SocialExposure extends React.Component {
         />
         {stage.get("interpretationType") === "Global" ? (
           <GlobalBars {...this.props} />
-        ) : stage.get("interpretationType") === "Local" ? (
+        ) : (
           <LocalBars {...this.props} />
-        ) : null}
+        )}
       </>
     );
   }
