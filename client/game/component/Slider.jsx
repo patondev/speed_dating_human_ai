@@ -13,6 +13,9 @@ export default (props) => {
   const { player, round, stage, onSlideChange, disabled } = props;
 
   let value = player.round.get("prediction");
+  if (stage.name === "practice-social" || stage.name === "social") {
+    value = 0.5;
+  }
 
   const predictionProb =
     round.get("model_prediction_prob") ||
@@ -78,7 +81,9 @@ export default (props) => {
           labelRenderer={(number) => {
             return number.toFixed(2).toString();
           }}
-          hideHandleOnEmpty
+          hideHandleOnEmpty={
+            stage.name === "practice-initial" || stage.name === "initial"
+          }
         />
         {aiPrediction !== null && aiPrediction !== undefined && (
           <div
