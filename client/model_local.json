@@ -19,7 +19,7 @@
     "_id": 84,
     "type": "exp",
     "data": [
-      { "condition": "Man’s Attractiveness ", "value": 3 },
+      { "condition": "Man’s Attractiveness ", "value": 13 },
       { "condition": "Woman’s Shared Interests ", "value": 5 },
       { "condition": "Man’s Intelligence", "value": 2 },
       { "condition": "Woman’s Attractiveness", "value": 1 },
