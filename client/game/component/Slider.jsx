@@ -67,7 +67,7 @@ export default ({
               <div className="prediction-point" />
               <div className="prediction-line" />
               <div className="prediction-box">
-                AI Prediction – {Math.round(aiPercentage)}%
+                AI Prediction: {Math.round(aiPercentage)}%
               </div>
             </div>
           </div>
@@ -83,7 +83,7 @@ export default ({
                   <div className="prediction-point" />
                   <div className="prediction-line" />
                   <div className="prediction-box">
-                    Your previous prediction – {Math.round(userPercentage)}%
+                    Your previous prediction: {Math.round(userPercentage)}%
                   </div>
                 </div>
               </div>
@@ -99,7 +99,7 @@ export default ({
                   <div className="prediction-point" />
                   <div className="prediction-line" />
                   <div className="prediction-box">
-                    Your previous prediction – {Math.round(userPercentage)}%
+                    Your previous prediction: {Math.round(userPercentage)}%
                   </div>
                 </div>
               </div>
@@ -117,7 +117,7 @@ export default ({
               <div className="prediction-point" />
               <div className="prediction-line" />
               <div className="prediction-box">
-                Your final prediction – {Math.round(finalUserPercentage)}%
+                Your final prediction: {Math.round(finalUserPercentage)}%
               </div>
             </div>
           </div>

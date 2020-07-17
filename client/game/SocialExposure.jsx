@@ -75,7 +75,7 @@ export default class SocialExposure extends React.Component {
 
     return (
       <>
-        {this.renderSlider()}
+        {/*{this.renderSlider()}*/}
         {
           <BodyDescription
             isGlobal={stage.get("interpretationType") === "Global"}
