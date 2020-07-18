@@ -1,8 +1,7 @@
-import React from "react";
-
 import { Centered } from "meteor/empirica:core";
-
+import React from "react";
 import Radio from "./Radio";
+
 export default class QuizTwoGlobalInterpretability extends React.Component {
   state = {
     answer: {

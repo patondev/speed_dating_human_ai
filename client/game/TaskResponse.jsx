@@ -1,7 +1,7 @@
+import { Position, Toaster } from "@blueprintjs/core";
+import { StageTimeWrapper } from "meteor/empirica:core";
 import React from "react";
 import Slider from "./component/Slider";
-import { Toaster, Position } from "@blueprintjs/core";
-import { StageTimeWrapper } from "meteor/empirica:core";
 
 const WarningToaster = Toaster.create({
   className: "warning-toaster",

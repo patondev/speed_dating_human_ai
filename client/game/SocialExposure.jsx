@@ -1,10 +1,9 @@
-import React from "react";
 import Slider from "meteor/empirica:slider";
-
+import React from "react";
 import SlidersPrediction from "./component/Slider";
 import BodyDescription from "./ContentRight/BodyDescription";
-import LocalBars from "./ContentRight/LocalBars";
 import GlobalBars from "./ContentRight/GlobalBars";
+import LocalBars from "./ContentRight/LocalBars";
 
 export default class SocialExposure extends React.Component {
   renderSocialInteraction(otherPlayer) {

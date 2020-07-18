@@ -1,13 +1,11 @@
 import React from "react";
-
-import StepTwoGlobalInterpretability from "../../intro/StepTwoGlobalInterpretability.jsx";
-import StepTwoLocalInterpretability from "../../intro/StepTwoLocalInterpretability.jsx";
-import StepTwoNoInterpretability from "../../intro/StepTwoNoInterpretability.jsx";
-
+import PreRound from "../../intro/PreRound";
 import QuizTwoGlobalInterpretability from "../../intro/QuizTwoGlobalInterpretability";
 import QuizTwoLocalInterpretability from "../../intro/QuizTwoLocalInterpretability";
 import QuizTwoNoInterpretability from "../../intro/QuizTwoNoInterpretability";
-import PreRound from "../../intro/PreRound";
+import StepTwoGlobalInterpretability from "../../intro/StepTwoGlobalInterpretability.jsx";
+import StepTwoLocalInterpretability from "../../intro/StepTwoLocalInterpretability.jsx";
+import StepTwoNoInterpretability from "../../intro/StepTwoNoInterpretability.jsx";
 
 export default class Instruction extends React.Component {
   state = {

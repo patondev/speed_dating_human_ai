@@ -52,7 +52,7 @@ const PersonCard = ({ pairData, isPartner }) => {
             </tr>
             <tr>
               <td>Ambition</td>
-              <td>{pairData["Sincere" + suffix]}</td>
+              <td>{pairData["Ambition" + suffix]}</td>
             </tr>
             <tr>
               <td>Fun</td>

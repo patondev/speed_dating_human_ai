@@ -1,15 +1,14 @@
-import React from "react";
-
-import { Centered } from "meteor/empirica:core";
 import {
   Button,
   Classes,
   FormGroup,
-  RadioGroup,
-  TextArea,
   Intent,
   Radio,
+  RadioGroup,
+  TextArea,
 } from "@blueprintjs/core";
+import { Centered } from "meteor/empirica:core";
+import React from "react";
 
 export default class ExitSurvey extends React.Component {
   static stepName = "ExitSurvey";
